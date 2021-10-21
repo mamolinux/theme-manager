@@ -1,0 +1,12 @@
+[Desktop Entry]
+Name=Theme Manager
+Comment=
+GenericName=Theme Manager
+Exec=theme-manager
+Icon=theme-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+X-KDE-StartupNotify=false
+OnlyShowIn=KDE;
