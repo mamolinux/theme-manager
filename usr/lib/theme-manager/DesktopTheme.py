@@ -43,4 +43,14 @@ class desktop_theme():
 			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % currenttheme[7])
 			# Cursor theme
 			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % currenttheme[8])
+		
+		elif (currenttheme[3] == "gnome" or currenttheme[3] == "ubuntu-gnome"):
+			# Gtk theme
+			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % currenttheme[6])
+			# Window border/Metacity
+			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % currenttheme[5])
+			# Icon theme
+			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % currenttheme[7])
+			# Cursor theme
+			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % currenttheme[8])
 			
