@@ -22,7 +22,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 
 -->
 <interface>
-  <requires lib="gtk+" version="3.20"/>
+  <requires lib="gtk+" version="3.24"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name theme-manager -->
   <!-- interface-copyright 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in> -->
