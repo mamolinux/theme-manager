@@ -81,7 +81,7 @@ class ThemeManager():
 		self.save_config()
 		
 		self.load_config()
-		self.currenttheme = self.prep_theme_variants()
+		# self.currenttheme = self.prep_theme_variants()
 		
 	def load_config(self):
 		"""Loads configurations from config file.
@@ -187,7 +187,6 @@ class ThemeManager():
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 					
 		currnt_theme = [timestamp, currentstate, stateflag, session, currentcolor, systheme, gtktheme, icontheme, cursrtheme]
-		print("Current theme = "+str(currnt_theme))
 		
 		return currnt_theme
 		
