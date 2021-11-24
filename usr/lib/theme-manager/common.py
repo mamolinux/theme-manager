@@ -104,7 +104,10 @@ class ThemeManager():
 				self.colorvariants += str(var+" ")
 			self.colorvariants = self.colorvariants.strip()
 		except:
-			pass
+			self.colorvariants = ""
+			self.systemthemename = ""
+			self.iconthemename = ""
+			self.cursorthemename = ""
 	
 	def save_config(self):
 		if os.path.exists(CONFIG_FILE):
@@ -118,7 +121,7 @@ class ThemeManager():
 			}
 			with open(CONFIG_FILE, 'w') as f:
 				self.config.write(f)
-		
+	
 	def prep_theme_variants(self):
 		
 		now = datetime.datetime.now()
@@ -151,7 +154,7 @@ class ThemeManager():
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 			
 			gtktheme = systheme
-					
+		
 		elif currentstate == "night":
 			# print("It's Nighttime")
 			stateflag = 1
@@ -168,7 +171,7 @@ class ThemeManager():
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 			
 			gtktheme = systheme
-					
+		
 		else:
 			# print("It's Transition")
 			stateflag = 0
@@ -185,10 +188,11 @@ class ThemeManager():
 				while len(cursrcolor) == 0:
 					cursrcolor = random.choice(self.colvariants)
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
-					
+		
 		currnt_theme = [timestamp, currentstate, stateflag, session, currentcolor, systheme, gtktheme, icontheme, cursrtheme]
 		
 		return currnt_theme
-		
+
 if __name__ == "__main__":
 	pass
+	
