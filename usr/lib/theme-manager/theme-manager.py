@@ -193,7 +193,7 @@ class ThemeManagerWindow():
 	
 	def show_status(self, widget):
 		self.statusbar.push("Status", widget)
-		
+
 
 if __name__ == "__main__":
 	application = theme_manager("org.x.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
