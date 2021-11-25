@@ -24,33 +24,46 @@
 
 # import the necessary modules!
 import os
+import subprocess
 
 class desktop_theme():
 	
 	def __init__(self):
 			pass
-		
-	def set_desktop_theme(self, currenttheme):
-		print(currenttheme)
-		if currenttheme[3] == "x-cinnamon":
+	
+	def set_desktop_theme(self, state, nexttheme):
+		thisDE = str(state['DE']).lower()
+		if thisDE == "x-cinnamon":
+			# When the DE is cinnamon set
 			# Desktop theme
-			os.system("gsettings set org.cinnamon.theme name %s" % currenttheme[5])
+			os.system("gsettings set org.cinnamon.theme name %s" % nexttheme[3])
 			# Gtk theme
-			os.system("gsettings set org.cinnamon.desktop.interface gtk-theme %s" % currenttheme[6])
+			os.system("gsettings set org.cinnamon.desktop.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
-			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % currenttheme[5])
+			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[3])
 			# Icon theme
-			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % currenttheme[7])
+			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[5])
 			# Cursor theme
-			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % currenttheme[8])
+			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[6])
+	
+	def get_desktop_theme(self, state):
+		thisDE = state['DE'].lower()
+		currenttheme = ['Unknown', 'Unknown']
+		if thisDE == "x-cinnamon":
+			# When the DE is cinnamon get
+			# Desktop theme
+			currenttheme.append(self.run_command("gsettings get org.cinnamon.theme name"))
+			# Gtk theme
+			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface gtk-theme"))
+			# Window border/Metacity
+			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.wm.preferences theme"))
+			# Icon theme
+			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme"))
+			# Cursor theme
+			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme"))
 		
-		elif (currenttheme[3] == "gnome" or currenttheme[3] == "ubuntu-gnome"):
-			# Gtk theme
-			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % currenttheme[6])
-			# Window border/Metacity
-			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % currenttheme[5])
-			# Icon theme
-			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % currenttheme[7])
-			# Cursor theme
-			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % currenttheme[8])
-			
+		return currenttheme
+	
+	def run_command(self, command):
+		output = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
+		return output.decode('utf-8', "strict").strip('\n').strip('\'')

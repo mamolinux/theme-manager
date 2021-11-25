@@ -72,6 +72,7 @@ class ThemeManagerWindow():
 		self.application = application
 		self.settings = Gio.Settings(schema_id="org.x.theme-manager")
 		self.manager = ThemeManager()
+		self.destop_manager = desktop_theme()
 		self.icon_theme = Gtk.IconTheme.get_default()
 		
 		# Set the Glade file
@@ -124,7 +125,9 @@ class ThemeManagerWindow():
 		menu.show_all()
 		
 		self.load_conf()
-		# self.show_status()
+		self.state = self.manager.get_state_info()
+		self.currenttheme = self.destop_manager.get_desktop_theme(self.state)
+		self.current_status()
 	
 	def load_conf(self):
 		
@@ -169,8 +172,10 @@ class ThemeManagerWindow():
 		self.application.quit()
 	
 	def on_random_button(self, widget):
-		var = self.manager.prep_theme_variants()
-		desktop_theme().set_desktop_theme(var)
+		self.nexttheme = self.manager.prep_theme_variants(self.state)
+		self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
+		self.currenttheme = self.destop_manager.get_desktop_theme(self.state)
+		self.current_status()
 	
 	def on_save_button(self, widget):
 		"""Saves user configurations to config file.
@@ -191,8 +196,20 @@ class ThemeManagerWindow():
 		
 		self.load_conf()
 	
-	def show_status(self, widget):
-		self.statusbar.push("Status", widget)
+	def current_status(self):
+		if self.currenttheme[0] == "Unknown":
+			try:
+				self.currenttheme[0] = self.nexttheme[1]
+			except:
+				pass
+		if self.currenttheme[0] == "":
+			self.currenttheme[0] = "Default"
+		
+		print(self.currenttheme)
+		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme[0], self.currenttheme[1], self.currenttheme[2:])
+		
+		context_id = self.statusbar.get_context_id("status")
+		self.statusbar.push(context_id, status)
 
 
 if __name__ == "__main__":
