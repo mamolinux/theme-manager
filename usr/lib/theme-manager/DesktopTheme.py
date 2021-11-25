@@ -45,6 +45,17 @@ class desktop_theme():
 			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[5])
 			# Cursor theme
 			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[6])
+		
+		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome"):
+			# When the DE is gnome set
+			# Gtk theme
+			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % nexttheme[4])
+			# Window border/Metacity
+			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % nexttheme[3])
+			# Icon theme
+			os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[5])
+			# Cursor theme
+			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[6])
 	
 	def get_desktop_theme(self, state):
 		thisDE = state['DE'].lower()
@@ -61,6 +72,17 @@ class desktop_theme():
 			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme"))
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme"))
+		
+		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome"):
+			# When the DE is gnome get
+			# Gtk theme
+			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface gtk-theme"))
+			# Window border/Metacity
+			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.wm.preferences theme"))
+			# Icon theme
+			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface icon-theme"))
+			# Cursor theme
+			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface cursor-theme"))
 		
 		return currenttheme
 	
