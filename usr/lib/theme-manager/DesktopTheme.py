@@ -56,6 +56,17 @@ class desktop_theme():
 			os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[5])
 			# Cursor theme
 			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[6])
+		
+		elif (thisDE == "mate"):
+			# When the DE is mate set
+			# Gtk theme
+			os.system("gsettings set org.mate.interface gtk-theme %s" % nexttheme[4])
+			# Window border/Metacity
+			os.system("gsettings set org.mate.Marco.general theme %s" % nexttheme[3])
+			# Icon theme
+			os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[5])
+			# Cursor theme
+			os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[6])
 	
 	def get_desktop_theme(self, state):
 		thisDE = state['DE'].lower()
@@ -83,6 +94,17 @@ class desktop_theme():
 			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface icon-theme"))
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface cursor-theme"))
+		
+		elif (thisDE == "mate"):
+			# When the DE is mate get
+			# Gtk theme
+			currenttheme.append(self.run_command("gsettings get org.mate.interface gtk-theme"))
+			# Window border/Metacity
+			currenttheme.append(self.run_command("gsettings get org.mate.Marco.general theme"))
+			# Icon theme
+			currenttheme.append(self.run_command("gsettings set org.mate.interface icon-theme"))
+			# Cursor theme
+			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
 		
 		return currenttheme
 	
