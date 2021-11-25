@@ -23,7 +23,6 @@
 #
 
 # import the necessary modules!
-import ast
 import configparser
 import datetime
 import gettext
@@ -32,7 +31,6 @@ import os
 import random
 import subprocess
 import threading
-import time
 
 from gi.repository import GObject
 
@@ -79,9 +77,7 @@ class ThemeManager():
 		
 		self.config = configparser.ConfigParser()
 		self.save_config()
-		
 		self.load_config()
-		# self.currenttheme = self.prep_theme_variants()
 		
 	def load_config(self):
 		"""Loads configurations from config file.
@@ -93,21 +89,24 @@ class ThemeManager():
 		
 		self.config.read(CONFIG_FILE)
 		try:
-			colvars = self.config["system-theme"]['color-variants'].split(' ')
-			self.colvariants = ast.literal_eval(self.config["system-theme"]['color-variants'])
+			colvars = self.config["system-theme"]['color-variants'].split(',')
 			self.systemthemename = self.config["system-theme"]['system-theme-name']
 			self.iconthemename = self.config["system-theme"]['icon-theme-name']
 			self.cursorthemename = self.config["system-theme"]['cursor-theme-name']
 			
-			self.colorvariants = ""
+			self.colorvariants = ""		# This string will be saved in config file
+			self.colvariants = []		# This list will be used to randomize variants
 			for var in colvars:
-				self.colorvariants += str(var+" ")
-			self.colorvariants = self.colorvariants.strip()
+				self.colorvariants += str(var+",")
+				self.colvariants.append(var.strip().strip('"').strip("'"))
+			self.colorvariants = self.colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
 		except:
+			self.colvariants = []
 			self.colorvariants = ""
 			self.systemthemename = ""
 			self.iconthemename = ""
 			self.cursorthemename = ""
+			
 	
 	def save_config(self):
 		if os.path.exists(CONFIG_FILE):
@@ -122,22 +121,24 @@ class ThemeManager():
 			with open(CONFIG_FILE, 'w') as f:
 				self.config.write(f)
 	
-	def prep_theme_variants(self):
-		
-		now = datetime.datetime.now()
-		timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
-		session = os.environ.get('XDG_CURRENT_DESKTOP').lower()
-		
+	def get_state_info(self):
+		session = os.environ.get('XDG_CURRENT_DESKTOP')
 		command = 'redshift -p | grep "Period" | cut -d " " -f 2'
 		rawstate = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
-		currentstate = rawstate.decode('utf-8', "strict").lower().strip('\n')
-		stateflag = 1
+		currentstate = rawstate.decode('utf-8', "strict").strip('\n')
+		
+		return {'DE': session, 'State': currentstate}
+	
+	def prep_theme_variants(self, state):
+		now = datetime.datetime.now()
+		timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
 		
 		currentcolor = random.choice(self.colvariants)
 		cursrcolor = currentcolor
+		currentstate = state['State'].lower()
 		
 		systheme = gtktheme = icontheme = cursrtheme = ""
-		
+		stateflag = 1
 		if currentstate == "daytime":
 			# print("It's Daytime")
 			stateflag = 1
@@ -150,8 +151,11 @@ class ThemeManager():
 				icontheme = self.iconthemename
 				
 				while len(cursrcolor) == 0:
-					cursrcolor = random.choice(self.colvariants)
-					cursrtheme = self.cursorthemename+"-"+cursrcolor
+					try:
+						cursrcolor = random.choice(self.colvariants)
+						cursrtheme = self.cursorthemename+"-"+cursrcolor
+					except:
+						cursrcolor = ""
 			
 			gtktheme = systheme
 		
@@ -189,9 +193,10 @@ class ThemeManager():
 					cursrcolor = random.choice(self.colvariants)
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 		
-		currnt_theme = [timestamp, currentstate, stateflag, session, currentcolor, systheme, gtktheme, icontheme, cursrtheme]
+		nxt_theme = [timestamp, currentcolor, stateflag, systheme, gtktheme, icontheme, cursrtheme]
+		print(nxt_theme)
 		
-		return currnt_theme
+		return nxt_theme
 
 if __name__ == "__main__":
 	pass
