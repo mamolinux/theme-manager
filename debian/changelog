@@ -1,3 +1,14 @@
+theme-manager (1.0.1) stable; urgency=medium
+
+  * Add support for mate desktop
+  * Support Gnome and Ubuntu:Gnome (#2)
+  * Fully supports Mint-Y theme in cinnamon
+  * Ready to go with cinnamon desktop
+  * Update ui
+  * Add support for gnome desktop
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 29 Nov 2021 22:26:37 +0530
+
 theme-manager (1.0.0) stable; urgency=medium
 
   * Initial release.
