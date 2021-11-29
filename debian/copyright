@@ -1,7 +1,7 @@
 Format: http://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
-Upstream-Name: simple-pwgen
+Upstream-Name: theme-manager
 Upstream-Contact: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Source: https://www.github.com/hsbasu/simple-pwgen
+Source: https://www.github.com/hsbasu/theme-manager
 
 Files: *
 Copyright: 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
