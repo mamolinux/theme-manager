@@ -68,17 +68,17 @@ class desktop_theme():
 			# Cursor theme
 			os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[6])
 	
-	def get_desktop_theme(self, state):
+	def get_desktop_theme(self, state, systheme, colvariants):
 		thisDE = state['DE'].lower()
 		currenttheme = ['Unknown', 'Unknown']
 		if thisDE == "x-cinnamon":
 			# When the DE is cinnamon get
-			# Desktop theme
-			currenttheme.append(self.run_command("gsettings get org.cinnamon.theme name"))
 			# Gtk theme
 			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface gtk-theme"))
 			# Window border/Metacity
 			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.wm.preferences theme"))
+			# Desktop/shell theme
+			currenttheme.append(self.run_command("gsettings get org.cinnamon.theme name"))
 			# Icon theme
 			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme"))
 			# Cursor theme
@@ -90,6 +90,8 @@ class desktop_theme():
 			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface gtk-theme"))
 			# Window border/Metacity
 			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.wm.preferences theme"))
+			# # Desktop/shell theme
+			# currenttheme.append(self.run_command("gsettings get org.gnome.desktop.wm.preferences theme"))
 			# Icon theme
 			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface icon-theme"))
 			# Cursor theme
@@ -105,6 +107,13 @@ class desktop_theme():
 			currenttheme.append(self.run_command("gsettings set org.mate.interface icon-theme"))
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
+		
+		print(currenttheme[2].strip(systheme).lower())
+		for i in range(len(colvariants)):
+			if currenttheme[2].strip(systheme).lower() == colvariants[i].lower():
+				currenttheme[0] = colvariants[i]
+				print(currenttheme[0])
+				break
 		
 		return currenttheme
 	
