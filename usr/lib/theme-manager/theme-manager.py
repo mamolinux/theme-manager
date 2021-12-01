@@ -126,7 +126,7 @@ class ThemeManagerWindow():
 		
 		self.load_conf()
 		self.state = self.manager.get_state_info()
-		self.currenttheme = self.destop_manager.get_desktop_theme(self.state)
+		self.currenttheme = self.destop_manager.get_desktop_theme(self.state, self.manager.systemthemename, self.manager.colvariants)
 		self.current_status()
 	
 	def load_conf(self):
@@ -174,7 +174,7 @@ class ThemeManagerWindow():
 	def on_random_button(self, widget):
 		self.nexttheme = self.manager.prep_theme_variants(self.state)
 		self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
-		self.currenttheme = self.destop_manager.get_desktop_theme(self.state)
+		self.currenttheme = self.destop_manager.get_desktop_theme(self.state, self.manager.systemthemename, self.manager.colvariants)
 		self.current_status()
 	
 	def on_save_button(self, widget):
