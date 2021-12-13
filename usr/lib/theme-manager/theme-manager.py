@@ -197,16 +197,8 @@ class ThemeManagerWindow():
 		self.load_conf()
 	
 	def current_status(self):
-		if self.currenttheme[0] == "Unknown":
-			try:
-				self.currenttheme[0] = self.nexttheme[1]
-			except:
-				pass
-		if self.currenttheme[0] == "":
-			self.currenttheme[0] = "Default"
-		
-		print(self.currenttheme)
-		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme[0], self.currenttheme[1], self.currenttheme[2:])
+		print("Current Theme: "+str(self.currenttheme))
+		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme["Variant"], self.currenttheme["Last Updated"], self.currenttheme["Themes"])
 		
 		context_id = self.statusbar.get_context_id("status")
 		self.statusbar.push(context_id, status)
