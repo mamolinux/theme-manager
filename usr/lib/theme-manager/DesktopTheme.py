@@ -40,49 +40,50 @@ class desktop_theme():
 			# Gtk theme
 			os.system("gsettings set org.cinnamon.desktop.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
-			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[3])
+			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[5])
 			# Icon theme
-			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[5])
+			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
-			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[6])
+			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[7])
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome"):
 			# When the DE is gnome set
 			# Gtk theme
 			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
-			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % nexttheme[3])
+			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % nexttheme[5])
 			# Icon theme
-			os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[5])
+			os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
-			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[6])
+			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[7])
 		
 		elif (thisDE == "mate"):
 			# When the DE is mate set
 			# Gtk theme
 			os.system("gsettings set org.mate.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
-			os.system("gsettings set org.mate.Marco.general theme %s" % nexttheme[3])
+			os.system("gsettings set org.mate.Marco.general theme %s" % nexttheme[5])
 			# Icon theme
-			os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[5])
+			os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
-			os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[6])
+			os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[7])
 	
 	def get_desktop_theme(self, state, systheme, colvariants):
 		thisDE = state['DE'].lower()
-		currenttheme = ['Unknown', 'Unknown']
+		currenttheme = {"Variant": '', "Last Updated": '', "Themes": ''}
+		themes = {}
 		if thisDE == "x-cinnamon":
 			# When the DE is cinnamon get
 			# Gtk theme
-			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface gtk-theme"))
+			themes["System"] = self.run_command("gsettings get org.cinnamon.desktop.interface gtk-theme")
 			# Window border/Metacity
-			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.wm.preferences theme"))
+			themes["Decoration"] = self.run_command("gsettings get org.cinnamon.desktop.wm.preferences theme")
 			# Desktop/shell theme
-			currenttheme.append(self.run_command("gsettings get org.cinnamon.theme name"))
+			themes["DE Theme"] = self.run_command("gsettings get org.cinnamon.theme name")
 			# Icon theme
-			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme"))
+			themes["Icon"] = self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme")
 			# Cursor theme
-			currenttheme.append(self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme"))
+			themes["Cursor"] = self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme")
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome"):
 			# When the DE is gnome get
@@ -108,12 +109,18 @@ class desktop_theme():
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
 		
-		print(currenttheme[2].strip(systheme).lower())
+		print(themes)
+		currenttheme["Themes"] = themes
+		
 		for i in range(len(colvariants)):
-			if currenttheme[2].strip(systheme).lower() == colvariants[i].lower():
-				currenttheme[0] = colvariants[i]
-				print(currenttheme[0])
-				break
+			if len(colvariants[i]) != 0:
+				if colvariants[i].lower() in themes["System"].lower():
+					currenttheme["Variant"] = colvariants[i]
+					break
+			else:
+				currenttheme["Variant"] = "Default"
+				
+		print(currenttheme)
 		
 		return currenttheme
 	

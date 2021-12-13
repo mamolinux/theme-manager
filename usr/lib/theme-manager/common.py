@@ -137,11 +137,12 @@ class ThemeManager():
 		cursrcolor = currentcolor
 		currentstate = state['State'].lower()
 		
-		systheme = gtktheme = icontheme = cursrtheme = ""
+		systheme = wmtheme = gtktheme = icontheme = cursrtheme = ""
 		stateflag = 1
 		if currentstate == "daytime":
 			# print("It's Daytime")
 			stateflag = 1
+			wmtheme = self.systemthemename
 			if len(currentcolor) != 0:
 				systheme = self.systemthemename+"-"+currentcolor
 				icontheme = self.iconthemename+"-"+currentcolor
@@ -162,6 +163,7 @@ class ThemeManager():
 		elif currentstate == "night":
 			# print("It's Nighttime")
 			stateflag = 1
+			wmtheme = self.systemthemename+"-Dark"
 			if len(currentcolor) != 0:
 				systheme = self.systemthemename+"-Dark-"+currentcolor
 				icontheme = self.iconthemename+"-Dark-"+currentcolor
@@ -179,6 +181,7 @@ class ThemeManager():
 		else:
 			# print("It's Transition")
 			stateflag = 0
+			wmtheme = self.systemthemename+"-Dark"
 			if len(currentcolor) != 0:
 				systheme = self.systemthemename+"-Dark-"+currentcolor
 				gtktheme = self.systemthemename+"-Darker-"+currentcolor
@@ -193,8 +196,8 @@ class ThemeManager():
 					cursrcolor = random.choice(self.colvariants)
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 		
-		nxt_theme = [timestamp, currentcolor, stateflag, systheme, gtktheme, icontheme, cursrtheme]
-		print(nxt_theme)
+		nxt_theme = [timestamp, currentcolor, stateflag, systheme, gtktheme, wmtheme, icontheme, cursrtheme]
+		print("Next Theme: "+str(nxt_theme))
 		
 		return nxt_theme
 
