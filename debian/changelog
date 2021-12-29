@@ -1,3 +1,12 @@
+theme-manager (1.0.3) stable; urgency=medium
+
+  * Add gitignore
+  * Add support for gnome/unity desktops
+    - Now properly supports (Probably) GNOME, Ubuntu:GNOME, Unity
+    - Print current DE to help debugging
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Wed, 29 Dec 2021 12:57:11 +0530
+
 theme-manager (1.0.2) stable; urgency=medium
 
   * Properly show current colour variant in statusbar
