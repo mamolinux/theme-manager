@@ -46,7 +46,7 @@ class desktop_theme():
 			# Cursor theme
 			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[7])
 		
-		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome"):
+		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
 			# When the DE is gnome set
 			# Gtk theme
 			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % nexttheme[4])
@@ -72,6 +72,7 @@ class desktop_theme():
 		thisDE = state['DE'].lower()
 		currenttheme = {"Variant": '', "Last Updated": '', "Themes": ''}
 		themes = {}
+		print(thisDE)		# let's keep this to debug other DEs
 		if thisDE == "x-cinnamon":
 			# When the DE is cinnamon get
 			# Gtk theme
@@ -85,18 +86,18 @@ class desktop_theme():
 			# Cursor theme
 			themes["Cursor"] = self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme")
 		
-		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome"):
-			# When the DE is gnome get
+		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
+			# When the DE is gnome/unity get
 			# Gtk theme
-			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface gtk-theme"))
+			themes["System"] = self.run_command("gsettings get org.gnome.desktop.interface gtk-theme")
 			# Window border/Metacity
-			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.wm.preferences theme"))
-			# # Desktop/shell theme
-			# currenttheme.append(self.run_command("gsettings get org.gnome.desktop.wm.preferences theme"))
+			themes["Decoration"] = self.run_command("gsettings get org.gnome.metacity.theme name")
+			# Desktop/shell theme
+			themes["DE Theme"] = self.run_command("gsettings get org.gnome.desktop.wm.preferences theme")
 			# Icon theme
-			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface icon-theme"))
+			themes["Icon"] = self.run_command("gsettings get org.gnome.desktop.interface icon-theme")
 			# Cursor theme
-			currenttheme.append(self.run_command("gsettings get org.gnome.desktop.interface cursor-theme"))
+			themes["Cursor"] = self.run_command("gsettings get org.gnome.desktop.interface cursor-theme")
 		
 		elif (thisDE == "mate"):
 			# When the DE is mate get
@@ -109,17 +110,19 @@ class desktop_theme():
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
 		
-		print(themes)
 		currenttheme["Themes"] = themes
 		
+		# get current colour variant from key: System
 		for i in range(len(colvariants)):
 			if len(colvariants[i]) != 0:
 				if colvariants[i].lower() in themes["System"].lower():
 					currenttheme["Variant"] = colvariants[i]
 					break
 			else:
+				# if string length of colour variant is zero
+				# that means we are using default theme
 				currenttheme["Variant"] = "Default"
-				
+		
 		print(currenttheme)
 		
 		return currenttheme
