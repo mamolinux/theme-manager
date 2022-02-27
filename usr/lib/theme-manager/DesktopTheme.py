@@ -90,8 +90,6 @@ class desktop_theme():
 			# When the DE is gnome/unity get
 			# Gtk theme
 			themes["System"] = self.run_command("gsettings get org.gnome.desktop.interface gtk-theme")
-			# Window border/Metacity
-			themes["Decoration"] = self.run_command("gsettings get org.gnome.metacity.theme name")
 			# Desktop/shell theme
 			themes["DE Theme"] = self.run_command("gsettings get org.gnome.desktop.wm.preferences theme")
 			# Icon theme
