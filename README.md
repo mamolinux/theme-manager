@@ -1,4 +1,4 @@
-# [Theme Manager](https://github.com/hsbasu/theme-manager)
+# [Theme Manager](https://hsbasu.github.io/theme-manager)
 
 <p align="center">
   	<img src="https://raw.githubusercontent.com/hsbasu/theme-manager/master/usr/share/icons/hicolor/scalable/apps/theme-manager.svg?sanitize=true" height="128" alt="Logo">
