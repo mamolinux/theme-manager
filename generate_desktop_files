@@ -1,0 +1,39 @@
+#!/usr/bin/python3
+
+DOMAIN = "theme-manager"
+PATH = "/usr/share/locale"
+
+import os
+import gettext
+import additionalfiles
+
+os.environ['LANGUAGE'] = "en_US.UTF-8"
+gettext.install(DOMAIN, PATH)
+
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=theme-manager
+Icon=theme-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=true
+NotShowIn=KDE;
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/theme-manager.desktop", prefix, _("Theme Manager"), _("Very simple Python3-based GUI application to randomly choose and set different theme variants on linux."), suffix)
+
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=theme-manager
+Icon=theme-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+X-KDE-StartupNotify=true
+OnlyShowIn=KDE;
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/theme-manager.desktop", prefix, _("Theme Manager"), _("Very simple Python3-based GUI application to randomly choose and set different theme variants on linux."), suffix, genericName=_("Theme Manager"))

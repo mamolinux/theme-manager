@@ -25,6 +25,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
   <requires lib="gtk+" version="3.24"/>
   <!-- interface-license-type gplv3 -->
   <!-- interface-name theme-manager -->
+  <!-- interface-description Very simple Python3-based GUI application to randomly choose and set different theme variants on linux. -->
   <!-- interface-copyright 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in> -->
   <!-- interface-authors Himadri Sekhar Basu <hsb10@iitbbs.ac.in> -->
   <object class="GtkMenu" id="main_menu">
@@ -37,6 +38,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
     <property name="window-position">center</property>
     <property name="default-width">600</property>
     <property name="default-height">400</property>
+    <property name="icon-name">theme-manager</property>
     <child>
       <object class="GtkBox">
         <property name="visible">True</property>
