@@ -1,6 +1,6 @@
 [Desktop Entry]
 Name=Theme Manager
-Comment=
+Comment=Very simple Python3-based GUI application to randomly choose and set different theme variants on linux.
 GenericName=Theme Manager
 Exec=theme-manager
 Icon=theme-manager
@@ -8,5 +8,5 @@ Terminal=false
 Type=Application
 Encoding=UTF-8
 Categories=Application;Utility;
-X-KDE-StartupNotify=false
+X-KDE-StartupNotify=true
 OnlyShowIn=KDE;
