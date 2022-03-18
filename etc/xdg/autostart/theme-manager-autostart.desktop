@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=Theme Manager Indicator
+Comment=Very simple Python3-based GUI application to randomly choose and set different theme variants on linux.
+Exec=theme-manager --continuous
+Icon=theme-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=true
