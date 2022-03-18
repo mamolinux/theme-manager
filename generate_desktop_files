@@ -10,6 +10,7 @@ import additionalfiles
 os.environ['LANGUAGE'] = "en_US.UTF-8"
 gettext.install(DOMAIN, PATH)
 
+# desktop file for generic
 prefix = "[Desktop Entry]\n"
 
 suffix = """Exec=theme-manager
@@ -24,6 +25,7 @@ NotShowIn=KDE;
 
 additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/theme-manager.desktop", prefix, _("Theme Manager"), _("Very simple Python3-based GUI application to randomly choose and set different theme variants on linux."), suffix)
 
+# desktop file for KDE
 prefix = "[Desktop Entry]\n"
 
 suffix = """Exec=theme-manager
@@ -37,3 +39,17 @@ OnlyShowIn=KDE;
 """
 
 additionalfiles.generate(DOMAIN, PATH, "usr/share/applications/kde4/theme-manager.desktop", prefix, _("Theme Manager"), _("Very simple Python3-based GUI application to randomly choose and set different theme variants on linux."), suffix, genericName=_("Theme Manager"))
+
+# desktop file for continuous running from startup
+prefix = "[Desktop Entry]\n"
+
+suffix = """Exec=theme-manager --indicator
+Icon=theme-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=true
+"""
+
+additionalfiles.generate(DOMAIN, PATH, "etc/xdg/autostart/theme-manager-autostart.desktop", prefix, _("Theme Manager Indicator"), _("Very simple Python3-based GUI application to randomly choose and set different theme variants on linux."), suffix)
