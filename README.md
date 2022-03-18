@@ -29,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/hsbasu/theme-manager/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/hsbasu/theme-manager/releases/download/1.0.4/theme-manager_1.0.4_all.deb">
-		<img src="https://img.shields.io/github/downloads/hsbasu/theme-manager/1.0.4/theme-manager_1.0.4_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/hsbasu/theme-manager/releases/download/1.0.5/theme-manager_1.0.5_all.deb">
+		<img src="https://img.shields.io/github/downloads/hsbasu/theme-manager/1.0.5/theme-manager_1.0.5_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
@@ -40,7 +40,7 @@ Very simple Python3-based GUI application to set different theme variants on lin
 <p align="center">
 	<a href="https://github.com/hsbasu/theme-manager/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/hsbasu/theme-manager/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/hsbasu/theme-manager/releases/download/1.0.4/theme-manager_1.0.4_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/hsbasu/theme-manager/releases/download/1.0.5/theme-manager_1.0.5_all.deb">Download Binary (.deb)</a>
 </p>
 
 ## Features and Screenshots
