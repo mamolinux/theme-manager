@@ -22,4 +22,4 @@
 # Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 
-/usr/lib/theme-manager/theme-manager.py &
+/usr/bin/python3 /usr/lib/theme-manager/theme-manager.py $1
