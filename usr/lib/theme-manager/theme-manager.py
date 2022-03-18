@@ -27,15 +27,17 @@ import gettext
 import gi
 import locale
 import setproctitle
+import sys
 import warnings
 
 # Suppress GTK deprecation warnings
 warnings.filterwarnings("ignore")
 
 gi.require_version("Gtk", "3.0")
-from gi.repository import Gtk, Gio, Gdk
+from gi.repository import Gtk, Gio
 
 from common import CONFIG_FILE, ThemeManager
+from tm_daemon import AppIndicator
 from DesktopTheme import desktop_theme
 # from LoginTheme import login_theme
 
@@ -206,6 +208,10 @@ class ThemeManagerWindow():
 
 
 if __name__ == "__main__":
-	application = theme_manager("org.x.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
-	application.run()
+	try:
+		if sys.argv[1] == '--indicator':
+			AppIndicator()
+	except:
+		application = theme_manager("org.x.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
+		application.run()
 	
