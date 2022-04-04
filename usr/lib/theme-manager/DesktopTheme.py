@@ -23,8 +23,13 @@
 #
 
 # import the necessary modules!
+import logging
 import os
 import subprocess
+
+
+# logger
+module_logger = logging.getLogger('Theme Manager.DesktopTheme')
 
 class desktop_theme():
 	
@@ -67,12 +72,19 @@ class desktop_theme():
 			os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
 			os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[7])
+			
+		themes = {}
+		themes["System"] = nexttheme[4]
+		themes["DE Theme"] = nexttheme[3]
+		themes["Decoration"] = nexttheme[5]
+		themes["Icon"] = nexttheme[6]
+		themes["Cursor"] = nexttheme[7]
+		module_logger.debug("Next Colour Variant: %s, Next Themes: %s" % (nexttheme[1], themes))
 	
 	def get_desktop_theme(self, state, systheme, colvariants):
 		thisDE = state['DE'].lower()
 		currenttheme = {"Variant": '', "Last Updated": '', "Themes": ''}
 		themes = {}
-		print(thisDE)		# let's keep this to debug other DEs
 		if thisDE == "x-cinnamon":
 			# When the DE is cinnamon get
 			# Gtk theme
@@ -121,7 +133,7 @@ class desktop_theme():
 				# that means we are using default theme
 				currenttheme["Variant"] = "Default"
 		
-		print(currenttheme)
+		module_logger.info("Current Colour Variant: %s, Current Themes: %s" % (currenttheme["Variant"], currenttheme["Themes"]))
 		
 		return currenttheme
 	

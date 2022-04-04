@@ -25,6 +25,7 @@
 # import the necessary modules!
 import gettext
 import locale
+import logging
 import os
 from threading import Thread
 from time import sleep
@@ -36,8 +37,9 @@ from gi.repository import AppIndicator3
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
-from common import CONFIG_FILE, ThemeManager
+from common import ThemeManager
 from DesktopTheme import desktop_theme
+
 
 # i18n
 APP = 'theme-manager'
@@ -46,6 +48,9 @@ locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
+
+# logger
+module_logger = logging.getLogger('Theme Manager.tm_daemon')
 
 # indicator icons
 ICONS = {"app": "tray-icon.svg"}
@@ -57,6 +62,7 @@ for key in ICONS:
 
 class TMdaemon():
 	def __init__(self):
+		module_logger.debug("Initiaing Theme Manager daemon.")
 		self.manager = ThemeManager()
 		self.destop_manager = desktop_theme()
 		self.last_state = 'Unknown'
@@ -65,8 +71,8 @@ class TMdaemon():
 		while True:
 			self.state = self.manager.get_state_info()
 			currentstate = self.state['State'].lower()
-			# print("now: "+currentstate)
-			# print("old: "+self.last_state)
+			module_logger.debug("Now state: "+currentstate)
+			module_logger.debug("Old state: "+self.last_state)
 			if self.last_state != currentstate:
 				self.last_state = currentstate
 				self.nexttheme = self.manager.prep_theme_variants(self.state)
@@ -79,6 +85,7 @@ class AppIndicator():
 	This class will show Theme Manager icon in system tray.
 	"""
 	def __init__(self):
+		module_logger.debug("Initiaing Appindicator.")
 		self.indicator = AppIndicator3.Indicator.new(APP, ICONS['app'], AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
 		self.indicator.set_title(_('Theme Manager'))
 		self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)

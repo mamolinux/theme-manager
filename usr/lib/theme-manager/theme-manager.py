@@ -26,6 +26,7 @@
 import gettext
 import gi
 import locale
+import logging
 import setproctitle
 import sys
 import warnings
@@ -41,14 +42,43 @@ from tm_daemon import AppIndicator
 from DesktopTheme import desktop_theme
 # from LoginTheme import login_theme
 
-setproctitle.setproctitle("theme-manager")
-
+# i18n
 APP = 'theme-manager'
 LOCALE_DIR = "/usr/share/locale"
 locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
+
+setproctitle.setproctitle(APP)
+
+## Setup logging
+# Create logger
+logger = logging.getLogger('Theme Manager')
+# Set logging level
+logger.setLevel(logging.DEBUG)
+
+# Create StreamHandler which logs even debug messages
+cHandler = logging.StreamHandler()
+# Set level for StreamHandler
+cHandler.setLevel(logging.DEBUG)
+
+# create file handler which logs only info messages
+# Set the log filename
+logfile = '/tmp/theme-manager.log'
+fHandler = logging.FileHandler(logfile)
+# Set level for FileHandler
+fHandler.setLevel(logging.INFO)
+
+# create formatter and add it to the handlers
+log_format = logging.Formatter('%(asctime)s %(name)s - %(levelname)s: %(message)s')
+cHandler.setFormatter(log_format)
+fHandler.setFormatter(log_format)
+
+# add the handlers to the logger
+logger.addHandler(cHandler)
+logger.addHandler(fHandler)
+
 
 class theme_manager(Gtk.Application):
 	# Main initialization routine
@@ -162,7 +192,7 @@ class ThemeManagerWindow():
 			h.close()
 			dlg.set_license(gpl)
 		except Exception as e:
-			print (e)
+			print(e)
 		
 		def close(w, res):
 			if res == Gtk.ResponseType.CANCEL or res == Gtk.ResponseType.DELETE_EVENT:
@@ -200,7 +230,10 @@ class ThemeManagerWindow():
 		self.load_conf()
 	
 	def current_status(self):
-		print("Current Theme: "+str(self.currenttheme))
+		'''
+		Show current theme info in status bar.
+		'''
+		# print("Current Theme: "+str(self.currenttheme))
 		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme["Variant"], self.currenttheme["Last Updated"], self.currenttheme["Themes"])
 		
 		context_id = self.statusbar.get_context_id("status")
@@ -210,6 +243,8 @@ class ThemeManagerWindow():
 if __name__ == "__main__":
 	try:
 		if sys.argv[1] == '--indicator':
+			# initiaing app indicator
+			logger.info("Initiaing Theme Manager Indicator.")
 			AppIndicator()
 	except:
 		application = theme_manager("org.x.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
