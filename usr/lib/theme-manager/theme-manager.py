@@ -29,6 +29,7 @@ import locale
 import logging
 import setproctitle
 import sys
+from threading import Thread
 import warnings
 
 # Suppress GTK deprecation warnings
@@ -135,6 +136,14 @@ class ThemeManagerWindow():
 		accel_group = Gtk.AccelGroup()
 		self.window.add_accel_group(accel_group)
 		menu = self.builder.get_object("main_menu")
+		# Add "Start Indicator" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("theme-manger", Gtk.IconSize.MENU))
+		item.set_label(_("Start Indicator"))
+		item.connect("activate", self.start_indicator)
+		key, mod = Gtk.accelerator_parse("<Control>I")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
 		# Add "About" option in drop-down menu
 		item = Gtk.ImageMenuItem()
 		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
@@ -233,12 +242,15 @@ class ThemeManagerWindow():
 		'''
 		Show current theme info in status bar.
 		'''
-		# print("Current Theme: "+str(self.currenttheme))
 		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme["Variant"], self.currenttheme["Last Updated"], self.currenttheme["Themes"])
 		
 		context_id = self.statusbar.get_context_id("status")
 		self.statusbar.push(context_id, status)
-
+	
+	def start_indicator(self, widget):
+		indicatordaemon = Thread(target=AppIndicator())
+		indicatordaemon.setDaemon(True)
+		indicatordaemon.start()
 
 if __name__ == "__main__":
 	try:
