@@ -27,6 +27,7 @@ import configparser
 import datetime
 import gettext
 import locale
+import logging
 import os
 import random
 import subprocess
@@ -38,7 +39,7 @@ from gi.repository import GObject
 # Used as a decorator to run things in the background
 def _async(func):
 	def wrapper(*args, **kwargs):
-		thread = threading.Thread(target=ThemeManager.__run_daemon, args=args, kwargs=kwargs)
+		thread = threading.Thread(target=func, args=args, kwargs=kwargs)
 		thread.daemon = True
 		thread.start()
 		return thread
@@ -58,8 +59,10 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+# logger
+module_logger = logging.getLogger('Theme Manager.common')
+
 # Constants
-LOG_FILE = "/tmp/theme-manager.log"
 CONFIG_DIR = os.path.expanduser('~/.config/theme-manager/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
 
@@ -123,9 +126,12 @@ class ThemeManager():
 	
 	def get_state_info(self):
 		session = os.environ.get('XDG_CURRENT_DESKTOP')
+		module_logger.info("Desktop session: %s", session)
+		
 		command = 'redshift -p | grep "Period" | cut -d " " -f 2'
 		rawstate = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
 		currentstate = rawstate.decode('utf-8', "strict").strip('\n')
+		module_logger.info("Current State: %s", currentstate)
 		
 		return {'DE': session, 'State': currentstate}
 	
@@ -137,18 +143,18 @@ class ThemeManager():
 		cursrcolor = currentcolor
 		currentstate = state['State'].lower()
 		
-		systheme = wmtheme = gtktheme = icontheme = cursrtheme = ""
+		shelltheme = wmtheme = gtktheme = icontheme = cursrtheme = ""
 		stateflag = 1
+		module_logger.debug("Current State: %s", currentstate)
 		if currentstate == "daytime":
-			# print("It's Daytime")
 			stateflag = 1
 			wmtheme = self.systemthemename
 			if len(currentcolor) != 0:
-				systheme = self.systemthemename+"-"+currentcolor
+				shelltheme = self.systemthemename+"-"+currentcolor
 				icontheme = self.iconthemename+"-"+currentcolor
 				cursrtheme = self.cursorthemename+"-"+currentcolor
 			else:
-				systheme = self.systemthemename
+				shelltheme = self.systemthemename
 				icontheme = self.iconthemename
 				
 				while len(cursrcolor) == 0:
@@ -158,37 +164,35 @@ class ThemeManager():
 					except:
 						cursrcolor = ""
 			
-			gtktheme = systheme
+			gtktheme = shelltheme
 		
 		elif currentstate == "night":
-			# print("It's Nighttime")
 			stateflag = 1
 			wmtheme = self.systemthemename+"-Dark"
 			if len(currentcolor) != 0:
-				systheme = self.systemthemename+"-Dark-"+currentcolor
+				shelltheme = self.systemthemename+"-Dark-"+currentcolor
 				icontheme = self.iconthemename+"-Dark-"+currentcolor
 				cursrtheme = self.cursorthemename+"-"+currentcolor
 			else:
-				systheme = self.systemthemename+"-Dark"
+				shelltheme = self.systemthemename+"-Dark"
 				icontheme = self.iconthemename+"-Dark"
 				
 				while len(cursrcolor) == 0:
 					cursrcolor = random.choice(self.colvariants)
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 			
-			gtktheme = systheme
+			gtktheme = shelltheme
 		
 		else:
-			# print("It's Transition")
 			stateflag = 0
 			wmtheme = self.systemthemename+"-Dark"
 			if len(currentcolor) != 0:
-				systheme = self.systemthemename+"-Dark-"+currentcolor
+				shelltheme = self.systemthemename+"-Dark-"+currentcolor
 				gtktheme = self.systemthemename+"-Darker-"+currentcolor
 				icontheme = self.iconthemename+"-"+currentcolor
 				cursrtheme = self.cursorthemename+"-"+currentcolor
 			else:
-				systheme = self.systemthemename+"-Dark"
+				shelltheme = self.systemthemename+"-Dark"
 				gtktheme = self.systemthemename+"-Darker"
 				icontheme = self.iconthemename
 				
@@ -196,8 +200,14 @@ class ThemeManager():
 					cursrcolor = random.choice(self.colvariants)
 					cursrtheme = self.cursorthemename+"-"+cursrcolor
 		
-		nxt_theme = [timestamp, currentcolor, stateflag, systheme, gtktheme, wmtheme, icontheme, cursrtheme]
-		print("Next Theme: "+str(nxt_theme))
+		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, icontheme, cursrtheme]
+		themes = {}
+		themes["System"] = gtktheme
+		themes["DE Theme"] = shelltheme
+		themes["Decoration"] = wmtheme
+		themes["Icon"] = icontheme
+		themes["Cursor"] = cursrtheme
+		module_logger.debug("Next Colour Variant: %s, Next Themes: %s" % (nxt_theme[1], themes))
 		
 		return nxt_theme
 
