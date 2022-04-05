@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Copyright (C) 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -189,7 +189,7 @@ class ThemeManagerWindow():
 		dlg.set_version("__DEB_VERSION__")
 		dlg.set_comments(_("A Python3-based GUI application to change different colour variants of GTK, Icon, Cursor and other themes."))
 		dlg.set_website("https://hsbasu.github.io/theme-manager")
-		dlg.set_copyright("Copyright \xa9 2021 Himadri Sekhar Basu")
+		dlg.set_copyright("Copyright \xa9 2021-2022 Himadri Sekhar Basu")
 		dlg.set_authors(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
 		dlg.set_documenters(["Himadri Sekhar Basu <https://hsbasu.github.io>"])
 		try:

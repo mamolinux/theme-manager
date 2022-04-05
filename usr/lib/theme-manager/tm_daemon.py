@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# Copyright (C) 2021 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
