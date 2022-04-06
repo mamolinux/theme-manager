@@ -79,7 +79,7 @@ class desktop_theme():
 		themes["Decoration"] = nexttheme[5]
 		themes["Icon"] = nexttheme[6]
 		themes["Cursor"] = nexttheme[7]
-		module_logger.debug("Next Colour Variant: %s, Next Themes: %s" % (nexttheme[1], themes))
+		module_logger.debug("Updated with Colour Variant: %s, Themes: %s" % (nexttheme[1], themes))
 	
 	def get_desktop_theme(self, state, systheme, colvariants):
 		thisDE = state['DE'].lower()

@@ -67,7 +67,19 @@ class TMdaemon():
 		self.destop_manager = desktop_theme()
 		self.last_state = 'Unknown'
 	
-	def startdaemon(self):
+	def startdaemons(self):
+		module_logger.debug("Initiaing state change daemon.")
+		self.statechange_daemon = Thread(target=self.on_statechange)
+		self.statechange_daemon.setDaemon(True)
+		self.statechange_daemon.start()
+		
+		module_logger.debug("Initiaing auto-change at regular interval daemon.")
+		self.autouser_request_daemon = Thread(target=self.on_autouser_request)
+		self.autouser_request_daemon.setDaemon(True)
+		self.autouser_request_daemon.start()
+	
+	def on_statechange(self):
+		module_logger.info("Initiaing state change daemon.")
 		while True:
 			self.state = self.manager.get_state_info()
 			currentstate = self.state['State'].lower()
@@ -78,6 +90,14 @@ class TMdaemon():
 				self.nexttheme = self.manager.prep_theme_variants(self.state)
 				self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 			sleep(60)	# check once in a minute whether the state is changed
+	
+	def on_autouser_request(self):
+		module_logger.info("Initiaing auto-change at regular interval daemon.")
+		while True:
+			self.state = self.manager.get_state_info()
+			self.nexttheme = self.manager.prep_theme_variants(self.state)
+			self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
+			sleep(self.manager.theme_interval_in_sec)
 	
 class AppIndicator():
 	"""Class for system tray icon.
@@ -90,9 +110,7 @@ class AppIndicator():
 		self.indicator.set_title(_('Theme Manager'))
 		self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
 		
-		self.daemon = Thread(target=TMdaemon().startdaemon)
-		self.daemon.setDaemon(True)
-		self.daemon.start()
+		TMdaemon().startdaemons()
 		
 		# create menu
 		self.indicator.set_menu(self.__create_menu())
