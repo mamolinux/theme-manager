@@ -103,12 +103,22 @@ class ThemeManager():
 				self.colorvariants += str(var+",")
 				self.colvariants.append(var.strip().strip('"').strip("'"))
 			self.colorvariants = self.colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
+			self.user_interval = self.config["system-theme"]['cursor-theme-name']
+			
+			theme_interval = self.config["system-theme"]['theme-interval']
+			self.theme_interval_HH = int(theme_interval.split(':')[0])
+			self.theme_interval_MM = int(theme_interval.split(':')[1])
+			self.theme_interval_SS = int(theme_interval.split(':')[2])
+			self.theme_interval_in_sec = self.theme_interval_HH*3600 + self.theme_interval_MM*60 + self.theme_interval_SS
 		except:
 			self.colvariants = []
 			self.colorvariants = ""
 			self.systemthemename = ""
 			self.iconthemename = ""
 			self.cursorthemename = ""
+			self.theme_interval_HH = 1
+			self.theme_interval_MM = 0
+			self.theme_interval_SS = 0
 			
 	
 	def save_config(self):

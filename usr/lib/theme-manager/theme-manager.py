@@ -122,6 +122,9 @@ class ThemeManagerWindow():
 		self.systemtheme_variants = self.builder.get_object("system_theme_name")
 		self.icontheme_variants = self.builder.get_object("Icon_theme_name")
 		self.cursortheme_variants = self.builder.get_object("cursor_theme_name")
+		self.user_interval_HH = self.builder.get_object("hour")
+		self.user_interval_MM = self.builder.get_object("minute")
+		self.user_interval_SS = self.builder.get_object("second")
 		
 		# Buttons
 		self.randomize_button = self.builder.get_object("randomize_theme_button")
@@ -177,6 +180,10 @@ class ThemeManagerWindow():
 		self.systemtheme_variants.set_text(str(self.manager.systemthemename))
 		self.icontheme_variants.set_text(str(self.manager.iconthemename))
 		self.cursortheme_variants.set_text(str(self.manager.cursorthemename))
+		self.user_interval_HH.set_value(self.manager.theme_interval_HH)
+		self.user_interval_MM.set_value(self.manager.theme_interval_MM)
+		self.user_interval_SS.set_value(self.manager.theme_interval_SS)
+		
 	
 	def open_about(self, widget):
 		dlg = Gtk.AboutDialog()
@@ -227,11 +234,16 @@ class ThemeManagerWindow():
 		config file (~/.config/theme-manager/config.cfg)
 		in user's home directory.
 		"""
+		Hr = str(self.user_interval_HH.get_value_as_int())
+		Min = str(self.user_interval_MM.get_value_as_int())
+		Sec = str(self.user_interval_SS.get_value_as_int())
+		user_interval = Hr+':'+Min+':'+Sec
 		self.manager.config['system-theme'] = {
 			'color-variants': self.color_variants.get_text(),
 			'system-theme-name': self.systemtheme_variants.get_text(),
 			'icon-theme-name': self.icontheme_variants.get_text(),
-			'cursor-theme-name': self.cursortheme_variants.get_text()
+			'cursor-theme-name': self.cursortheme_variants.get_text(),
+			'theme-interval': user_interval
 		}
 		with open(CONFIG_FILE, 'w') as f:
 				self.manager.config.write(f)
@@ -248,6 +260,7 @@ class ThemeManagerWindow():
 		self.statusbar.push(context_id, status)
 	
 	def start_indicator(self, widget):
+		logger.info("Initiaing Theme Manager Indicator from main window.")
 		indicatordaemon = Thread(target=AppIndicator())
 		indicatordaemon.setDaemon(True)
 		indicatordaemon.start()
