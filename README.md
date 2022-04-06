@@ -70,6 +70,7 @@ The main purpose of this application is to randomly choose and set a desktop the
 
 ## Dependencies
 ```
+gir1.2-appindicator3-0.1
 python3
 python3-configobj
 python3-gi
@@ -82,7 +83,7 @@ To use or test Theme Manager, you need these dependencies to be installed.
 ### Debian/Ubuntu based distro
 To install dependencies on Debian/Ubuntu based systems, run:
 ```
-sudo apt install python3 python3-configobj python3-gi \
+sudo apt install gir1.2-appindicator3-0.1 python3 python3-configobj python3-gi \
 python3-setproctitle python3-tldextract redshift
 ```
 **Note**: If you are using `gdebi` to install **Theme Manager** from a `.deb` file, it will automatically install the dependencies and you can skip this step.
