@@ -26,7 +26,6 @@
 import gettext
 import locale
 import logging
-import os
 from threading import Thread
 from time import sleep
 
@@ -51,14 +50,6 @@ _ = gettext.gettext
 
 # logger
 module_logger = logging.getLogger('Theme Manager.tm_daemon')
-
-# indicator icons
-ICONS = {"app": "tray-icon.svg"}
-_path = os.path.dirname(os.path.abspath(__file__))
-_icon_path = _path + '/icons/'
-
-for key in ICONS:
-	ICONS[key] = _icon_path + ICONS[key]
 
 class TMdaemon():
 	def __init__(self):
@@ -106,11 +97,12 @@ class AppIndicator():
 	"""
 	def __init__(self):
 		module_logger.debug("Initiaing Appindicator.")
-		self.indicator = AppIndicator3.Indicator.new(APP, ICONS['app'], AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
+		self.indicator = AppIndicator3.Indicator.new(APP, APP, AppIndicator3.IndicatorCategory.SYSTEM_SERVICES)
 		self.indicator.set_title(_('Theme Manager'))
 		self.indicator.set_status(AppIndicator3.IndicatorStatus.ACTIVE)
 		
-		TMdaemon().startdaemons()
+		self.daemon = TMdaemon()
+		self.daemon.startdaemons()
 		
 		# create menu
 		self.indicator.set_menu(self.__create_menu())
@@ -119,12 +111,26 @@ class AppIndicator():
 	def __create_menu(self):
 		menu = Gtk.Menu()
 		
-		item_quit = Gtk.MenuItem(_('Quit'))
+		# Add "Next Theme" option in drop-down menu
+		item_next_theme = Gtk.ImageMenuItem(_('Next Theme'))
+		item_next_theme.set_image(Gtk.Image.new_from_icon_name("next", Gtk.IconSize.MENU))
+		item_next_theme.connect("activate", self.next_theme)
+		menu.append(item_next_theme)
+		
+		# Add "Quit" option in drop-down menu
+		item_quit = Gtk.ImageMenuItem(_('Quit'))
+		item_quit.set_image(Gtk.Image.new_from_icon_name("stock_close", Gtk.IconSize.MENU))
 		item_quit.connect("activate", self.__quit)
 		menu.append(item_quit)
+		
 		menu.show_all()
 		
 		return menu
+	
+	def next_theme(self, *args):
+		self.state = self.daemon.manager.get_state_info()
+		self.nexttheme = self.daemon.manager.prep_theme_variants(self.state)
+		self.daemon.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 	
 	def __quit(self, *args):
 		Gtk.main_quit()
