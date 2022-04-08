@@ -1,3 +1,36 @@
+theme-manager (1.0.6) stable; urgency=medium
+
+  * Update readme with version 1.0.5
+  * fix indicator; closes #10
+  * enable logging for user info and debug; fixes #11 (#12)
+    - DesktopTheme.py: log current and new theme info
+    - common.py: log session, state and new theme info
+    - theme-manager.py: log start of indicator
+    - tm_daemon.py: log old and new states, and
+      initation of daemon and indicator
+  * Update debian/control
+    - Update standards version
+    - Add gir1.2-appindicator3-0.1 as dependency
+    - Update description
+  * Start indicator from main window
+  * Update copyright year to 2022
+  * Auto-change themes at user-defined interval (#13)
+    - Update UI with notebook style
+    - theme-manager.py: Add option to start indicator from
+      main window
+    - tm_daemon.py: Add two separate daemons to
+      change theme on state change and at regular
+      user-defined interval
+  * Add gir1.2-appindicator3-0.1 as dependency (#14)
+    - Update workflows
+    - Update README
+  * Add next theme option to indicator menu (#15)
+    - tm_daemon.py: Add option to change theme from indicator
+    - tm_daemon.py: Use system theme icon for indicator
+    - theme-manager.py: fix icon in pop-up menu
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Fri, 08 Apr 2022 10:35:51 +0530
+
 theme-manager (1.0.5) stable; urgency=medium
 
   * Update readme with version 1.0.4
