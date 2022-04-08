@@ -136,12 +136,12 @@ class ThemeManager():
 	
 	def get_state_info(self):
 		session = os.environ.get('XDG_CURRENT_DESKTOP')
-		module_logger.info("Desktop session: %s", session)
+		module_logger.debug("Desktop session: %s", session)
 		
 		command = 'redshift -p | grep "Period" | cut -d " " -f 2'
 		rawstate = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
 		currentstate = rawstate.decode('utf-8', "strict").strip('\n')
-		module_logger.info("Current State: %s", currentstate)
+		module_logger.debug("Current State: %s", currentstate)
 		
 		return {'DE': session, 'State': currentstate}
 	
@@ -155,7 +155,7 @@ class ThemeManager():
 		
 		shelltheme = wmtheme = gtktheme = icontheme = cursrtheme = ""
 		stateflag = 1
-		module_logger.debug("Current State: %s", currentstate)
+		module_logger.info("Current State: %s", currentstate)
 		if currentstate == "daytime":
 			stateflag = 1
 			wmtheme = self.systemthemename

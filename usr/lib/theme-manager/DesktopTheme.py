@@ -37,7 +37,8 @@ class desktop_theme():
 			pass
 	
 	def set_desktop_theme(self, state, nexttheme):
-		thisDE = str(state['DE']).lower()
+		module_logger.info("Desktop session: %s", state['DE'])
+		thisDE = state['DE'].lower()
 		if thisDE == "x-cinnamon":
 			# When the DE is cinnamon set
 			# Desktop theme
@@ -79,9 +80,10 @@ class desktop_theme():
 		themes["Decoration"] = nexttheme[5]
 		themes["Icon"] = nexttheme[6]
 		themes["Cursor"] = nexttheme[7]
-		module_logger.debug("Updated with Colour Variant: %s, Themes: %s" % (nexttheme[1], themes))
+		module_logger.info("Updated with Colour Variant: %s, Themes: %s" % (nexttheme[1], themes))
 	
 	def get_desktop_theme(self, state, systheme, colvariants):
+		module_logger.info("Desktop session: %s", state['DE'])
 		thisDE = state['DE'].lower()
 		currenttheme = {"Variant": '', "Last Updated": '', "Themes": ''}
 		themes = {}
