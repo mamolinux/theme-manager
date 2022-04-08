@@ -141,7 +141,7 @@ class ThemeManagerWindow():
 		menu = self.builder.get_object("main_menu")
 		# Add "Start Indicator" option in drop-down menu
 		item = Gtk.ImageMenuItem()
-		item.set_image(Gtk.Image.new_from_icon_name("theme-manger", Gtk.IconSize.MENU))
+		item.set_image(Gtk.Image.new_from_icon_name("theme-manager", Gtk.IconSize.MENU))
 		item.set_label(_("Start Indicator"))
 		item.connect("activate", self.start_indicator)
 		key, mod = Gtk.accelerator_parse("<Control>I")
