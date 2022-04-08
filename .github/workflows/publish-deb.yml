@@ -32,7 +32,8 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt install -y build-essential debhelper devscripts \
-          python3 python3-gi python3-configobj python3-setproctitle redshift
+          gir1.2-appindicator3-0.1 python3 python3-gi python3-configobj \
+          python3-setproctitle redshift
       
       - name: build-deb
         run: |
@@ -48,7 +49,7 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: ${{ steps.gettag.outputs.latesttag }}
-          # name: "version: "${{ steps.gettag.outputs.latesttag }}
+          # name: "Version: "${{ steps.gettag.outputs.latesttag }}
           generate_release_notes: true
           draft: false
           prerelease: false
