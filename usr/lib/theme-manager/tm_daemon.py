@@ -128,6 +128,7 @@ class AppIndicator():
 		return menu
 	
 	def next_theme(self, *args):
+		module_logger.info("User requested change using Next button from indicator.")
 		self.state = self.daemon.manager.get_state_info()
 		self.nexttheme = self.daemon.manager.prep_theme_variants(self.state)
 		self.daemon.destop_manager.set_desktop_theme(self.state, self.nexttheme)

@@ -220,6 +220,7 @@ class ThemeManagerWindow():
 		self.application.quit()
 	
 	def on_random_button(self, widget):
+		logger.info("User requested change using Randomize button.")
 		self.state = self.manager.get_state_info()
 		self.nexttheme = self.manager.prep_theme_variants(self.state)
 		self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
