@@ -69,7 +69,7 @@ cHandler.setLevel(logging.DEBUG)
 # create file handler which logs only info messages
 # Set the log filename
 random_code =  ''.join(choice(string.digits) for _ in range(4))
-logfile = '/tmp/battery-monitor_' + random_code + '.log'
+logfile = '/tmp/theme-manager_' + random_code + '.log'
 fHandler = logging.FileHandler(logfile)
 # Set level for FileHandler
 fHandler.setLevel(logging.INFO)
