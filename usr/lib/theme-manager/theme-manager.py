@@ -28,9 +28,11 @@ import gi
 import locale
 import logging
 import setproctitle
+import string
 import sys
 from threading import Thread
 import warnings
+from random import choice
 
 # Suppress GTK deprecation warnings
 warnings.filterwarnings("ignore")
@@ -66,7 +68,8 @@ cHandler.setLevel(logging.DEBUG)
 
 # create file handler which logs only info messages
 # Set the log filename
-logfile = '/tmp/theme-manager.log'
+random_code =  ''.join(choice(string.digits) for _ in range(4))
+logfile = '/tmp/battery-monitor_' + random_code + '.log'
 fHandler = logging.FileHandler(logfile)
 # Set level for FileHandler
 fHandler.setLevel(logging.INFO)
