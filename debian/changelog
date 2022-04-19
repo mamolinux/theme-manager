@@ -1,3 +1,23 @@
+theme-manager (1.0.7) stable; urgency=medium
+
+  * Reduce logging to file and more while debugging (#16)
+    - Do not log current state and DE for every monitor cycle to file
+    - Log current state and DE to file only when theme changes
+  * Additional log message for user requested change (#17)
+    - Insert separate log message when user requested
+      new theme using Randomize button from main window
+    - Insert separate log message when user requested
+      new theme using Next button from indicator
+  * Update readme with version 1.0.6 (#18)
+  * Append random numbers after logfilename (#19)
+    - For multiuser systems when a log file exists in
+      /tmp, the app cannot recreate the logfile after
+      logging into other user
+  * fix logfile name (#20)
+  * Add support to change plank theme (#21)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Tue, 19 Apr 2022 08:58:21 +0530
+
 theme-manager (1.0.6) stable; urgency=medium
 
   * Update readme with version 1.0.5
