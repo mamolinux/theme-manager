@@ -23,8 +23,10 @@
 #
 
 # import the necessary modules!
+import getpass
 import gettext
 import gi
+import glob
 import locale
 import logging
 import setproctitle
@@ -56,6 +58,18 @@ _ = gettext.gettext
 setproctitle.setproctitle(APP)
 
 ## Setup logging
+def create_logfile():
+	logpath = '/tmp/'
+	dlimitter = '_'
+	username = getpass.getuser()
+	random_code =  ''.join(choice(string.digits) for _ in range(4))
+	if len(glob.glob(logpath+APP+dlimitter+username+'*')) ==0:
+		logfile = logpath + APP + dlimitter + username + dlimitter + random_code + '.log'
+	else:
+		logfile = glob.glob(logpath+APP+dlimitter+username+'*')[0]
+	
+	return logfile
+
 # Create logger
 logger = logging.getLogger('Theme Manager')
 # Set logging level
@@ -68,8 +82,7 @@ cHandler.setLevel(logging.DEBUG)
 
 # create file handler which logs only info messages
 # Set the log filename
-random_code =  ''.join(choice(string.digits) for _ in range(4))
-logfile = '/tmp/theme-manager_' + random_code + '.log'
+logfile = create_logfile()
 fHandler = logging.FileHandler(logfile)
 # Set level for FileHandler
 fHandler.setLevel(logging.INFO)
@@ -278,4 +291,4 @@ if __name__ == "__main__":
 	except:
 		application = theme_manager("org.x.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
 		application.run()
-	
+		
