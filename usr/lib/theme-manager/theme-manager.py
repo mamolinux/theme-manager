@@ -23,6 +23,7 @@
 #
 
 # import the necessary modules!
+from cmath import log
 import getpass
 import gettext
 import gi
@@ -56,6 +57,8 @@ gettext.textdomain(APP)
 _ = gettext.gettext
 
 setproctitle.setproctitle(APP)
+
+UI_PATH = "/usr/share/"+APP+"/ui/"
 
 ## Setup logging
 def create_logfile():
@@ -125,7 +128,7 @@ class ThemeManagerWindow():
 		self.icon_theme = Gtk.IconTheme.get_default()
 		
 		# Set the Glade file
-		gladefile = "/usr/share/theme-manager/theme-manager.ui"
+		gladefile = UI_PATH+"theme-manager.ui"
 		self.builder = Gtk.Builder()
 		self.builder.add_from_file(gladefile)
 		self.window = self.builder.get_object("MainWindow")
@@ -161,6 +164,14 @@ class ThemeManagerWindow():
 		item.set_label(_("Start Indicator"))
 		item.connect("activate", self.start_indicator)
 		key, mod = Gtk.accelerator_parse("<Control>I")
+		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
+		menu.append(item)
+		# Add "Show Logs" option in drop-down menu
+		item = Gtk.ImageMenuItem()
+		item.set_image(Gtk.Image.new_from_icon_name("text-x-log", Gtk.IconSize.MENU))
+		item.set_label(_("Show Logs"))
+		item.connect("activate", self.show_logs)
+		key, mod = Gtk.accelerator_parse("<Control>L")
 		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
 		menu.append(item)
 		# Add "About" option in drop-down menu
@@ -199,7 +210,6 @@ class ThemeManagerWindow():
 		self.user_interval_HH.set_value(self.manager.theme_interval_HH)
 		self.user_interval_MM.set_value(self.manager.theme_interval_MM)
 		self.user_interval_SS.set_value(self.manager.theme_interval_SS)
-		
 	
 	def open_about(self, widget):
 		dlg = Gtk.AboutDialog()
@@ -281,6 +291,36 @@ class ThemeManagerWindow():
 		indicatordaemon = Thread(target=AppIndicator())
 		indicatordaemon.setDaemon(True)
 		indicatordaemon.start()
+	
+	def show_logs(self, widget):
+		try:
+			h = open(logfile, encoding="utf-8")
+			s = h.readlines()
+			logs = ""
+			for line in s:
+				logs += line
+			h.close()
+		except Exception as e:
+			print(e)
+		
+		logger_ui = UI_PATH+"logger.ui"
+		log_builder = Gtk.Builder()
+		log_builder.add_from_file(logger_ui)
+		logger_dlg = log_builder.get_object("logger_dlg")
+		logger_dlg.set_transient_for(self.window)
+		logger_dlg.set_title(_("Theme Manager Logs"))
+		logger_dlg.add_buttons(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
+		logview = log_builder.get_object("log_view")
+		logview.set_editable(False)
+		logview.set_wrap_mode(Gtk.WrapMode.WORD)
+		logview.get_buffer().set_text(logs)
+		
+		def close(w, res):
+			if res == Gtk.ResponseType.CLOSE or res == Gtk.ResponseType.DELETE_EVENT:
+				w.destroy()
+		logger_dlg.connect("response", close)
+		logger_dlg.show()
+		
 
 if __name__ == "__main__":
 	try:
