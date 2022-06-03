@@ -26,7 +26,6 @@ import gi
 import locale
 import logging
 import setproctitle
-import sys
 import warnings
 
 # Suppress GTK deprecation warnings
@@ -40,13 +39,13 @@ from ThemeManager.indicator import TMIndicator
 from ThemeManager.DesktopTheme import desktop_theme
 # from ThemeManager.LoginTheme import login_theme
 
+setproctitle.setproctitle(APP)
+
 # i18n
 locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
-
-setproctitle.setproctitle(APP)
 
 # logger
 module_logger = logging.getLogger('ThemeManager.gui')
