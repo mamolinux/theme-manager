@@ -42,7 +42,7 @@ description = 'A Python3-based GUI application to change different colour varian
 parser = argparse.ArgumentParser(prog=APP, description=description, conflict_handler='resolve')
 
 # parser.add_argument('', action='store_true', dest='start_window', default=True, help=("Start Theme Manager window"))
-parser.add_argument('-i', '--indicator', action='store_true', dest='start_indicator', default=False, help=("Show version and exit"))
+parser.add_argument('-i', '--indicator', action='store_true', dest='start_indicator', default=False, help=("Start Theme Manager Indicator"))
 parser.add_argument('-v', '--verbose', action='store_true', dest='show_debug', default=False, help=("Print debug messages to stdout i.e. terminal"))
 parser.add_argument('-V', '--version', action='store_true', dest='show_version', default=False, help=("Show version and exit"))
 
@@ -93,7 +93,7 @@ def start_TM ():
 		# initiaing app indicator
 		module_logger.debug("Initiaing Theme Manager Indicator.")
 		TMIndicator()
-		
+	
 	if args.start_window:
 		# initiaing app window
 		module_logger.debug("Initiaing Theme Manager Window.")
