@@ -1,20 +1,42 @@
 Source: theme-manager
-Section: admin
+Section: utils
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Build-Depends: debhelper (>= 10)
-Standards-Version: 4.5.1
+Build-Depends: debhelper-compat (= 11),
+               dh-python,
+               python3-gi,
+               python3-setuptools,
+               python3-sphinx,
+               python3-all
+Standards-Version: 4.6.0
+Homepage: https://hsbasu.github.io/theme-manager
+#Vcs-Browser: https://salsa.debian.org/debian/theme-manager
+#Vcs-Git: https://salsa.debian.org/debian/theme-manager.git
+#Testsuite: autopkgtest-pkg-python
+Rules-Requires-Root: no
 
 Package: theme-manager
 Architecture: all
-Depends: gir1.2-appindicator3-0.1,
-         python3,
-         python3-gi,
+Depends: gobject-introspection,
+         gir1.2-gtk-3.0,
+         gir1.2-appindicator3-0.1,
          python3-configobj,
+         python3-gi,
          python3-setproctitle,
+         python3-tldextract,
          redshift,
-         ${misc:Depends},
+         ${python3:Depends},
+         ${misc:Depends}
+Suggests: theme-manager-doc
 Description: Automatically change Themes
  A Python3-based GUI application
  to change different colour variants of GTK,
  Icon, Cursor and other themes.
+ .
+ This package installs the gui library for Python 3.
+
+# Package: theme-manager-doc
+# Architecture: all
+# Description: documentation for theme-manager
+#  Documentations for CLI and GUI environment for
+#  Simple Password Generator.
