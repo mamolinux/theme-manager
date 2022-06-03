@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=Theme Manager Indicator
+Comment=Start indicator for Theme Manager.
+Exec=theme-manager --indicator
+Icon=theme-manager
+Terminal=false
+Type=Application
+Encoding=UTF-8
+Categories=Application;Utility;
+StartupNotify=true
+Name[en]=Theme Manager Indicator

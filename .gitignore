@@ -1,2 +1,15 @@
-# python cache
+# Python cache
 *.pyc
+*.egg-info
+
+# python build files
+*VERSION
+build/*
+dist/*
+
+# debian build files
+.pybuild/*
+usr/*
+debian/python3-simple-pwgen/*
+debian/simple-pwgen/*
+debian/*debhelper*
