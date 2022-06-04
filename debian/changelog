@@ -1,3 +1,44 @@
+theme-manager (1.0.8) stable; urgency=medium
+
+  * Update readme from version 1.0.6 to 1.0.7 (#22)
+  * Create only one log file per user (#23)
+  * Show logs on user request from menu (#24)
+  * pythonize theme-manager (#25)
+    - use pure python packaging methods
+    - update .gitignore
+    - update desktop files
+    - Parse arguments from cmdline
+    - Turn off debug mode by default, use '-v[erbose]'
+      to enable it
+    - Add options to parse arguments for help, indicator
+      and version
+    - read version from d/changelog
+  * re-debianize to match python packaging (#26)
+    - d/compat: deleted
+    - d/control: update build and runtime depends
+    - d/control: update standards
+    - d/rules: use pybuild
+    - d/copyright: update
+    - d/install: remove 'etc'
+    - d/postinst: update
+    - d/postrm: add file
+    - d/salsa-ci: add
+    - d/theme-manager-doc.docs: add
+    - d/theme-manager.1: add
+  * update workflows (#27)
+    - remove old source files
+    - Update auto build (CI) workflow
+    - Update publish deb packaging workflow
+  * Minor fixes (#28)
+    - src/main: fix wrong message for '-i'
+    - src/gui: remove unused Lines and
+      change postion of proctitle
+  * Update readme with new manual install (#29)
+    - fix logo
+    - Update instructions for manual installation
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sat, 04 Jun 2022 16:36:42 +0530
+
 theme-manager (1.0.7) stable; urgency=medium
 
   * Reduce logging to file and more while debugging (#16)
