@@ -1,7 +1,7 @@
 # [Theme Manager](https://hsbasu.github.io/theme-manager)
 
 <p align="center">
-  	<img src="https://raw.githubusercontent.com/hsbasu/theme-manager/master/usr/share/icons/hicolor/scalable/apps/theme-manager.svg?sanitize=true" height="128" alt="Logo">
+  	<img src="https://raw.githubusercontent.com/hsbasu/theme-manager/master/data/icons/theme-manager.svg?sanitize=true" height="128" alt="Logo">
 </p>
 
 <p align="center">
@@ -34,7 +34,7 @@
 	</a>
 </p>
 
-Very simple Python3-based GUI application to set different theme variants on linux.
+Very simple Python3-based GUI application to set different theme colour and mode (dark/light) variants on linux.
 
 ## Download Latest Version
 <p align="center">
@@ -103,19 +103,20 @@ cd theme-manager-master
 ```
 
 1. **Option 1:** Manually copying necessary files to root (`/`). For that, follow the steps below:
-	1. [**Optional**] To make translations/locales in languages other than **English**, run:
+	1. [**Optional**] [**In Progress**] To make translations/locales in languages other than **English**, run:
 		```
 		make
 		```
 		from the `theme-manager-master` in a terminal. It will create the translations/locales in `usr/share/locale`.
 	
-	2. Copy the contents of `usr/` to `/usr/`:
+	2. Install python package using `pip3`:
 		```
-		sudo cp -R usr /
+		sudo pip3 install .
 		```
+		It will install all files under `/usr/local/`
 	3. Compile `schemas` using:
 		```
-		sudo glib-compile-schemas /usr/share/glib-2.0/schemas
+		sudo glib-compile-schemas /usr/local/share/glib-2.0/schemas
 		```
 
 2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
