@@ -1,6 +1,7 @@
 # Python cache
-*.pyc
 *.egg-info
+*.py[cod]
+*$py.class
 
 # python build files
 *VERSION

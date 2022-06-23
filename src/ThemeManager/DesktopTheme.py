@@ -58,6 +58,8 @@ class desktop_theme():
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
 			# When the DE is gnome set
+			# Shell theme
+			os.system("gsettings set org.gnome.shell.extensions.user-theme name %s" % nexttheme[3])
 			# Gtk theme
 			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
