@@ -21,9 +21,12 @@
 #
 
 # import the necessary modules!
+from curses import wrapper
 import gettext
 import locale
 import logging
+
+from threading import Thread
 from time import sleep
 
 from ThemeManager.common import APP, LOCALE_DIR, _async, TMBackend
@@ -48,13 +51,15 @@ class TMState_monitor():
 	
 	def startdaemons(self):
 		module_logger.debug("Initiaing state change daemon.")
-		_async(self.on_statechange)
+		statechange_daemon = _async(self.on_statechange)
+		statechange_daemon()
 		
 		module_logger.debug("Initiaing auto-change at regular interval daemon.")
-		_async(self.on_autouser_request)
+		autouser_request_daemon = _async(self.on_autouser_request)
+		autouser_request_daemon()
 	
 	def on_statechange(self):
-		module_logger.info("Initiaing state change daemon.")
+		module_logger.info("Starting to monitor state change.")
 		while True:
 			self.state = self.manager.get_state_info()
 			currentstate = self.state['State'].lower()
@@ -67,10 +72,9 @@ class TMState_monitor():
 			sleep(60)	# check once in a minute whether the state is changed
 	
 	def on_autouser_request(self):
-		module_logger.info("Initiaing auto-change at regular interval daemon.")
+		module_logger.info("Starting auto-change at regular interval.")
 		while True:
 			self.state = self.manager.get_state_info()
 			self.nexttheme = self.manager.prep_theme_variants(self.state)
 			self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 			sleep(self.manager.theme_interval_in_sec)
-			
