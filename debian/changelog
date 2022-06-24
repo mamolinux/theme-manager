@@ -1,3 +1,13 @@
+theme-manager (1.0.9) stable; urgency=medium
+
+  * Update readme from version 1.0.7 to 1.0.8 (#30)
+  * fix no auto change of themes (#31)
+    - tm_daemon: update starting daemons
+    - update gitignore
+    - Add option to change gnome-shell
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Fri, 24 Jun 2022 09:31:45 +0530
+
 theme-manager (1.0.8) stable; urgency=medium
 
   * Update readme from version 1.0.6 to 1.0.7 (#22)
