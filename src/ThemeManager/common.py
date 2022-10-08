@@ -117,7 +117,6 @@ class TMBackend():
 			colvars = self.config["system-theme"]['color-variants'].split(',')
 			self.systemthemename = self.config["system-theme"]['system-theme-name']
 			self.iconthemename = self.config["system-theme"]['icon-theme-name']
-			self.cursorthemename = self.config["system-theme"]['cursor-theme-name']
 			
 			self.colorvariants = ""		# This string will be saved in config file
 			self.colvariants = []		# This list will be used to randomize variants
@@ -125,7 +124,22 @@ class TMBackend():
 				self.colorvariants += str(var+",")
 				self.colvariants.append(var.strip().strip('"').strip("'"))
 			self.colorvariants = self.colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
-			self.user_interval = self.config["system-theme"]['cursor-theme-name']
+			
+			self.cursor_theme = self.config["system-theme"].getboolean('cursor-theme')
+			self.cursorthemename = self.config["system-theme"]['cursor-theme-name']
+			
+			colvars = self.config["system-theme"]['cursor-color-variants'].split(',')
+			self.cursor_colorvariants = ""		# This string will be saved in config file
+			self.cursor_colvariants = []		# This list will be used to randomize variants
+			for var in colvars:
+				self.cursor_colorvariants += str(var+",")
+				self.cursor_colvariants.append(var.strip().strip('"').strip("'"))
+			self.cursor_colorvariants = self.cursor_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
+			
+			self.theme_name_style = int(self.config["system-theme"]['theme-style-name'])
+			self.darkmode_suffix = self.config["system-theme"]['dark-mode-suffix']
+			self.darkermode = self.config["system-theme"].getboolean('darker-mode')
+			self.darkermode_suffix = self.config["system-theme"]['darker-mode-suffix']
 			
 			theme_interval = self.config["system-theme"]['theme-interval']
 			self.theme_interval_HH = int(theme_interval.split(':')[0])
@@ -137,7 +151,15 @@ class TMBackend():
 			self.colorvariants = ""
 			self.systemthemename = ""
 			self.iconthemename = ""
+			
+			self.cursor_theme = False
 			self.cursorthemename = ""
+			self.cursor_colvariants = []
+			
+			self.theme_name_style = 0
+			self.darkmode_suffix = "Dark"
+			self.darkermode = False
+			self.darkermode_suffix = "Darker"
 			self.theme_interval_HH = 1
 			self.theme_interval_MM = 0
 			self.theme_interval_SS = 0
@@ -151,7 +173,14 @@ class TMBackend():
 				'color-variants': "",
 				'system-theme-name': "",
 				'icon-theme-name': "",
-				'cursor-theme-name': ""
+				'cursor-theme': False,
+				'cursor-theme-name': "",
+				'cursor-color-variants': "",
+				'theme-style-name': 0,
+				'dark-mode-suffix': "Dark",
+				'darker-mode': False,
+				'darker-mode-suffix': "Darker",
+				'theme-interval': '1:0:0'
 			}
 			with open(CONFIG_FILE, 'w') as f:
 				self.config.write(f)
@@ -167,70 +196,73 @@ class TMBackend():
 		
 		return {'DE': session, 'State': currentstate}
 	
-	def prep_theme_variants(self, state):
+	def prep_theme_variants(self, state, theme_styles):
 		now = datetime.datetime.now()
 		timestamp = now.strftime('%Y-%m-%d %H:%M:%S')
 		
 		currentcolor = random.choice(self.colvariants)
-		cursrcolor = currentcolor
 		currentstate = state['State'].lower()
 		
 		shelltheme = wmtheme = gtktheme = icontheme = cursrtheme = ""
 		stateflag = 1
 		module_logger.info("Current State: %s", currentstate)
+		
 		if currentstate == "daytime":
-			stateflag = 1
 			wmtheme = self.systemthemename
 			if len(currentcolor) != 0:
 				shelltheme = self.systemthemename+"-"+currentcolor
 				icontheme = self.iconthemename+"-"+currentcolor
-				cursrtheme = self.cursorthemename+"-"+currentcolor
 			else:
 				shelltheme = self.systemthemename
 				icontheme = self.iconthemename
-				
-				while len(cursrcolor) == 0:
-					try:
-						cursrcolor = random.choice(self.colvariants)
-						cursrtheme = self.cursorthemename+"-"+cursrcolor
-					except:
-						cursrcolor = ""
 			
 			gtktheme = shelltheme
+			if self.cursor_theme:
+				cursrtheme = self.prep_cursor_theme(currentcolor)
 		
 		elif currentstate == "night":
-			stateflag = 1
-			wmtheme = self.systemthemename+"-Dark"
+			wmtheme = self.systemthemename+"-"+self.darkmode_suffix
 			if len(currentcolor) != 0:
-				shelltheme = self.systemthemename+"-Dark-"+currentcolor
-				icontheme = self.iconthemename+"-Dark-"+currentcolor
-				cursrtheme = self.cursorthemename+"-"+currentcolor
+				if theme_styles[self.theme_name_style] == theme_styles[0]:
+					shelltheme = self.systemthemename+"-"+self.darkmode_suffix+"-"+currentcolor
+					icontheme = self.iconthemename+"-"+self.darkmode_suffix+"-"+currentcolor
+				else:
+					shelltheme = self.systemthemename+"-"+currentcolor+"-"+self.darkmode_suffix
+					icontheme = self.iconthemename+"-"+currentcolor+"-"+self.darkmode_suffix
 			else:
-				shelltheme = self.systemthemename+"-Dark"
-				icontheme = self.iconthemename+"-Dark"
-				
-				while len(cursrcolor) == 0:
-					cursrcolor = random.choice(self.colvariants)
-					cursrtheme = self.cursorthemename+"-"+cursrcolor
+				shelltheme = self.systemthemename+"-"+self.darkmode_suffix
+				icontheme = self.iconthemename+"-"+self.darkmode_suffix
 			
 			gtktheme = shelltheme
+			if self.cursor_theme:
+				cursrtheme = self.prep_cursor_theme(currentcolor)
 		
 		else:
-			stateflag = 0
-			wmtheme = self.systemthemename+"-Dark"
+			wmtheme = self.systemthemename+"-"+self.darkmode_suffix
 			if len(currentcolor) != 0:
-				shelltheme = self.systemthemename+"-Dark-"+currentcolor
-				gtktheme = self.systemthemename+"-Darker-"+currentcolor
+				if theme_styles[self.theme_name_style] == theme_styles[0]:
+					shelltheme = self.systemthemename+"-"+self.darkmode_suffix+"-"+currentcolor
+					if self.darkermode:
+						gtktheme = self.systemthemename+"-"+self.darkermode_suffix+"-"+currentcolor
+					else:
+						gtktheme = self.systemthemename+"-"+self.darkmode_suffix+"-"+currentcolor
+				else:
+					shelltheme = self.systemthemename+"-"+currentcolor+"-"+self.darkmode_suffix
+					if self.darkermode:
+						gtktheme = self.systemthemename+"-"+currentcolor+"-"+self.darkermode_suffix
+					else:
+						gtktheme = self.systemthemename+"-"+currentcolor+"-"+self.darkmode_suffix
 				icontheme = self.iconthemename+"-"+currentcolor
-				cursrtheme = self.cursorthemename+"-"+currentcolor
 			else:
-				shelltheme = self.systemthemename+"-Dark"
-				gtktheme = self.systemthemename+"-Darker"
+				shelltheme = self.systemthemename+"-"+self.darkmode_suffix
+				if self.darkermode:
+					gtktheme = self.systemthemename+"-"+self.darkermode_suffix
+				else:
+					gtktheme = self.systemthemename+"-"+self.darkmode_suffix
 				icontheme = self.iconthemename
-				
-				while len(cursrcolor) == 0:
-					cursrcolor = random.choice(self.colvariants)
-					cursrtheme = self.cursorthemename+"-"+cursrcolor
+			
+			if self.cursor_theme:
+				cursrtheme = self.prep_cursor_theme(currentcolor)
 		
 		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, icontheme, cursrtheme]
 		themes = {}
@@ -242,6 +274,28 @@ class TMBackend():
 		module_logger.debug("Next Colour Variant: %s, Next Themes: %s" % (nxt_theme[1], themes))
 		
 		return nxt_theme
+	
+	def prep_cursor_theme(self, currentcolor):
+		if currentcolor in self.cursor_colvariants:
+			cursrcolor = currentcolor
+		else:
+			cursrcolor = random.choice(self.cursor_colvariants)
+		module_logger.debug("Cursor Colour Variant: %s", cursrcolor)
+		if len(cursrcolor) != 0:
+			cursrtheme = self.cursorthemename+"-"+cursrcolor
+		else:
+			count = 0
+			while len(cursrcolor) == 0:
+				cursrcolor = random.choice(self.cursor_colvariants)
+				cursrtheme = self.cursorthemename+"-"+cursrcolor
+				count = count + 1
+				if count > 10:
+					break
+				
+			cursrtheme = self.cursorthemename
+		
+		module_logger.debug("Cursor Theme: %s, Colour Variant: %s" % (cursrtheme, cursrcolor))
+		return cursrtheme
 
 if __name__ == "__main__":
 	pass
