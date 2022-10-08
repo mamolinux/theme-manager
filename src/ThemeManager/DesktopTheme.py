@@ -25,6 +25,8 @@ import logging
 import os
 import subprocess
 
+from ThemeManager.common import TMBackend
+
 
 # logger
 module_logger = logging.getLogger('ThemeManager.DesktopTheme')
@@ -32,7 +34,8 @@ module_logger = logging.getLogger('ThemeManager.DesktopTheme')
 class desktop_theme():
 	
 	def __init__(self):
-			pass
+		self.manager = TMBackend()
+		pass
 	
 	def set_desktop_theme(self, state, nexttheme):
 		module_logger.info("Desktop session: %s", state['DE'])
@@ -48,13 +51,14 @@ class desktop_theme():
 			# Icon theme
 			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
-			os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[7])
+			if self.manager.cursor_theme:
+				os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[7])
 			
 			# plank theme
 			try:
 				os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[3])
 			except:
-				module_logger.error("Either 'plank' is not installed or the plank theme is not present")
+				module_logger.error("Either 'plank' is not installed or the plank theme is not present.")
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
 			# When the DE is gnome set
@@ -67,13 +71,14 @@ class desktop_theme():
 			# Icon theme
 			os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
-			os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[7])
+			if self.manager.cursor_theme:
+				os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[7])
 			
 			# plank theme
 			try:
 				os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[3])
 			except:
-				module_logger.error("Either 'plank' is not installed or the plank theme is not present")
+				module_logger.error("Either 'plank' is not installed or the plank theme is not present.")
 		
 		elif (thisDE == "mate"):
 			# When the DE is mate set
@@ -84,7 +89,8 @@ class desktop_theme():
 			# Icon theme
 			os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
-			os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[7])
+			if self.manager.cursor_theme:
+				os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[7])
 			
 			# plank theme
 			try:
