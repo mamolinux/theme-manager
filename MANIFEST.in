@@ -1,3 +1,4 @@
 include debian/changelog
+graft src/ThemeManager/ui*
 global-exclude *.py[cod]
 graft data*

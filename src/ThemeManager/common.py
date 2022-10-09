@@ -65,13 +65,14 @@ LOGFILE = create_logfile()
 module_logger = logging.getLogger('ThemeManager.common')
 
 # get version
-version_file = os.path.abspath(os.path.dirname(__file__))+'/VERSION'
+_path = os.path.dirname(os.path.abspath(__file__))
+version_file = _path+'/VERSION'
 __version__ = open(version_file, 'r').readlines()[0]
 
 # Constants
 CONFIG_DIR = os.path.expanduser('~/.config/theme-manager/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
-UI_PATH = "/usr/share/"+APP+"/ui/"
+UI_PATH = _path+"/ui/"
 
 # Used as a decorator to run things in the background
 def _async(func):
