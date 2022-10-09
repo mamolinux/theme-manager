@@ -19,8 +19,7 @@ with open("src/ThemeManager/VERSION", "w") as f:
     f.write("%s" % version)
 
 setup(
-data_files=[('share/theme-manager/ui', glob.glob("data/ui/*")),
-            ('share/applications', glob.glob("data/applications/*.desktop")),
+data_files=[('share/applications', glob.glob("data/applications/*.desktop")),
             ('share/icons/hicolor/scalable/apps', glob.glob("data/icons/*")),
             ]
 )
