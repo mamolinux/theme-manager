@@ -73,6 +73,7 @@ __version__ = open(version_file, 'r').readlines()[0]
 CONFIG_DIR = os.path.expanduser('~/.config/theme-manager/')
 CONFIG_FILE = os.path.join(CONFIG_DIR+'config.cfg')
 UI_PATH = _path+"/ui/"
+theme_styles = ["name-mode-color", "name-color-mode"]
 
 # Used as a decorator to run things in the background
 def _async(func):

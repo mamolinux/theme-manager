@@ -21,15 +21,13 @@
 #
 
 # import the necessary modules!
-from curses import wrapper
 import gettext
 import locale
 import logging
 
-from threading import Thread
 from time import sleep
 
-from ThemeManager.common import APP, LOCALE_DIR, _async, TMBackend
+from ThemeManager.common import APP, LOCALE_DIR, theme_styles, _async, TMBackend
 from ThemeManager.DesktopTheme import desktop_theme
 
 
@@ -46,6 +44,7 @@ class TMState_monitor():
 	def __init__(self):
 		module_logger.debug("Initiaing Theme Manager daemon.")
 		self.manager = TMBackend()
+		self.theme_styles = theme_styles
 		self.destop_manager = desktop_theme()
 		self.last_state = 'Unknown'
 	
@@ -67,7 +66,7 @@ class TMState_monitor():
 			module_logger.debug("Old state: "+self.last_state)
 			if self.last_state != currentstate:
 				self.last_state = currentstate
-				self.nexttheme = self.manager.prep_theme_variants(self.state)
+				self.nexttheme = self.manager.prep_theme_variants(self.state, self.theme_styles)
 				self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 			sleep(60)	# check once in a minute whether the state is changed
 	
@@ -75,6 +74,6 @@ class TMState_monitor():
 		module_logger.info("Starting auto-change at regular interval.")
 		while True:
 			self.state = self.manager.get_state_info()
-			self.nexttheme = self.manager.prep_theme_variants(self.state)
+			self.nexttheme = self.manager.prep_theme_variants(self.state, self.theme_styles)
 			self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 			sleep(self.manager.theme_interval_in_sec)

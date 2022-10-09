@@ -34,7 +34,7 @@ warnings.filterwarnings("ignore")
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio
 
-from ThemeManager.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, _async, TMBackend
+from ThemeManager.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, theme_styles, _async, TMBackend
 from ThemeManager.indicator import TMIndicator
 from ThemeManager.DesktopTheme import desktop_theme
 # from ThemeManager.LoginTheme import login_theme
@@ -112,7 +112,7 @@ class ThemeManagerWindow():
 		
 		# Combo box
 		theme_style_store = Gtk.ListStore(str)
-		self.theme_styles = ["name-mode-color", "name-color-mode"]
+		self.theme_styles = theme_styles
 		for style in self.theme_styles:
 			theme_style_store.append([style])
 		self.theme_name_style_combo = self.builder.get_object("theme_name_style_combo")
