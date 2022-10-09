@@ -33,7 +33,7 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 from ThemeManager.about_window import AboutWindow
-from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, UI_PATH
+from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, UI_PATH, theme_styles
 from ThemeManager.tm_daemon import TMState_monitor
 from ThemeManager.DesktopTheme import desktop_theme
 
@@ -60,6 +60,7 @@ class TMIndicator():
 		
 		self.destop_manager = desktop_theme()
 		self.daemon = TMState_monitor()
+		self.theme_styles = theme_styles
 		self.daemon.startdaemons()
 		
 		# create menu
@@ -100,7 +101,7 @@ class TMIndicator():
 	def next_theme(self, *args):
 		module_logger.info("User requested change using Next button from indicator.")
 		self.state = self.daemon.manager.get_state_info()
-		self.nexttheme = self.daemon.manager.prep_theme_variants(self.state)
+		self.nexttheme = self.daemon.manager.prep_theme_variants(self.state, self.theme_styles)
 		self.daemon.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 	
 	def show_logs(self, widget):
