@@ -157,6 +157,7 @@ class TMBackend():
 			self.cursor_theme = False
 			self.cursorthemename = ""
 			self.cursor_colvariants = []
+			self.cursor_colorvariants = ""
 			
 			self.theme_name_style = 0
 			self.darkmode_suffix = "Dark"
