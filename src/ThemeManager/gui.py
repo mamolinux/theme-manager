@@ -90,21 +90,26 @@ class ThemeManagerWindow():
 		# input values
 		self.color_variants = self.builder.get_object("colour_variants")
 		self.systemtheme_variants = self.builder.get_object("system_theme_name")
-		self.icontheme_variants = self.builder.get_object("Icon_theme_name")
-		
-		self.cursor_theme_name = self.builder.get_object("cursor_theme_name")
-		self.cursor_colour_variants = self.builder.get_object("cursor_colour_variants")
-		self.cursor_settings = self.builder.get_object("cursor_settings")
-		
 		self.darkmode_name = self.builder.get_object("dark_mode_name")
 		self.darkermode_switch = self.builder.get_object("darker_switch")
 		self.darkermode_label = self.builder.get_object("darker_mode_label")
 		self.darkermode_name = self.builder.get_object("darker_mode_name")
+		
+		self.icon_settings = self.builder.get_object("icon_settings")
+		self.icon_theme_name = self.builder.get_object("icon_theme_name")
+		self.icon_colour_variants = self.builder.get_object("icon_colour_variants")
+		self.icon_darkmode_name = self.builder.get_object("icon_dark_mode_name")
+		
+		self.cursor_settings = self.builder.get_object("cursor_settings")
+		self.cursor_theme_name = self.builder.get_object("cursor_theme_name")
+		self.cursor_colour_variants = self.builder.get_object("cursor_colour_variants")
+		
 		self.user_interval_HH = self.builder.get_object("hour")
 		self.user_interval_MM = self.builder.get_object("minute")
 		self.user_interval_SS = self.builder.get_object("second")
 		
 		# Buttons
+		self.icon_switch = self.builder.get_object("icon_switch")
 		self.cursor_switch = self.builder.get_object("cursor_switch")
 		self.darkermode_switch = self.builder.get_object("darker_switch")
 		self.randomize_button = self.builder.get_object("randomize_theme_button")
@@ -121,13 +126,21 @@ class ThemeManagerWindow():
 		self.theme_name_style_combo.add_attribute(renderer, "text", 0)
 		self.theme_name_style_combo.set_model(theme_style_store)
 		
+		self.icon_theme_name_style_combo = self.builder.get_object("icon_theme_name_style_combo")
+		renderer = Gtk.CellRendererText()
+		self.icon_theme_name_style_combo.pack_start(renderer, True)
+		self.icon_theme_name_style_combo.add_attribute(renderer, "text", 0)
+		self.icon_theme_name_style_combo.set_model(theme_style_store)
+		
 		# Widget signals
 		self.randomize_button.connect("clicked", self.on_random_button)
 		self.save_button.connect("clicked", self.on_save_button)
 		# self.quit_button.connect("clicked", self.on_quit)
 		
-		#TODO: Show entries when cursor and darker switch is clicked
+		#TODO: Show entries when icon, cursor and darker switch is clicked
+		# self.icon_switch.connect("notify::active", self.load_conf)
 		# self.cursor_switch.connect("notify::active", self.load_conf)
+		# self.darkermode_switch.connect("notify::active", self.load_conf)
 		
 		# Menubar
 		accel_group = Gtk.AccelGroup()
@@ -180,7 +193,26 @@ class ThemeManagerWindow():
 		self.manager.load_config()
 		self.color_variants.set_text(str(self.manager.colorvariants))
 		self.systemtheme_variants.set_text(str(self.manager.systemthemename))
-		self.icontheme_variants.set_text(str(self.manager.iconthemename))
+		self.darkmode_name.set_text(str(self.manager.darkmode_suffix))
+		self.darkermode_switch.set_active(self.manager.darkermode)
+		self.darkermode_name.set_text(str(self.manager.darkermode_suffix))
+		self.theme_name_style_combo.set_active(self.manager.theme_name_style) # Select 1st category
+		if self.manager.darkermode:
+			self.darkermode_label.set_visible(True)
+			self.darkermode_name.set_visible(True)
+		else:
+			self.darkermode_label.set_visible(False)
+			self.darkermode_name.set_visible(False)
+		
+		self.icon_switch.set_active(self.manager.icon_theme)
+		self.icon_theme_name.set_text(str(self.manager.iconthemename))
+		self.icon_colour_variants.set_text(str(self.manager.icon_colorvariants))
+		if self.manager.icon_theme:
+			self.icon_settings.set_visible(True)
+		else:
+			self.icon_settings.set_visible(False)
+		self.icon_darkmode_name.set_text(str(self.manager.icon_darkmode_suffix))
+		self.icon_theme_name_style_combo.set_active(self.manager.icon_theme_name_style) # Select 1st category
 		
 		self.cursor_switch.set_active(self.manager.cursor_theme)
 		self.cursor_theme_name.set_text(str(self.manager.cursorthemename))
@@ -190,22 +222,9 @@ class ThemeManagerWindow():
 		else:
 			self.cursor_settings.set_visible(False)
 		
-		self.darkmode_name.set_text(str(self.manager.darkmode_suffix))
-		self.darkermode_switch.set_active(self.manager.darkermode)
-		self.darkermode_name.set_text(str(self.manager.darkermode_suffix))
-		
-		self.theme_name_style_combo.set_active(self.manager.theme_name_style) # Select 1st category
-		
 		self.user_interval_HH.set_value(self.manager.theme_interval_HH)
 		self.user_interval_MM.set_value(self.manager.theme_interval_MM)
 		self.user_interval_SS.set_value(self.manager.theme_interval_SS)
-		
-		if self.manager.darkermode:
-			self.darkermode_label.set_visible(True)
-			self.darkermode_name.set_visible(True)
-		else:
-			self.darkermode_label.set_visible(False)
-			self.darkermode_name.set_visible(False)
 	
 	def on_quit(self, widget):
 		self.application.quit()
@@ -233,14 +252,18 @@ class ThemeManagerWindow():
 		self.manager.config['system-theme'] = {
 			'color-variants': self.color_variants.get_text(),
 			'system-theme-name': self.systemtheme_variants.get_text(),
-			'icon-theme-name': self.icontheme_variants.get_text(),
-			'cursor-theme': self.cursor_switch.get_active(),
-			'cursor-theme-name': self.cursor_theme_name.get_text(),
-			'cursor-color-variants': self.cursor_colour_variants.get_text(),
-			'theme-style-name': self.theme_name_style_combo.get_active(),
 			'dark-mode-suffix': self.darkmode_name.get_text(),
 			'darker-mode': self.darkermode_switch.get_active(),
 			'darker-mode-suffix': self.darkermode_name.get_text(),
+			'theme-style-name': self.theme_name_style_combo.get_active(),
+			'icon-theme': self.icon_switch.get_active(),
+			'icon-theme-name': self.icon_theme_name.get_text(),
+			'icon-color-variants': self.icon_colour_variants.get_text(),
+			'icon-dark-mode-suffix': self.icon_darkmode_name.get_text(),
+			'icon-theme-style-name': self.icon_theme_name_style_combo.get_active(),
+			'cursor-theme': self.cursor_switch.get_active(),
+			'cursor-theme-name': self.cursor_theme_name.get_text(),
+			'cursor-color-variants': self.cursor_colour_variants.get_text(),
 			'theme-interval': user_interval
 		}
 		with open(CONFIG_FILE, 'w') as f:

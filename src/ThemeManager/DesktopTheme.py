@@ -49,7 +49,8 @@ class desktop_theme():
 			# Window border/Metacity
 			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[5])
 			# Icon theme
-			os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[6])
+			if self.manager.icon_theme:
+				os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
 			if self.manager.cursor_theme:
 				os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[7])
@@ -69,7 +70,8 @@ class desktop_theme():
 			# Window border/Metacity
 			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % nexttheme[5])
 			# Icon theme
-			os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[6])
+			if self.manager.icon_theme:
+				os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
 			if self.manager.cursor_theme:
 				os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[7])
@@ -87,7 +89,8 @@ class desktop_theme():
 			# Window border/Metacity
 			os.system("gsettings set org.mate.Marco.general theme %s" % nexttheme[5])
 			# Icon theme
-			os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[6])
+			if self.manager.icon_theme:
+				os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[6])
 			# Cursor theme
 			if self.manager.cursor_theme:
 				os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[7])
@@ -142,7 +145,7 @@ class desktop_theme():
 			# Window border/Metacity
 			currenttheme.append(self.run_command("gsettings get org.mate.Marco.general theme"))
 			# Icon theme
-			currenttheme.append(self.run_command("gsettings set org.mate.interface icon-theme"))
+			currenttheme.append(self.run_command("gsettings get org.mate.interface icon-theme"))
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
 		
