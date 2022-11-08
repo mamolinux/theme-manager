@@ -52,6 +52,7 @@ class TMState_monitor():
 		module_logger.debug("Initiaing state change daemon.")
 		statechange_daemon = _async(self.on_statechange)
 		statechange_daemon()
+		sleep(10)
 		
 		module_logger.debug("Initiaing auto-change at regular interval daemon.")
 		autouser_request_daemon = _async(self.on_autouser_request)
