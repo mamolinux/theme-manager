@@ -1,3 +1,11 @@
+theme-manager (1.1.2) stable; urgency=medium
+
+  * Update readme from version 1.0.9 to 1.1.1 (#39)
+  * Separate settings for system and icon themes (#40)
+    - Add support to use different themes for system and icons
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sat, 12 Nov 2022 12:40:07 +0530
+
 theme-manager (1.1.1) stable; urgency=medium
 
   * Fix AttributeError; fixes #37 (#38)
