@@ -156,6 +156,20 @@ class TMBackend():
 				self.cursor_colvariants.append(var.strip().strip('"').strip("'"))
 			self.cursor_colorvariants = self.cursor_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
 			
+			# Plank Theme
+			self.plank_theme = self.config["system-theme"].getboolean('plank-theme')
+			self.plankthemename = self.config["system-theme"]['plank-theme-name']
+			self.plank_darkmode_suffix = self.config["system-theme"]['plank-dark-mode-suffix']
+			self.plank_theme_name_style = int(self.config["system-theme"]['plank-theme-style-name'])
+			
+			colvars = self.config["system-theme"]['plank-color-variants'].split(',')
+			self.plank_colorvariants = ""		# This string will be saved in config file
+			self.plank_colvariants = []		# This list will be used to randomize variants
+			for var in colvars:
+				self.plank_colorvariants += str(var+",")
+				self.plank_colvariants.append(var.strip().strip('"').strip("'"))
+			self.plank_colorvariants = self.plank_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
+			
 			theme_interval = self.config["system-theme"]['theme-interval']
 			self.theme_interval_HH = int(theme_interval.split(':')[0])
 			self.theme_interval_MM = int(theme_interval.split(':')[1])
@@ -182,6 +196,13 @@ class TMBackend():
 			self.cursor_colvariants = []
 			self.cursor_colorvariants = ""
 			
+			self.plank_theme = False
+			self.plankthemename = ""
+			self.plank_darkmode_suffix = "Dark"
+			self.plank_colvariants = []
+			self.plank_colorvariants = ""
+			self.plank_theme_name_style = 0
+			
 			self.theme_interval_HH = 1
 			self.theme_interval_MM = 0
 			self.theme_interval_SS = 0
@@ -206,6 +227,11 @@ class TMBackend():
 				'cursor-theme': False,
 				'cursor-theme-name': "",
 				'cursor-color-variants': "",
+				'plank-theme': False,
+				'plank-theme-name': "",
+				'plank-color-variants': "",
+				'plank-dark-mode-suffix': "Dark",
+				'plank-theme-style-name': 0,
 				'theme-interval': '1:0:0'
 			}
 			with open(CONFIG_FILE, 'w') as f:
@@ -238,6 +264,9 @@ class TMBackend():
 		
 		if self.cursor_theme:
 			cursrtheme = self.prep_cursor_theme(currentcolor)
+		
+		if self.plank_theme:
+			planktheme = self.prep_plank_theme(currentstate, currentcolor)
 		
 		if currentstate == "daytime":
 			wmtheme = self.systemthemename
@@ -280,13 +309,14 @@ class TMBackend():
 				else:
 					gtktheme = self.systemthemename+"-"+self.darkmode_suffix
 		
-		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, icontheme, cursrtheme]
+		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, icontheme, cursrtheme, planktheme]
 		themes = {}
 		themes["System"] = gtktheme
 		themes["DE Theme"] = shelltheme
 		themes["Decoration"] = wmtheme
 		themes["Icon"] = icontheme
 		themes["Cursor"] = cursrtheme
+		themes["Plank"] = planktheme
 		module_logger.debug("Next Colour Variant: %s, Next Themes: %s" % (nxt_theme[1], themes))
 		
 		return nxt_theme
@@ -335,6 +365,32 @@ class TMBackend():
 		
 		module_logger.debug("Cursor Theme: %s, Colour Variant: %s" % (cursrtheme, cursrcolor))
 		return cursrtheme
+		
+	def prep_plank_theme(self, currentstate, currentcolor):
+		for color in self.plank_colvariants:
+			if currentcolor.lower() in color.lower():
+				plankcolor = color
+				break
+		else:
+			plankcolor = random.choice(self.plank_colvariants)
+		module_logger.debug("Plank Colour Variant: %s", plankcolor)
+		if currentstate == "night":
+			if len(plankcolor) != 0:
+				if theme_styles[self.plank_theme_name_style] == theme_styles[0]:
+					planktheme = self.plankthemename+"-"+self.plank_darkmode_suffix+"-"+plankcolor
+				else:
+					planktheme = self.plankthemename+"-"+plankcolor+"-"+self.plank_darkmode_suffix
+			else:
+				planktheme = self.plankthemename+"-"+self.plank_darkmode_suffix
+		else:
+			# for daytime and transition
+			if len(plankcolor) != 0:
+				planktheme = self.plankthemename+"-"+plankcolor
+			else:
+				planktheme = self.plankthemename
+		
+		module_logger.debug("Plank Theme: %s, Colour Variant: %s" % (planktheme, plankcolor))
+		return planktheme
 
 if __name__ == "__main__":
 	pass
