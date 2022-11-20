@@ -233,7 +233,7 @@ class TMBackend():
 		stateflag = 1
 		module_logger.info("Current State: %s", currentstate)
 		
-		if  self.icon_theme:
+		if self.icon_theme:
 			icontheme = self.prep_icon_theme(currentstate, currentcolor)
 		
 		if self.cursor_theme:
@@ -292,8 +292,10 @@ class TMBackend():
 		return nxt_theme
 		
 	def prep_icon_theme(self, currentstate, currentcolor):
-		if currentcolor in self.icon_colvariants:
-			iconcolor = currentcolor
+		for color in self.icon_colvariants:
+			if currentcolor.lower() in color.lower():
+				iconcolor = color
+				break
 		else:
 			iconcolor = random.choice(self.icon_colvariants)
 		module_logger.debug("Icon Colour Variant: %s", iconcolor)
@@ -312,11 +314,14 @@ class TMBackend():
 			else:
 				icontheme = self.iconthemename
 		
+		module_logger.debug("Icon Theme: %s, Colour Variant: %s" % (icontheme, iconcolor))
 		return icontheme
 	
 	def prep_cursor_theme(self, currentcolor):
-		if currentcolor in self.cursor_colvariants:
-			cursrcolor = currentcolor
+		for color in self.cursor_colvariants:
+			if currentcolor.lower() in color.lower():
+				cursrcolor = color
+				break
 		else:
 			cursrcolor = random.choice(self.cursor_colvariants)
 		module_logger.debug("Cursor Colour Variant: %s", cursrcolor)
