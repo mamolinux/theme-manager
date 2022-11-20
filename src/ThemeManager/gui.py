@@ -100,6 +100,11 @@ class ThemeManagerWindow():
 		self.icon_colour_variants = self.builder.get_object("icon_colour_variants")
 		self.icon_darkmode_name = self.builder.get_object("icon_dark_mode_name")
 		
+		self.plank_settings = self.builder.get_object("plank_settings")
+		self.plank_theme_name = self.builder.get_object("plank_theme_name")
+		self.plank_colour_variants = self.builder.get_object("plank_colour_variants")
+		self.plank_darkmode_name = self.builder.get_object("plank_dark_mode_name")
+		
 		self.cursor_settings = self.builder.get_object("cursor_settings")
 		self.cursor_theme_name = self.builder.get_object("cursor_theme_name")
 		self.cursor_colour_variants = self.builder.get_object("cursor_colour_variants")
@@ -111,6 +116,7 @@ class ThemeManagerWindow():
 		# Buttons
 		self.icon_switch = self.builder.get_object("icon_switch")
 		self.cursor_switch = self.builder.get_object("cursor_switch")
+		self.plank_switch = self.builder.get_object("plank_switch")
 		self.darkermode_switch = self.builder.get_object("darker_switch")
 		self.randomize_button = self.builder.get_object("randomize_theme_button")
 		self.save_button = self.builder.get_object("save_button")
@@ -131,6 +137,12 @@ class ThemeManagerWindow():
 		self.icon_theme_name_style_combo.pack_start(renderer, True)
 		self.icon_theme_name_style_combo.add_attribute(renderer, "text", 0)
 		self.icon_theme_name_style_combo.set_model(theme_style_store)
+		
+		self.plank_theme_name_style_combo = self.builder.get_object("plank_theme_name_style_combo")
+		renderer = Gtk.CellRendererText()
+		self.plank_theme_name_style_combo.pack_start(renderer, True)
+		self.plank_theme_name_style_combo.add_attribute(renderer, "text", 0)
+		self.plank_theme_name_style_combo.set_model(theme_style_store)
 		
 		# Widget signals
 		self.randomize_button.connect("clicked", self.on_random_button)
@@ -222,6 +234,16 @@ class ThemeManagerWindow():
 		else:
 			self.cursor_settings.set_visible(False)
 		
+		self.plank_switch.set_active(self.manager.plank_theme)
+		self.plank_theme_name.set_text(str(self.manager.plankthemename))
+		self.plank_colour_variants.set_text(str(self.manager.plank_colorvariants))
+		if self.manager.plank_theme:
+			self.plank_settings.set_visible(True)
+		else:
+			self.plank_settings.set_visible(False)
+		self.plank_darkmode_name.set_text(str(self.manager.plank_darkmode_suffix))
+		self.plank_theme_name_style_combo.set_active(self.manager.plank_theme_name_style) # Select 1st category
+		
 		self.user_interval_HH.set_value(self.manager.theme_interval_HH)
 		self.user_interval_MM.set_value(self.manager.theme_interval_MM)
 		self.user_interval_SS.set_value(self.manager.theme_interval_SS)
@@ -264,6 +286,11 @@ class ThemeManagerWindow():
 			'cursor-theme': self.cursor_switch.get_active(),
 			'cursor-theme-name': self.cursor_theme_name.get_text(),
 			'cursor-color-variants': self.cursor_colour_variants.get_text(),
+			'plank-theme': self.plank_switch.get_active(),
+			'plank-theme-name': self.plank_theme_name.get_text(),
+			'plank-color-variants': self.plank_colour_variants.get_text(),
+			'plank-dark-mode-suffix': self.plank_darkmode_name.get_text(),
+			'plank-theme-style-name': self.plank_theme_name_style_combo.get_active(),
 			'theme-interval': user_interval
 		}
 		with open(CONFIG_FILE, 'w') as f:
