@@ -1,3 +1,15 @@
+theme-manager (1.1.3) stable; urgency=medium
+
+  * Update readme to version 1.1.2 (#43)
+  * Use same colour despite different cases; fixes #42 (#44)
+    - When system themes use lower case colour names and icon
+      theme uses the captialized word, different colour are
+      variants were getting set. Now same variant will be set
+      despite the difference in cases in colour names.
+  * Separate options for plank themes (#45)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 21 Nov 2022 12:20:37 +0530
+
 theme-manager (1.1.2) stable; urgency=medium
 
   * Update readme from version 1.0.9 to 1.1.1 (#39)
