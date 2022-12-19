@@ -48,17 +48,19 @@ class desktop_theme():
 			os.system("gsettings set org.cinnamon.desktop.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
 			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[5])
+			# Color pref for gtk4 apps
+			os.system("gsettings set org.gnome.desktop.interface color-scheme %s" % nexttheme[6])
 			# Icon theme
 			if self.manager.icon_theme:
-				os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[6])
+				os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[7])
 			# Cursor theme
 			if self.manager.cursor_theme:
-				os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[7])
+				os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[8])
 			
 			# Plank theme
 			if self.manager.plank_theme:
 				try:
-					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[8])
+					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 				except:
 					module_logger.error("Either 'plank' is not installed or the plank theme is not present.")
 		
@@ -70,17 +72,19 @@ class desktop_theme():
 			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
 			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % nexttheme[5])
+			# Color pref for gtk4 apps
+			os.system("gsettings set org.gnome.desktop.interface color-scheme %s" % nexttheme[6])
 			# Icon theme
 			if self.manager.icon_theme:
-				os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[6])
+				os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[7])
 			# Cursor theme
 			if self.manager.cursor_theme:
-				os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[7])
+				os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[8])
 			
 			# Plank theme
 			if self.manager.plank_theme:
 				try:
-					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[8])
+					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 				except:
 					module_logger.error("Either 'plank' is not installed or the plank theme is not present.")
 		
@@ -90,17 +94,19 @@ class desktop_theme():
 			os.system("gsettings set org.mate.interface gtk-theme %s" % nexttheme[4])
 			# Window border/Metacity
 			os.system("gsettings set org.mate.Marco.general theme %s" % nexttheme[5])
+			# Color pref for gtk4 apps
+			os.system("gsettings set org.gnome.desktop.interface color-scheme %s" % nexttheme[6])
 			# Icon theme
 			if self.manager.icon_theme:
-				os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[6])
+				os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[7])
 			# Cursor theme
 			if self.manager.cursor_theme:
-				os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[7])
+				os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[8])
 			
 			# Plank theme
 			if self.manager.plank_theme:
 				try:
-					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[8])
+					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 				except:
 					module_logger.error("Either 'plank' is not installed or the plank theme is not present")
 			
@@ -108,9 +114,9 @@ class desktop_theme():
 		themes["System"] = nexttheme[4]
 		themes["DE Theme"] = nexttheme[3]
 		themes["Decoration"] = nexttheme[5]
-		themes["Icon"] = nexttheme[6]
-		themes["Cursor"] = nexttheme[7]
-		themes["Plank"] = nexttheme[8]
+		themes["Icon"] = nexttheme[7]
+		themes["Cursor"] = nexttheme[8]
+		themes["Plank"] = nexttheme[9]
 		module_logger.info("Updated with Colour Variant: %s, Themes: %s" % (nexttheme[1], themes))
 	
 	def get_desktop_theme(self, state, systheme, colvariants):

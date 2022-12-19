@@ -275,6 +275,7 @@ class TMBackend():
 			else:
 				shelltheme = self.systemthemename
 			gtktheme = shelltheme
+			color_pref = "prefer-light"
 		
 		elif currentstate == "night":
 			wmtheme = self.systemthemename+"-"+self.darkmode_suffix
@@ -286,6 +287,7 @@ class TMBackend():
 			else:
 				shelltheme = self.systemthemename+"-"+self.darkmode_suffix
 			gtktheme = shelltheme
+			color_pref = "prefer-dark"
 		
 		else:
 			wmtheme = self.systemthemename+"-"+self.darkmode_suffix
@@ -308,8 +310,10 @@ class TMBackend():
 					gtktheme = self.systemthemename+"-"+self.darkermode_suffix
 				else:
 					gtktheme = self.systemthemename+"-"+self.darkmode_suffix
+			
+			color_pref = "prefer-dark"
 		
-		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, icontheme, cursrtheme, planktheme]
+		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, color_pref, icontheme, cursrtheme, planktheme]
 		themes = {}
 		themes["System"] = gtktheme
 		themes["DE Theme"] = shelltheme
