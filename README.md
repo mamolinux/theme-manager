@@ -6,10 +6,10 @@
 
 <p align="center">
 	<a href="#">
-		<img src="https://img.shields.io/github/workflow/status/hsbasu/theme-manager/CI/master?label=CI%20Build" alt="CI build">
+		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/theme-manager/ci.yml?branch=master&label=CI%20Build" alt="CI build">
 	</a>
 	<a href="#">
-		<img src="https://img.shields.io/github/workflow/status/hsbasu/theme-manager/CodeQL/master?label=CodeQL%20Build" alt="CodeQL build">
+		<img src="https://img.shields.io/github/actions/workflow/status/hsbasu/theme-manager/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
 	</a>
 	<a href="https://github.com/hsbasu/theme-manager/blob/master/LICENSE">
 		<img src="https://img.shields.io/github/license/hsbasu/theme-manager?label=License" alt="License">
