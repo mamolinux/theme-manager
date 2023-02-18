@@ -255,7 +255,7 @@ class TMBackend():
 		currentcolor = random.choice(self.colvariants)
 		currentstate = state['State'].lower()
 		
-		shelltheme = wmtheme = gtktheme = icontheme = cursrtheme = ""
+		shelltheme = wmtheme = gtktheme = icontheme = cursrtheme = planktheme = ""
 		stateflag = 1
 		module_logger.info("Current State: %s", currentstate)
 		
