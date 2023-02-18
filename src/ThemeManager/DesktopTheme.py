@@ -62,7 +62,7 @@ class desktop_theme():
 				try:
 					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 				except:
-					module_logger.error("Either 'plank' is not installed or the plank theme is not present.")
+					module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
 			# When the DE is gnome set
@@ -86,7 +86,7 @@ class desktop_theme():
 				try:
 					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 				except:
-					module_logger.error("Either 'plank' is not installed or the plank theme is not present.")
+					module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
 		
 		elif (thisDE == "mate"):
 			# When the DE is mate set
@@ -108,7 +108,7 @@ class desktop_theme():
 				try:
 					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 				except:
-					module_logger.error("Either 'plank' is not installed or the plank theme is not present")
+					module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
 			
 		themes = {}
 		themes["System"] = nexttheme[4]
