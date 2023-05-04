@@ -56,13 +56,6 @@ class desktop_theme():
 			# Cursor theme
 			if self.manager.cursor_theme:
 				os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[8])
-			
-			# Plank theme
-			if self.manager.plank_theme:
-				try:
-					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
-				except:
-					module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
 			# When the DE is gnome set
@@ -80,13 +73,6 @@ class desktop_theme():
 			# Cursor theme
 			if self.manager.cursor_theme:
 				os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[8])
-			
-			# Plank theme
-			if self.manager.plank_theme:
-				try:
-					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
-				except:
-					module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
 		
 		elif (thisDE == "mate"):
 			# When the DE is mate set
@@ -102,14 +88,14 @@ class desktop_theme():
 			# Cursor theme
 			if self.manager.cursor_theme:
 				os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[8])
-			
-			# Plank theme
-			if self.manager.plank_theme:
-				try:
-					os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
-				except:
-					module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
-			
+		
+		# Plank theme
+		if self.manager.plank_theme:
+			try:
+				os.system("gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme %s" % nexttheme[9])
+			except:
+				module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
+		
 		themes = {}
 		themes["System"] = nexttheme[4]
 		themes["DE Theme"] = nexttheme[3]
@@ -136,9 +122,6 @@ class desktop_theme():
 			themes["Icon"] = self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme")
 			# Cursor theme
 			themes["Cursor"] = self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme")
-			# Plank theme
-			if self.manager.plank_theme:
-				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings theme")
 		
 		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
 			# When the DE is gnome/unity get
@@ -150,9 +133,6 @@ class desktop_theme():
 			themes["Icon"] = self.run_command("gsettings get org.gnome.desktop.interface icon-theme")
 			# Cursor theme
 			themes["Cursor"] = self.run_command("gsettings get org.gnome.desktop.interface cursor-theme")
-			# Plank theme
-			if self.manager.plank_theme:
-				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings theme")
 		
 		elif (thisDE == "mate"):
 			# When the DE is mate get
@@ -164,9 +144,10 @@ class desktop_theme():
 			currenttheme.append(self.run_command("gsettings get org.mate.interface icon-theme"))
 			# Cursor theme
 			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
-			# Plank theme
-			if self.manager.plank_theme:
-				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings theme")
+		
+		# Plank theme
+		if self.manager.plank_theme:
+			themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme")
 		
 		currenttheme["Themes"] = themes
 		
