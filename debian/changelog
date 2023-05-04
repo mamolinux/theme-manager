@@ -1,3 +1,23 @@
+theme-manager (1.1.4) stable; urgency=medium
+
+  * Update readme to version 1.1.3 (#46)
+  * Add support for libadwaita apps (#47)
+    - for apps with gtk4 and libadwaita needs
+      gnome color-scheme to be set.
+    - Uses "prefer-light" during day and
+      "prefer-dark" for transition and night
+  * update badges url (#48)
+  * Update workflow
+    - fix permissions of github actions
+  * fix unbounderror due to uninitialized plank theme (#49)
+  * Update readme with new links from mamolinux (#50)
+  * Fix changing plank themes and update packaging (#51)
+    - Use schema path to invoke gsettings properly when
+      chahning plank themes
+    - d/rules: Remove unnecessary rules
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Thu, 04 May 2023 21:03:20 +0530
+
 theme-manager (1.1.3) stable; urgency=medium
 
   * Update readme to version 1.1.2 (#43)
