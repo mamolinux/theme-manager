@@ -93,6 +93,8 @@ class desktop_theme():
 		if self.manager.plank_theme:
 			try:
 				os.system("gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme %s" % nexttheme[9])
+			except CalledProcessError:
+				os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
 			except:
 				module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
 		
@@ -147,7 +149,12 @@ class desktop_theme():
 		
 		# Plank theme
 		if self.manager.plank_theme:
-			themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme")
+			try:
+				# For Ubuntu >=23.04
+				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme")
+			except:
+				# backward compatibility for ubuntu <23.04
+				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings theme")
 		
 		currenttheme["Themes"] = themes
 		
