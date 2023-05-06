@@ -29,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/mamolinux/theme-manager/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.3/theme-manager_1.1.3_all.deb">
-		<img src="https://img.shields.io/github/downloads/mamolinux/theme-manager/1.1.3/theme-manager_1.1.3_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.4/theme-manager_1.1.4_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/theme-manager/1.1.4/theme-manager_1.1.4_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
@@ -40,7 +40,7 @@ Very simple Python3-based GUI application to set different theme colour and mode
 <p align="center">
 	<a href="https://github.com/mamolinux/theme-manager/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/mamolinux/theme-manager/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.3/theme-manager_1.1.3_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.4/theme-manager_1.1.4_all.deb">Download Binary (.deb)</a>
 </p>
 
 ## Features and Screenshots
