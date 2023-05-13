@@ -37,6 +37,7 @@ from gi.repository import Gtk, Gio
 from ThemeManager.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, theme_styles, _async, TMBackend
 from ThemeManager.indicator import TMIndicator
 from ThemeManager.DesktopTheme import desktop_theme
+from ThemeManager.time_chooser import TimeChooserButton
 # from ThemeManager.LoginTheme import login_theme
 
 setproctitle.setproctitle(APP)
@@ -109,6 +110,23 @@ class ThemeManagerWindow():
 		self.cursor_theme_name = self.builder.get_object("cursor_theme_name")
 		self.cursor_colour_variants = self.builder.get_object("cursor_colour_variants")
 		
+		self.systime_grid = self.builder.get_object("system_time_grid")
+		self.systime_transition_grid = self.builder.get_object("system_time_transition_grid")
+		
+		self.day_start_time = TimeChooserButton()
+		self.night_start_time = TimeChooserButton()
+		self.d2n_start_time = TimeChooserButton()
+		self.n2d_start_time = TimeChooserButton()
+		
+		self.systime_grid.attach(self.day_start_time, 1, 0, 1, 1)
+		self.systime_grid.attach(self.night_start_time, 1, 1, 1, 1)
+		self.systime_transition_grid.attach(self.d2n_start_time, 1, 0, 1, 1)
+		self.systime_transition_grid.attach(self.n2d_start_time, 1, 1, 1, 1)
+		
+		self.user_interval_box = self.builder.get_object("user_interval_box")
+		self.user_interval = TimeChooserButton()
+		self.user_interval_box.pack_start(self.user_interval, False, False, 0)
+		
 		self.user_interval_HH = self.builder.get_object("hour")
 		self.user_interval_MM = self.builder.get_object("minute")
 		self.user_interval_SS = self.builder.get_object("second")
@@ -118,6 +136,7 @@ class ThemeManagerWindow():
 		self.cursor_switch = self.builder.get_object("cursor_switch")
 		self.plank_switch = self.builder.get_object("plank_switch")
 		self.darkermode_switch = self.builder.get_object("darker_switch")
+		self.systime_switch = self.builder.get_object("system_time_switch")
 		self.randomize_button = self.builder.get_object("randomize_theme_button")
 		self.save_button = self.builder.get_object("save_button")
 		
@@ -244,6 +263,22 @@ class ThemeManagerWindow():
 		self.plank_darkmode_name.set_text(str(self.manager.plank_darkmode_suffix))
 		self.plank_theme_name_style_combo.set_active(self.manager.plank_theme_name_style) # Select 1st category
 		
+		self.systime_switch.set_active(self.manager.use_systemtime)
+		if self.manager.use_systemtime:
+			self.systime_grid.set_visible(True)
+			if self.manager.darkermode:
+				self.systime_transition_grid.set_visible(True)
+			else:
+				self.systime_transition_grid.set_visible(False)
+		else:
+			self.systime_grid.set_visible(False)
+			self.systime_transition_grid.set_visible(False)
+		
+		self.day_start_time.set_time(self.manager.day_start_time)
+		self.night_start_time.set_time(self.manager.night_start_time)
+		self.d2n_start_time.set_time(self.manager.d2n_start_time)
+		self.n2d_start_time.set_time(self.manager.n2d_start_time)
+		
 		self.user_interval_HH.set_value(self.manager.theme_interval_HH)
 		self.user_interval_MM.set_value(self.manager.theme_interval_MM)
 		self.user_interval_SS.set_value(self.manager.theme_interval_SS)
@@ -290,7 +325,14 @@ class ThemeManagerWindow():
 			'plank-theme-name': self.plank_theme_name.get_text(),
 			'plank-color-variants': self.plank_colour_variants.get_text(),
 			'plank-dark-mode-suffix': self.plank_darkmode_name.get_text(),
-			'plank-theme-style-name': self.plank_theme_name_style_combo.get_active(),
+			'plank-theme-style-name': self.plank_theme_name_style_combo.get_active()
+		}
+		self.manager.config['time-settings'] = {
+			'use-system-time': self.systime_switch.get_active(),
+			'day-start-time': self.day_start_time.get_time(),
+			'night-start-time': self.night_start_time.get_time(),
+			'd2n-start-time': self.d2n_start_time.get_time(),
+			'n2d-start-time': self.n2d_start_time.get_time(),
 			'theme-interval': user_interval
 		}
 		with open(CONFIG_FILE, 'w') as f:

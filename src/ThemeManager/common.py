@@ -170,7 +170,14 @@ class TMBackend():
 				self.plank_colvariants.append(var.strip().strip('"').strip("'"))
 			self.plank_colorvariants = self.plank_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
 			
-			theme_interval = self.config["system-theme"]['theme-interval']
+			# Use system time to determine state
+			self.use_systemtime = self.config['time-settings'].getboolean('use-system-time')
+			self.day_start_time = datetime.datetime.strptime(self.config['time-settings']['day-start-time'], '%H:%M:%S')
+			self.night_start_time = datetime.datetime.strptime(self.config['time-settings']['night-start-time'], '%H:%M:%S')
+			self.d2n_start_time = datetime.datetime.strptime(self.config['time-settings']['d2n-start-time'], '%H:%M:%S')
+			self.n2d_start_time = datetime.datetime.strptime(self.config['time-settings']['n2d-start-time'], '%H:%M:%S')
+			
+			theme_interval = self.config["time-settings"]['theme-interval']
 			self.theme_interval_HH = int(theme_interval.split(':')[0])
 			self.theme_interval_MM = int(theme_interval.split(':')[1])
 			self.theme_interval_SS = int(theme_interval.split(':')[2])
@@ -203,10 +210,19 @@ class TMBackend():
 			self.plank_colorvariants = ""
 			self.plank_theme_name_style = 0
 			
+			self.use_systemtime = True
+			self.day_start_time = datetime.datetime.strptime('06:30:00', '%H:%M:%S')
+			self.night_start_time = datetime.datetime.strptime('18:30:00', '%H:%M:%S')
+			self.d2n_start_time = datetime.datetime.strptime('17:30:00', '%H:%M:%S')
+			self.n2d_start_time = datetime.datetime.strptime('05:30:00', '%H:%M:%S')
+			
 			self.theme_interval_HH = 1
 			self.theme_interval_MM = 0
 			self.theme_interval_SS = 0
 			
+			
+	
+	
 	
 	def save_config(self):
 		if os.path.exists(CONFIG_FILE):
@@ -231,19 +247,54 @@ class TMBackend():
 				'plank-theme-name': "",
 				'plank-color-variants': "",
 				'plank-dark-mode-suffix': "Dark",
-				'plank-theme-style-name': 0,
+				'plank-theme-style-name': 0
+			}
+			self.config['time-settings'] = {
+				'use-system-time': True,
+				'day-start-time': '06:30:00',
+				'night-start-time': '18:30:00',
+				'd2n-start-time': '17:30:00',
+				'n2d-start-time': '05:30:00',
 				'theme-interval': '1:0:0'
 			}
 			with open(CONFIG_FILE, 'w') as f:
 				self.config.write(f)
 	
+	def check_in_between(self, now):
+		now = now.time()
+		day_start_time = self.day_start_time.time()
+		night_start_time = self.night_start_time.time()
+		d2n_start_time = self.d2n_start_time.time()
+		n2d_start_time = self.n2d_start_time.time()
+		if not self.darkermode:
+			if day_start_time <= now < night_start_time:
+				return 'daytime'
+			else:
+				return 'night'
+		else:
+			if d2n_start_time <= now < night_start_time:
+				return 'Day to night Transition'
+			elif n2d_start_time <= now < day_start_time:
+				return 'Night to Day Transition'
+			elif day_start_time <= now < d2n_start_time:
+				return 'daytime'
+			else:
+				return 'night'
+	
 	def get_state_info(self):
 		session = os.environ.get('XDG_CURRENT_DESKTOP')
 		module_logger.debug("Desktop session: %s", session)
+		time_now = datetime.datetime.now()
 		
-		command = 'redshift -p | grep "Period" | cut -d " " -f 2'
-		rawstate = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
-		currentstate = rawstate.decode('utf-8', "strict").strip('\n')
+		if self.use_systemtime:
+			module_logger.debug("Using System time.")
+			currentstate = self.check_in_between(time_now)
+		else:
+			module_logger.debug("Using Redshift.")
+			command = 'redshift -p | grep "Period" | cut -d " " -f 2'
+			rawstate = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
+			currentstate = rawstate.decode('utf-8', "strict").strip('\n')
+		
 		module_logger.debug("Current State: %s", currentstate)
 		
 		return {'DE': session, 'State': currentstate}
