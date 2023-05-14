@@ -30,16 +30,16 @@ import logging
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 
-# from ThemeManager.common import APP, LOCALE_DIR
+from ThemeManager.common import APP, LOCALE_DIR
 
-# # i18n
-# locale.bindtextdomain(APP, LOCALE_DIR)
-# gettext.bindtextdomain(APP, LOCALE_DIR)
-# gettext.textdomain(APP)
+# i18n
+locale.bindtextdomain(APP, LOCALE_DIR)
+gettext.bindtextdomain(APP, LOCALE_DIR)
+gettext.textdomain(APP)
 _ = gettext.gettext
 
 # logger
-# module_logger = logging.getLogger('ThemeManager.time_chooser')
+module_logger = logging.getLogger('ThemeManager.time_chooser')
 
 
 class TimeChooserButton(Gtk.Button):
@@ -66,11 +66,6 @@ class TimeChooserButton(Gtk.Button):
 
 		if response == Gtk.ResponseType.OK:
 			self.set_time(dialog.get_time())
-		# 	print("The OK button was clicked")
-		# 	print(dialog.get_time())
-		# 	self.emit("time-changed", self.time.hour, self.time.minute, self.time.second)
-		# elif response == Gtk.ResponseType.CANCEL:
-		# 	print("The Cancel button was clicked")
 
 		dialog.destroy()
 
