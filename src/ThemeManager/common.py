@@ -129,8 +129,17 @@ class TMBackend():
 				self.colorvariants += str(var+",")
 				self.colvariants.append(var.strip().strip('"').strip("'"))
 			self.colorvariants = self.colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
-			
-			# Icon Theme
+		except:
+			self.colvariants = []
+			self.colorvariants = ""
+			self.systemthemename = ""
+			self.darkmode_suffix = "Dark"
+			self.darkermode = False
+			self.darkermode_suffix = "Darker"
+			self.theme_name_style = 0
+		
+		# Icon Theme
+		try:
 			self.icon_theme = self.config["system-theme"].getboolean('icon-theme')
 			self.iconthemename = self.config["system-theme"]['icon-theme-name']
 			self.icon_darkmode_suffix = self.config["system-theme"]['icon-dark-mode-suffix']
@@ -143,8 +152,16 @@ class TMBackend():
 				self.icon_colorvariants += str(var+",")
 				self.icon_colvariants.append(var.strip().strip('"').strip("'"))
 			self.icon_colorvariants = self.icon_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
-			
-			# Cursor Theme
+		except:
+			self.icon_theme = True
+			self.iconthemename = ""
+			self.icon_darkmode_suffix = "Dark"
+			self.icon_colvariants = []
+			self.icon_colorvariants = ""
+			self.icon_theme_name_style = 0
+		
+		# Cursor Theme
+		try:
 			self.cursor_theme = self.config["system-theme"].getboolean('cursor-theme')
 			self.cursorthemename = self.config["system-theme"]['cursor-theme-name']
 			
@@ -155,8 +172,14 @@ class TMBackend():
 				self.cursor_colorvariants += str(var+",")
 				self.cursor_colvariants.append(var.strip().strip('"').strip("'"))
 			self.cursor_colorvariants = self.cursor_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
-			
-			# Plank Theme
+		except:
+			self.cursor_theme = False
+			self.cursorthemename = ""
+			self.cursor_colvariants = []
+			self.cursor_colorvariants = ""
+		
+		# Plank Theme
+		try:
 			self.plank_theme = self.config["system-theme"].getboolean('plank-theme')
 			self.plankthemename = self.config["system-theme"]['plank-theme-name']
 			self.plank_darkmode_suffix = self.config["system-theme"]['plank-dark-mode-suffix']
@@ -169,60 +192,40 @@ class TMBackend():
 				self.plank_colorvariants += str(var+",")
 				self.plank_colvariants.append(var.strip().strip('"').strip("'"))
 			self.plank_colorvariants = self.plank_colorvariants.strip(",")	# removes the last comma, it looks ugly with the comma
-			
-			# Use system time to determine state
-			self.use_systemtime = self.config['time-settings'].getboolean('use-system-time')
-			self.day_start_time = datetime.datetime.strptime(self.config['time-settings']['day-start-time'], '%H:%M:%S')
-			self.night_start_time = datetime.datetime.strptime(self.config['time-settings']['night-start-time'], '%H:%M:%S')
-			self.d2n_start_time = datetime.datetime.strptime(self.config['time-settings']['d2n-start-time'], '%H:%M:%S')
-			self.n2d_start_time = datetime.datetime.strptime(self.config['time-settings']['n2d-start-time'], '%H:%M:%S')
-			
-			theme_interval = self.config["time-settings"]['theme-interval']
-			self.theme_interval_HH = int(theme_interval.split(':')[0])
-			self.theme_interval_MM = int(theme_interval.split(':')[1])
-			self.theme_interval_SS = int(theme_interval.split(':')[2])
-			self.theme_interval_in_sec = self.theme_interval_HH*3600 + self.theme_interval_MM*60 + self.theme_interval_SS
 		except:
-			self.colvariants = []
-			self.colorvariants = ""
-			self.systemthemename = ""
-			self.darkmode_suffix = "Dark"
-			self.darkermode = False
-			self.darkermode_suffix = "Darker"
-			self.theme_name_style = 0
-			
-			self.icon_theme = True
-			self.iconthemename = ""
-			self.icon_darkmode_suffix = "Dark"
-			self.icon_colvariants = []
-			self.icon_colorvariants = ""
-			self.icon_theme_name_style = 0
-			
-			self.cursor_theme = False
-			self.cursorthemename = ""
-			self.cursor_colvariants = []
-			self.cursor_colorvariants = ""
-			
 			self.plank_theme = False
 			self.plankthemename = ""
 			self.plank_darkmode_suffix = "Dark"
 			self.plank_colvariants = []
 			self.plank_colorvariants = ""
 			self.plank_theme_name_style = 0
-			
+		
+		# Use system time to determine state
+		try:
+			self.use_systemtime = self.config['time-settings'].getboolean('use-system-time')
+			self.day_start_time = datetime.datetime.strptime(self.config['time-settings']['day-start-time'], '%H:%M:%S')
+			self.night_start_time = datetime.datetime.strptime(self.config['time-settings']['night-start-time'], '%H:%M:%S')
+			self.d2n_start_time = datetime.datetime.strptime(self.config['time-settings']['d2n-start-time'], '%H:%M:%S')
+			self.n2d_start_time = datetime.datetime.strptime(self.config['time-settings']['n2d-start-time'], '%H:%M:%S')
+		except:
 			self.use_systemtime = True
 			self.day_start_time = datetime.datetime.strptime('06:30:00', '%H:%M:%S')
 			self.night_start_time = datetime.datetime.strptime('18:30:00', '%H:%M:%S')
 			self.d2n_start_time = datetime.datetime.strptime('17:30:00', '%H:%M:%S')
 			self.n2d_start_time = datetime.datetime.strptime('05:30:00', '%H:%M:%S')
-			
+		
+		# Time interval to change themes
+		try:
+			theme_interval = self.config["time-settings"]['theme-interval']
+			self.theme_interval_HH = int(theme_interval.split(':')[0])
+			self.theme_interval_MM = int(theme_interval.split(':')[1])
+			self.theme_interval_SS = int(theme_interval.split(':')[2])
+			self.theme_interval_in_sec = self.theme_interval_HH*3600 + self.theme_interval_MM*60 + self.theme_interval_SS
+		except:
 			self.theme_interval_HH = 1
 			self.theme_interval_MM = 0
 			self.theme_interval_SS = 0
 			
-			
-	
-	
 	
 	def save_config(self):
 		if os.path.exists(CONFIG_FILE):
