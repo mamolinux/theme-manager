@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -47,7 +47,7 @@ class AboutWindow():
 	
 	def __init__(self, widget):
 		authors = ['Himadri Sekhar Basu <https://hsbasu.github.io>']
-		copyrights = "Copyright \xa9 2021-2022 Himadri Sekhar Basu"
+		copyrights = "Copyright \xa9 2021-2023 Himadri Sekhar Basu"
 		documenters = ['Himadri Sekhar Basu <https://hsbasu.github.io>']
 		mainatainers = ['Himadri Sekhar Basu <https://hsbasu.github.io>']
 		

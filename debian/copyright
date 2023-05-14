@@ -4,11 +4,11 @@ Upstream-Contact: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 Source: https://www.github.com/hsbasu/theme-manager
 
 Files: *
-Copyright: 2021-2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Copyright: 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 License: GPL-3.0+
 
 Files: debian/*
-Copyright: 2022 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Copyright: 2022-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 License: GPL-3.0+
 
 License: GPL-3.0+
