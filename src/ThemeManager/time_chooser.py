@@ -114,7 +114,8 @@ class TimeChooserDialog(Gtk.Dialog):
 
 		content = self.get_content_area()
 
-		grid = Gtk.Grid(halign=Gtk.Align.CENTER, spacing=5)
+		grid = Gtk.Grid(halign=Gtk.Align.CENTER)
+		grid.set_column_spacing(10)
 		content.pack_start(grid, False, False, 0)
 
 		grid.attach(Gtk.Label(self.markup(_("Hour")), use_markup=True), 0, 0, 1, 1)
