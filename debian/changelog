@@ -1,3 +1,34 @@
+theme-manager (1.1.5) stable; urgency=medium
+
+  * Fix build and publish workflow (#52)
+  * Fix updating plank theme (#53)
+    - gsettings in Older ubuntu (<23.04) does not need a path
+      and for >=23.04 a path is needed along with a schema key
+  * Update readme to version 1.1.4 (#54)
+  * Fix error when plank schema key is missing (#55)
+    - Fix subprocess.CalledProcessError when theme key
+      in plank's schema is missing or needs the schema path
+  * Prepare options to choose time (#56)
+    - Added time chooser button from cinnamon
+    - Added required system times
+  * Use system time to get current state (#57)
+    - Use system time to determine the current state
+      when internet is working and redshift cannot work
+    - User can choose between system time and redshift
+      to determine the current state
+    - User can set when day, night, day-to-night transition and
+      night-to-day transition starts.
+  * Update copyright year to 2023 (#58)
+    - Add copyright for time_chooser.py
+    - Add copyright for logger.ui
+  * fix spacing in time chooser widget (#59)
+  * Load configs separately for each parts; closes #41 (#60)
+    - try loading each theme parts separately
+      to prevent full loss of existing settings
+    - Add logger and translation in time_chooser module
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 21 May 2023 09:27:38 +0530
+
 theme-manager (1.1.4) stable; urgency=medium
 
   * Update readme to version 1.1.3 (#46)
