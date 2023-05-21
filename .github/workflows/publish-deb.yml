@@ -37,8 +37,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt install -y build-essential debhelper devscripts dh-python \
-          gir1.2-appindicator3-0.1 python3 python3-all python3-configobj python3-gi \
-          python3-setproctitle python3-sphinx python3-tldextract redshift
+          python3 python3-all python3-gi python3-setuptools python3-sphinx
       
       - name: build-deb
         run: |
