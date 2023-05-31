@@ -5,10 +5,10 @@
 </p>
 
 <p align="center">
-	<a href="#">
+	<a href="https://github.com/mamolinux/theme-manager/actions/workflows/ci.yml">
 		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/theme-manager/ci.yml?branch=master&label=CI%20Build" alt="CI build">
 	</a>
-	<a href="#">
+	<a href="https://github.com/mamolinux/theme-manager/actions/workflows/codeql-analysis.yml">
 		<img src="https://img.shields.io/github/actions/workflow/status/mamolinux/theme-manager/codeql-analysis.yml?branch=master&label=CodeQL%20Build" alt="CodeQL build">
 	</a>
 	<a href="https://github.com/mamolinux/theme-manager/blob/master/LICENSE">
