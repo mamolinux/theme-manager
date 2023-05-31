@@ -77,7 +77,7 @@ class ThemeManagerWindow():
 	def __init__(self, application):
 		
 		self.application = application
-		self.settings = Gio.Settings(schema_id="org.x.theme-manager")
+		self.settings = Gio.Settings(schema_id="org.mamolinux.theme-manager")
 		self.manager = TMBackend()
 		self.destop_manager = desktop_theme()
 		self.icon_theme = Gtk.IconTheme.get_default()

@@ -2,9 +2,8 @@
 <schemalist>
   <schema id="org.mamolinux.theme-manager" path="/org/mamolinux/theme-manager/">
     <child name="theme-settings" schema="org.mamolinux.theme-manager.ThemeSettings"/>
-    <child name="time-settings" schema="org.mamolinux.theme-manager.TimeSettings"/>
   </schema>
-  <schema id="org.mamolinux.theme-manager.ThemeSettings" path="/org/mamolinux/theme-manager/theme-settings">
+  <schema id="org.mamolinux.theme-manager.ThemeSettings" path="/org/mamolinux/theme-manager/theme-settings/">
     <key name="last-changed" type="i">
       <default>0</default>
       <summary>Theme update time</summary>
