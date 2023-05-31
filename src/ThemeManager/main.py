@@ -19,12 +19,15 @@
 #
 # Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
+
+# import the necessary modules!
 import argparse
 import gettext
 import locale
 import logging
 import sys
 
+# imports from current package
 from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, __version__
 from ThemeManager.indicator import TMIndicator
 from ThemeManager.gui import run_TMwindow

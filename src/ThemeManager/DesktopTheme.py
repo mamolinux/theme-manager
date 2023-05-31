@@ -25,6 +25,7 @@ import logging
 import os
 import subprocess
 
+# imports from current package
 from ThemeManager.common import TMBackend
 
 

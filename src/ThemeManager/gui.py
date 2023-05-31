@@ -34,6 +34,9 @@ warnings.filterwarnings("ignore")
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, Gio
 
+# imports from current package
+from ThemeManager.about_window import AboutWindow
+from ThemeManager.logger import LoggerWindow
 from ThemeManager.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, theme_styles, _async, TMBackend
 from ThemeManager.indicator import TMIndicator
 from ThemeManager.DesktopTheme import desktop_theme
@@ -189,7 +192,7 @@ class ThemeManagerWindow():
 		item = Gtk.ImageMenuItem()
 		item.set_image(Gtk.Image.new_from_icon_name("text-x-log", Gtk.IconSize.MENU))
 		item.set_label(_("Show Logs"))
-		item.connect("activate", TMIndicator.show_logs, self.window)
+		item.connect("activate", self.show_logs, self.window)
 		key, mod = Gtk.accelerator_parse("<Control>L")
 		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
 		menu.append(item)
@@ -197,7 +200,7 @@ class ThemeManagerWindow():
 		item = Gtk.ImageMenuItem()
 		item.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
 		item.set_label(_("About"))
-		item.connect("activate", TMIndicator.open_about, self.window)
+		item.connect("activate", self.open_about, self.window)
 		key, mod = Gtk.accelerator_parse("F1")
 		item.add_accelerator("activate", accel_group, key, mod, Gtk.AccelFlags.VISIBLE)
 		menu.append(item)
@@ -282,6 +285,14 @@ class ThemeManagerWindow():
 		self.user_interval_HH.set_value(self.manager.theme_interval_HH)
 		self.user_interval_MM.set_value(self.manager.theme_interval_MM)
 		self.user_interval_SS.set_value(self.manager.theme_interval_SS)
+	
+	def open_about(self, signal, widget):
+		about_window = AboutWindow(widget)
+		about_window.show()
+	
+	def show_logs(self, signal, widget):
+		loggerwindow = LoggerWindow(widget)
+		loggerwindow.show()
 	
 	def on_quit(self, widget):
 		self.application.quit()

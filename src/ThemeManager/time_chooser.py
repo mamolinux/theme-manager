@@ -21,6 +21,8 @@
 # Author: Linux Mint <root@linuxmint.com>
 # 		  Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
+
+# import the necessary modules!
 import datetime
 import gettext
 import gi
@@ -30,6 +32,7 @@ import logging
 gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 
+# imports from current package
 from ThemeManager.common import APP, LOCALE_DIR
 
 # i18n

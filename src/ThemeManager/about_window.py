@@ -20,8 +20,7 @@
 # Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 
-
-# third-party library
+# import the necessary modules!
 import gettext
 import gi
 import locale
@@ -29,6 +28,7 @@ import locale
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
+# imports from current package
 from ThemeManager.common import APP, LOCALE_DIR, __version__
 
 
@@ -62,7 +62,7 @@ class AboutWindow():
 		self.about_dlg.set_program_name(_("Theme Manager"))
 		self.about_dlg.set_version(__version__)
 
-		self.about_dlg.set_website_label("Official Website")
+		self.about_dlg.set_website_label(_("Official Website"))
 		self.about_dlg.set_website("https://hsbasu.github.io/theme-manager")
 		self.about_dlg.set_comments(_("A Python3-based GUI application to change different colour variants of GTK, Icon, Cursor and other themes."))
 		self.about_dlg.set_copyright(copyrights)
