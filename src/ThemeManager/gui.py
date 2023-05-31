@@ -355,5 +355,5 @@ class ThemeManagerWindow():
 		
 
 def run_TMwindow():
-	application = theme_manager("org.x.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
+	application = theme_manager("org.mamolinux.theme-manager", Gio.ApplicationFlags.FLAGS_NONE)
 	application.run()
