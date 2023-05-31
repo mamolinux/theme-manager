@@ -2,9 +2,8 @@ Source: theme-manager
 Section: utils
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-Build-Depends: debhelper-compat (= 11),
+Build-Depends: debhelper-compat (= 13),
                dh-python,
-               python3-gi,
                python3-setuptools,
                python3-sphinx,
                python3-all
@@ -20,6 +19,7 @@ Architecture: all
 Depends: gobject-introspection,
          gir1.2-gtk-3.0,
          gir1.2-appindicator3-0.1,
+         python3:any,
          python3-configobj,
          python3-gi,
          python3-setproctitle,
