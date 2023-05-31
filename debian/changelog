@@ -1,3 +1,23 @@
+theme-manager (1.1.6) stable; urgency=medium
+
+  * update workflow to publish deb package (#61)
+  * Update readme, and publishing and funding workflows (#62)
+    - Update readme to version 1.1.5
+    - Update workflow for publishing deb packages
+    - Update funding
+  * Update CI/CD links in README (#63)
+  * Separate logger and about window (#64)
+    - Relaod button for logger window
+      to update logs
+  * Rename schema file (#65)
+  * Update debian packaging and fix new schema (#66)
+    - Update compatibilty to 13
+    - Fix lintian
+    - Fix key in gschema file
+    - rename gschema in sources
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Wed, 31 May 2023 11:16:57 +0530
+
 theme-manager (1.1.5) stable; urgency=medium
 
   * Fix build and publish workflow (#52)
