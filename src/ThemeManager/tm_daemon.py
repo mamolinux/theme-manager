@@ -27,6 +27,7 @@ import logging
 
 from time import sleep
 
+# imports from current package
 from ThemeManager.common import APP, LOCALE_DIR, theme_styles, _async, TMBackend
 from ThemeManager.DesktopTheme import desktop_theme
 

@@ -32,8 +32,10 @@ from gi.repository import AppIndicator3
 gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
+# imports from current package
 from ThemeManager.about_window import AboutWindow
-from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, UI_PATH, theme_styles
+from ThemeManager.logger import LoggerWindow
+from ThemeManager.common import APP, LOCALE_DIR, theme_styles
 from ThemeManager.tm_daemon import TMState_monitor
 from ThemeManager.DesktopTheme import desktop_theme
 
@@ -46,7 +48,7 @@ _ = gettext.gettext
 
 # logger
 module_logger = logging.getLogger('ThemeManager.indicator')
-	
+
 class TMIndicator():
 	"""Class for system tray icon.
 	
@@ -79,13 +81,13 @@ class TMIndicator():
 		# Add "Show Logs" option in drop-down menu
 		item_show_log = Gtk.ImageMenuItem(_('Show Logs'))
 		item_show_log.set_image(Gtk.Image.new_from_icon_name("text-x-log", Gtk.IconSize.MENU))
-		item_show_log.connect("activate", TMIndicator.show_logs, Gtk.Window())
+		item_show_log.connect("activate", self.show_logs, Gtk.Window())
 		menu.append(item_show_log)
 		
 		# Add "About" option in drop-down menu
 		item_about = Gtk.ImageMenuItem(_('About'))
 		item_about.set_image(Gtk.Image.new_from_icon_name("help-about-symbolic", Gtk.IconSize.MENU))
-		item_about.connect("activate", TMIndicator.open_about, Gtk.Window())
+		item_about.connect("activate", self.open_about, Gtk.Window())
 		menu.append(item_about)
 		
 		# Add "Quit" option in drop-down menu
@@ -104,34 +106,9 @@ class TMIndicator():
 		self.nexttheme = self.daemon.manager.prep_theme_variants(self.state, self.theme_styles)
 		self.daemon.destop_manager.set_desktop_theme(self.state, self.nexttheme)
 	
-	def show_logs(self, widget):
-		try:
-			h = open(LOGFILE, encoding="utf-8")
-			s = h.readlines()
-			TMlogs = ""
-			for line in s:
-				TMlogs += line
-			h.close()
-		except Exception as e:
-			TMlogs = str(e)
-		
-		logger_ui = UI_PATH+"logger.ui"
-		log_builder = Gtk.Builder()
-		log_builder.add_from_file(logger_ui)
-		logger_dlg = log_builder.get_object("logger_dlg")
-		logger_dlg.set_transient_for(widget)
-		logger_dlg.set_title(_("Theme Manager Logs"))
-		logger_dlg.add_buttons(Gtk.STOCK_CLOSE, Gtk.ResponseType.CLOSE)
-		logview = log_builder.get_object("log_view")
-		logview.set_editable(False)
-		logview.set_wrap_mode(Gtk.WrapMode.WORD)
-		logview.get_buffer().set_text(TMlogs)
-		
-		def close(w, res):
-			if res == Gtk.ResponseType.CLOSE or res == Gtk.ResponseType.DELETE_EVENT:
-				w.destroy()
-		logger_dlg.connect("response", close)
-		logger_dlg.show()
+	def show_logs(self, signal, widget):
+		loggerwindow = LoggerWindow(widget)
+		loggerwindow.show()
 	
 	def open_about(self, widget):
 		about_window = AboutWindow(widget)
