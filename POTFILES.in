@@ -1,0 +1,16 @@
+data/org.mamolinux.theme-manager.gschema.xml.in
+data/theme-manager.desktop.in
+data/theme-manager-autostart.desktop.in
+src/ThemeManager/about_window.py
+src/ThemeManager/common.py
+src/ThemeManager/DesktopTheme.py
+src/ThemeManager/gui.py
+src/ThemeManager/indicator.py
+src/ThemeManager/__init__.py
+src/ThemeManager/logger.py
+src/ThemeManager/LoginTheme.py
+src/ThemeManager/main.py
+src/ThemeManager/time_chooser.py
+src/ThemeManager/tm_daemon.py
+src/ThemeManager/ui/logger.ui
+src/ThemeManager/ui/theme-manager.ui
