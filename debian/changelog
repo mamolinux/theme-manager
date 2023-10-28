@@ -1,3 +1,18 @@
+theme-manager (1.1.7) stable; urgency=medium
+
+  * Update readme with version 1.1.6 (#67)
+  * Update debian packaging (#68)
+    - Precompile gschema for other packaging
+    - Use dh-python to determine
+      python depends
+    - Use namespace to find package files
+    - Use mamolinux repo for bugs
+    - Add python depends to setup.cfg
+  * Initialize translation (#69)
+    - Create translation template file (.pot)
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sun, 29 Oct 2023 02:36:27 +0530
+
 theme-manager (1.1.6) stable; urgency=medium
 
   * update workflow to publish deb package (#61)
