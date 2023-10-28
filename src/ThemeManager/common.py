@@ -454,7 +454,3 @@ class TMBackend():
 		
 		module_logger.debug("Plank Theme: %s, Colour Variant: %s" % (planktheme, plankcolor))
 		return planktheme
-
-if __name__ == "__main__":
-	pass
-	
