@@ -50,7 +50,7 @@ class desktop_theme():
 			# Window border/Metacity
 			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[5])
 			# Color pref for gtk4 apps
-			os.system("gsettings set org.gnome.desktop.interface color-scheme %s" % nexttheme[6])
+			os.system("gsettings set org.x.apps.portal color-scheme %s" % nexttheme[6])
 			# Icon theme
 			if self.manager.icon_theme:
 				os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[7])
