@@ -37,7 +37,7 @@ jobs:
         run: |
           sudo apt-get update -qq
           sudo apt install -y build-essential debhelper devscripts dh-python \
-          python3 python3-all python3-gi python3-setuptools python3-sphinx
+          gettext python3 python3-all python3-gi python3-setuptools python3-sphinx
       
       - name: build-deb
         run: |
