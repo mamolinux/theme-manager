@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Theme Manager
 Comment=Very simple Python3-based GUI application to randomly choose and set different theme variants on linux.
+GenericName=Change theme automatically.
 Exec=theme-manager
 Icon=theme-manager
 Terminal=false

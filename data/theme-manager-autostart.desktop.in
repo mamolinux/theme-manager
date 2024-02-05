@@ -1,6 +1,7 @@
 [Desktop Entry]
 Name=Theme Manager Indicator
 Comment=Start indicator for Theme Manager.
+GenericName=Indicator to change theme automatically.
 Exec=theme-manager --indicator
 Icon=theme-manager
 Terminal=false
