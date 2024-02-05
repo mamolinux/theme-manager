@@ -13,3 +13,4 @@ dist/*
 usr/*
 debian/theme-manager/*
 debian/*debhelper*
+*.mo
