@@ -1,0 +1,71 @@
+name: theme-manager
+summary: Theme Manager
+description: |
+  Very simple Python3-based GUI application to set different
+  theme colour and mode (dark/light) variants on linux.
+version: git
+contact: https://hsbasu.github.io/theme-manager
+
+base: core22
+grade: stable
+confinement: strict
+
+slots:
+  theme-manager:
+    interface: dbus
+    bus: session
+    name: org.mamolinux.theme-manager
+
+apps:
+  theme-manager:
+    command: usr/bin/theme-manager
+    environment:
+      PYTHONPATH: $SNAP/lib/python3.10/site-packages:$SNAP/usr/lib/python3/dist-packages:$PYTHONPATH
+    desktop: usr/share/applications/theme-manager.desktop
+    extensions: [gnome]
+    plugs:
+      - desktop
+      - home
+      - gsettings
+    slots:
+      - theme-manager
+
+parts:
+  theme-manager:
+    source: https://github.com/mamolinux/theme-manager.git
+    source-branch: master
+    plugin: python
+    build-environment:
+      - PATH: $CRAFT_PART_INSTALL/bin:$PATH
+    build-packages:
+      - libglib2.0-bin  # to generate compiled gschema
+      - gettext  # To generate translation files
+    stage-packages:
+      - gobject-introspection
+      - gir1.2-gtk-3.0
+      - gir1.2-appindicator3-0.1
+      - libglib2.0-bin
+      - python3
+      - python3-configobj
+      - python3-gi
+      - python3-setproctitle
+      - python3-tldextract
+      - redshift
+    
+    override-build: |
+      set -eu
+      craftctl default
+      # By default, pip will install everything
+      # under '/', e.g. into '/bin', '/share'
+      # Move everything to from '/' to '/usr'
+      mv $CRAFT_PART_INSTALL/bin/theme-manager* $CRAFT_PART_INSTALL/usr/bin
+      cp -a $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons,locale} $CRAFT_PART_INSTALL/usr/share
+      rm -r $CRAFT_PART_INSTALL/share/{applications,glib-2.0,icons,locale}
+    
+    override-prime: |
+      set -eu
+      craftctl default
+      # Fix-up application icon lookup
+      sed --in-place 's|^Icon=.*|Icon=\${SNAP}/usr/share/icons/hicolor/scalable/apps/theme-manager.svg|' ${CRAFT_PRIME}/usr/share/applications/theme-manager.desktop
+      # Recompile all gschemas
+      glib-compile-schemas ${CRAFT_PRIME}/usr/share/glib-2.0/schemas/
