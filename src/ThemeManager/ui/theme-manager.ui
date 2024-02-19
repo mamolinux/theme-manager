@@ -54,296 +54,245 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
     <property name="default-height">600</property>
     <property name="icon-name">theme-manager</property>
     <child>
-      <object class="GtkBox">
+      <object class="GtkScrolledWindow">
         <property name="visible">True</property>
-        <property name="can-focus">False</property>
-        <property name="margin-start">10</property>
-        <property name="margin-end">10</property>
-        <property name="margin-top">10</property>
-        <property name="margin-bottom">10</property>
-        <property name="orientation">vertical</property>
-        <property name="spacing">5</property>
+        <property name="can-focus">True</property>
+        <property name="shadow-type">in</property>
         <child>
-          <object class="GtkNotebook">
+          <object class="GtkViewport">
             <property name="visible">True</property>
-            <property name="can-focus">True</property>
+            <property name="can-focus">False</property>
             <child>
-              <object class="GtkBox" id="system_theme">
+              <object class="GtkBox">
                 <property name="visible">True</property>
                 <property name="can-focus">False</property>
-                <property name="valign">center</property>
+                <property name="margin-start">10</property>
+                <property name="margin-end">10</property>
+                <property name="margin-top">10</property>
+                <property name="margin-bottom">10</property>
                 <property name="orientation">vertical</property>
+                <property name="spacing">5</property>
                 <child>
-                  <object class="GtkBox" id="theme_colors">
+                  <object class="GtkNotebook">
                     <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="valign">center</property>
-                    <property name="margin-start">5</property>
-                    <property name="margin-end">5</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="spacing">10</property>
+                    <property name="can-focus">True</property>
                     <child>
-                      <object class="GtkLabel">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="tooltip-text" translatable="yes">Example: Mint-Y theme from Linux Mint has many colour variants like Blue or Red. These are accessed as Mint-Y-Blue and Mint-Y-Red for light theme, and Mint-Y-Dark-Blue and Mint-Y-Dark-Red for dark theme. Enter the keywords for colours separated by comma as "Red, Blue" without the Double Quote.</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="margin-start">10</property>
-                        <property name="margin-end">10</property>
-                        <property name="margin-top">10</property>
-                        <property name="margin-bottom">10</property>
-                        <property name="label" translatable="yes">Colour Variants:</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkEntry" id="colour_variants">
-                        <property name="visible">True</property>
-                        <property name="can-focus">True</property>
-                        <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
-                        <property name="valign">center</property>
-                        <property name="hexpand">True</property>
-                        <property name="placeholder-text" translatable="yes">Enter available colour variants</property>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">0</property>
-                  </packing>
-                </child>
-                <child>
-                  <object class="GtkBox" id="theme_names">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="valign">center</property>
-                    <property name="margin-bottom">5</property>
-                    <property name="orientation">vertical</property>
-                    <property name="spacing">5</property>
-                    <child>
-                      <object class="GtkFrame">
+                      <object class="GtkBox" id="system_theme">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
                         <property name="valign">center</property>
-                        <property name="margin-start">5</property>
-                        <property name="margin-end">5</property>
-                        <property name="label-xalign">0.009999999776482582</property>
-                        <property name="shadow-type">out</property>
+                        <property name="orientation">vertical</property>
                         <child>
-                          <!-- n-columns=2 n-rows=5 -->
-                          <object class="GtkGrid">
+                          <object class="GtkBox" id="theme_colors">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
+                            <property name="valign">center</property>
                             <property name="margin-start">5</property>
                             <property name="margin-end">5</property>
                             <property name="margin-bottom">5</property>
-                            <property name="row-spacing">5</property>
-                            <property name="column-spacing">10</property>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">start</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">System theme name:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="system_theme_name">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="tooltip-text" translatable="yes">Enter name of system theme to be used.</property>
-                                <property name="valign">center</property>
-                                <property name="hexpand">True</property>
-                                <property name="placeholder-text" translatable="yes">Enter system theme name</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Dark Mode Suffix:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="dark_mode_name">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="tooltip-text" translatable="yes">Suffix for dark mode is case sensitive. For example, Yaru uses suffix "-dark" to distinguish from light theme. In contrast, Mint uses "Dark".</property>
-                                <property name="hexpand">True</property>
-                                <property name="placeholder-text" translatable="yes">Enter suffix for dark mode.</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Darker Mode Available:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkSwitch" id="darker_switch">
-                                <property name="visible">True</property>
-                                <property name="can-focus">True</property>
-                                <property name="tooltip-text" translatable="yes">Mint used to provide a theme mode with a mix of light and dark components called as "Darker". Sucharu provides the same with suffix "darker".</property>
-                                <property name="halign">start</property>
-                                <property name="valign">center</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">2</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="darker_mode_label">
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Darker Mode Suffix:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkEntry" id="darker_mode_name">
-                                <property name="can-focus">True</property>
-                                <property name="tooltip-text" translatable="yes">Suffix for darker mode is case sensitive. For example, Mint used to provide a theme with a mix of light and dark components called as "Darker". Sucharu provides the same with suffix "darker".</property>
-                                <property name="hexpand">True</property>
-                                <property name="placeholder-text" translatable="yes">Enter suffix for darker mode.</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">3</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="valign">center</property>
-                                <property name="label" translatable="yes">Theme Name Style:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">4</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkComboBox" id="theme_name_style_combo">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">1</property>
-                                <property name="top-attach">4</property>
-                              </packing>
-                            </child>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">System Theme</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="valign">center</property>
-                        <property name="margin-start">5</property>
-                        <property name="margin-end">5</property>
-                        <property name="label-xalign">0.009999999776482582</property>
-                        <property name="shadow-type">out</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="margin-start">5</property>
-                            <property name="margin-end">5</property>
-                            <property name="margin-top">5</property>
-                            <property name="margin-bottom">5</property>
-                            <property name="orientation">vertical</property>
                             <property name="spacing">10</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="tooltip-text" translatable="yes">Example: Mint-Y theme from Linux Mint has many colour variants like Blue or Red. These are accessed as Mint-Y-Blue and Mint-Y-Red for light theme, and Mint-Y-Dark-Blue and Mint-Y-Dark-Red for dark theme. Enter the keywords for colours separated by comma as "Red, Blue" without the Double Quote.</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="margin-start">10</property>
+                                <property name="margin-end">10</property>
+                                <property name="margin-top">10</property>
+                                <property name="margin-bottom">10</property>
+                                <property name="label" translatable="yes">Colour Variants:</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkEntry" id="colour_variants">
+                                <property name="visible">True</property>
+                                <property name="can-focus">True</property>
+                                <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
+                                <property name="valign">center</property>
+                                <property name="hexpand">True</property>
+                                <property name="placeholder-text" translatable="yes">Enter available colour variants</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox" id="theme_names">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="valign">center</property>
+                            <property name="margin-bottom">5</property>
+                            <property name="orientation">vertical</property>
+                            <property name="spacing">5</property>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="valign">center</property>
                                 <property name="margin-start">5</property>
                                 <property name="margin-end">5</property>
-                                <property name="margin-bottom">5</property>
-                                <property name="spacing">10</property>
+                                <property name="label-xalign">0.009999999776482582</property>
+                                <property name="shadow-type">out</property>
                                 <child>
+                                  <!-- n-columns=2 n-rows=5 -->
+                                  <object class="GtkGrid">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="row-spacing">5</property>
+                                    <property name="column-spacing">10</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">start</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">System theme name:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="system_theme_name">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="tooltip-text" translatable="yes">Enter name of system theme to be used.</property>
+                                        <property name="valign">center</property>
+                                        <property name="hexpand">True</property>
+                                        <property name="placeholder-text" translatable="yes">Enter system theme name</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">1</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Dark Mode Suffix:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="dark_mode_name">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="tooltip-text" translatable="yes">Suffix for dark mode is case sensitive. For example, Yaru uses suffix "-dark" to distinguish from light theme. In contrast, Mint uses "Dark".</property>
+                                        <property name="hexpand">True</property>
+                                        <property name="placeholder-text" translatable="yes">Enter suffix for dark mode.</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">1</property>
+                                        <property name="top-attach">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Darker Mode Available:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkSwitch" id="darker_switch">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">True</property>
+                                        <property name="tooltip-text" translatable="yes">Mint used to provide a theme mode with a mix of light and dark components called as "Darker". Sucharu provides the same with suffix "darker".</property>
+                                        <property name="halign">start</property>
+                                        <property name="valign">center</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">1</property>
+                                        <property name="top-attach">2</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="darker_mode_label">
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Darker Mode Suffix:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">3</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkEntry" id="darker_mode_name">
+                                        <property name="can-focus">True</property>
+                                        <property name="tooltip-text" translatable="yes">Suffix for darker mode is case sensitive. For example, Mint used to provide a theme with a mix of light and dark components called as "Darker". Sucharu provides the same with suffix "darker".</property>
+                                        <property name="hexpand">True</property>
+                                        <property name="placeholder-text" translatable="yes">Enter suffix for darker mode.</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">1</property>
+                                        <property name="top-attach">3</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="valign">center</property>
+                                        <property name="label" translatable="yes">Theme Name Style:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">4</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkComboBox" id="theme_name_style_combo">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">1</property>
+                                        <property name="top-attach">4</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child type="label">
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Change Icon theme:</property>
+                                    <property name="label" translatable="yes">System Theme</property>
                                   </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkSwitch" id="icon_switch">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="active">True</property>
-                                  </object>
-                                  <packing>
-                                    <property name="expand">False</property>
-                                    <property name="fill">True</property>
-                                    <property name="position">1</property>
-                                  </packing>
                                 </child>
                               </object>
                               <packing>
@@ -353,118 +302,529 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                               </packing>
                             </child>
                             <child>
-                              <!-- n-columns=2 n-rows=4 -->
-                              <object class="GtkGrid" id="icon_settings">
+                              <object class="GtkFrame">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="valign">center</property>
                                 <property name="margin-start">5</property>
                                 <property name="margin-end">5</property>
-                                <property name="margin-bottom">5</property>
-                                <property name="row-spacing">5</property>
-                                <property name="column-spacing">10</property>
+                                <property name="label-xalign">0.009999999776482582</property>
+                                <property name="shadow-type">out</property>
                                 <child>
+                                  <object class="GtkBox">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="orientation">vertical</property>
+                                    <property name="spacing">10</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-start">5</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="margin-bottom">5</property>
+                                        <property name="spacing">10</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Change Icon theme:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkSwitch" id="icon_switch">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="active">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <!-- n-columns=2 n-rows=4 -->
+                                      <object class="GtkGrid" id="icon_settings">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-start">5</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="margin-bottom">5</property>
+                                        <property name="row-spacing">5</property>
+                                        <property name="column-spacing">10</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Icon theme name:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="icon_theme_name">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Enter name of Icon theme to be used.</property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter Icon theme name</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Icon Colour Variants:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="icon_colour_variants">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter available colour variants for icons</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Dark Mode Suffix:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">2</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="icon_dark_mode_name">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Suffix for dark mode is case sensitive. For example, Yaru uses suffix "-dark" to distinguish from light theme. In contrast, Mint uses "Dark".</property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter suffix for dark mode for icons</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">2</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Icon Theme Name Style:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">3</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkComboBox" id="icon_theme_name_style_combo">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">3</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">3</property>
+                                      </packing>
+                                    </child>
+                                  </object>
+                                </child>
+                                <child type="label">
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Icon theme name:</property>
+                                    <property name="label" translatable="yes">Icon</property>
                                   </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">0</property>
-                                  </packing>
                                 </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">1</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="valign">center</property>
+                                <property name="margin-start">5</property>
+                                <property name="margin-end">5</property>
+                                <property name="label-xalign">0.009999999776482582</property>
+                                <property name="shadow-type">out</property>
                                 <child>
-                                  <object class="GtkEntry" id="icon_theme_name">
+                                  <object class="GtkBox">
                                     <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Enter name of Icon theme to be used.</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter Icon theme name</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="orientation">vertical</property>
+                                    <property name="spacing">10</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-bottom">5</property>
+                                        <property name="spacing">10</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">start</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Change Cursor theme:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkSwitch" id="cursor_switch">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <!-- n-columns=2 n-rows=2 -->
+                                      <object class="GtkGrid" id="cursor_settings">
+                                        <property name="can-focus">False</property>
+                                        <property name="row-spacing">5</property>
+                                        <property name="column-spacing">10</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Cursor Icon theme name:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="cursor_theme_name">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Enter name of cursor theme to be used.</property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter available cursor theme name</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Cursor Colour Variants:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="cursor_colour_variants">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter available colour variants for cursors</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">1</property>
+                                      </packing>
+                                    </child>
                                   </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">0</property>
-                                  </packing>
                                 </child>
-                                <child>
+                                <child type="label">
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Icon Colour Variants:</property>
+                                    <property name="label" translatable="yes">Cursor</property>
                                   </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">1</property>
-                                  </packing>
                                 </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkFrame">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="valign">center</property>
+                                <property name="margin-start">5</property>
+                                <property name="margin-end">5</property>
+                                <property name="label-xalign">0.009999999776482582</property>
+                                <property name="shadow-type">out</property>
                                 <child>
-                                  <object class="GtkEntry" id="icon_colour_variants">
+                                  <object class="GtkBox">
                                     <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter available colour variants for icons</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="orientation">vertical</property>
+                                    <property name="spacing">10</property>
+                                    <child>
+                                      <object class="GtkBox">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-start">5</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="margin-bottom">5</property>
+                                        <property name="spacing">10</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Change Plank theme:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkSwitch" id="plank_switch">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                          </object>
+                                          <packing>
+                                            <property name="expand">False</property>
+                                            <property name="fill">True</property>
+                                            <property name="position">1</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <!-- n-columns=2 n-rows=4 -->
+                                      <object class="GtkGrid" id="plank_settings">
+                                        <property name="can-focus">False</property>
+                                        <property name="margin-start">5</property>
+                                        <property name="margin-end">5</property>
+                                        <property name="margin-bottom">5</property>
+                                        <property name="row-spacing">5</property>
+                                        <property name="column-spacing">10</property>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Plank theme name:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="plank_theme_name">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Enter name of plank theme to be used.</property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter Plank theme name</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">0</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Plank Colour Variants:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="plank_colour_variants">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter available colour variants for plank themes</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">1</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Dark Mode Suffix:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">2</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkEntry" id="plank_dark_mode_name">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">True</property>
+                                            <property name="tooltip-text" translatable="yes">Suffix for dark mode is case sensitive. For example, Yaru uses suffix "-dark" to distinguish from light theme. In contrast, Mint uses "Dark".</property>
+                                            <property name="valign">center</property>
+                                            <property name="hexpand">True</property>
+                                            <property name="placeholder-text" translatable="yes">Enter suffix for dark mode for plank thems</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">2</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkLabel">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                            <property name="halign">end</property>
+                                            <property name="valign">center</property>
+                                            <property name="label" translatable="yes">Plank Theme Name Style:</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">0</property>
+                                            <property name="top-attach">3</property>
+                                          </packing>
+                                        </child>
+                                        <child>
+                                          <object class="GtkComboBox" id="plank_theme_name_style_combo">
+                                            <property name="visible">True</property>
+                                            <property name="can-focus">False</property>
+                                          </object>
+                                          <packing>
+                                            <property name="left-attach">1</property>
+                                            <property name="top-attach">3</property>
+                                          </packing>
+                                        </child>
+                                      </object>
+                                      <packing>
+                                        <property name="expand">False</property>
+                                        <property name="fill">True</property>
+                                        <property name="position">3</property>
+                                      </packing>
+                                    </child>
                                   </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">1</property>
-                                  </packing>
                                 </child>
-                                <child>
+                                <child type="label">
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Dark Mode Suffix:</property>
+                                    <property name="label" translatable="yes">Plank</property>
                                   </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="icon_dark_mode_name">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Suffix for dark mode is case sensitive. For example, Yaru uses suffix "-dark" to distinguish from light theme. In contrast, Mint uses "Dark".</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter suffix for dark mode for icons</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Icon Theme Name Style:</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">3</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkComboBox" id="icon_theme_name_style_combo">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">3</property>
-                                  </packing>
                                 </child>
                               </object>
                               <packing>
@@ -474,53 +834,84 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                               </packing>
                             </child>
                           </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Icon</property>
-                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">1</property>
+                          </packing>
                         </child>
                       </object>
+                    </child>
+                    <child type="tab">
+                      <object class="GtkLabel" id="system">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-text" translatable="yes">Change system themes like desktop or shell themes, and GTK, metacity, icon and cursor themes on linux.</property>
+                        <property name="margin-bottom">5</property>
+                        <property name="label" translatable="yes">System Theme</property>
+                      </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">1</property>
+                        <property name="tab-fill">False</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkFrame">
+                      <object class="GtkBox" id="login_theme">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="valign">center</property>
-                        <property name="margin-start">5</property>
-                        <property name="margin-end">5</property>
-                        <property name="label-xalign">0.009999999776482582</property>
-                        <property name="shadow-type">out</property>
+                        <property name="orientation">vertical</property>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                        <child>
+                          <placeholder/>
+                        </child>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                      </packing>
+                    </child>
+                    <child type="tab">
+                      <object class="GtkLabel" id="login">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="tooltip-text" translatable="yes">Change login or display manager themes like lightDM, GDM etc.</property>
+                        <property name="label" translatable="yes">Login Theme</property>
+                      </object>
+                      <packing>
+                        <property name="position">1</property>
+                        <property name="tab-fill">False</property>
+                      </packing>
+                    </child>
+                    <child>
+                      <object class="GtkBox">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="margin-top">5</property>
+                        <property name="margin-bottom">5</property>
+                        <property name="orientation">vertical</property>
                         <child>
                           <object class="GtkBox">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-start">5</property>
-                            <property name="margin-end">5</property>
-                            <property name="margin-top">5</property>
-                            <property name="margin-bottom">5</property>
                             <property name="orientation">vertical</property>
-                            <property name="spacing">10</property>
                             <child>
                               <object class="GtkBox">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
+                                <property name="margin-start">5</property>
+                                <property name="margin-end">5</property>
                                 <property name="margin-bottom">5</property>
                                 <property name="spacing">10</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">start</property>
+                                    <property name="halign">end</property>
                                     <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Change Cursor theme:</property>
+                                    <property name="label" translatable="yes">Use system time:</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -529,7 +920,7 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSwitch" id="cursor_switch">
+                                  <object class="GtkSwitch" id="system_time_switch">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
                                   </object>
@@ -547,63 +938,176 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                               </packing>
                             </child>
                             <child>
-                              <!-- n-columns=2 n-rows=2 -->
-                              <object class="GtkGrid" id="cursor_settings">
+                              <object class="GtkBox">
+                                <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="row-spacing">5</property>
-                                <property name="column-spacing">10</property>
+                                <property name="orientation">vertical</property>
+                                <child>
+                                  <!-- n-columns=2 n-rows=2 -->
+                                  <object class="GtkGrid" id="system_time_grid">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="row-spacing">5</property>
+                                    <property name="column-spacing">5</property>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="yes">Day starts at:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="yes">Night starts at:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
+                                  </packing>
+                                </child>
+                                <child>
+                                  <!-- n-columns=2 n-rows=2 -->
+                                  <object class="GtkGrid" id="system_time_transition_grid">
+                                    <property name="visible">True</property>
+                                    <property name="can-focus">False</property>
+                                    <property name="margin-start">5</property>
+                                    <property name="margin-end">5</property>
+                                    <property name="margin-top">5</property>
+                                    <property name="margin-bottom">5</property>
+                                    <property name="row-spacing">5</property>
+                                    <property name="column-spacing">5</property>
+                                    <child>
+                                      <object class="GtkLabel" id="d2n_start_label">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="yes">Day to Night Transition starts at:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">0</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <object class="GtkLabel" id="n2d_start_label">
+                                        <property name="visible">True</property>
+                                        <property name="can-focus">False</property>
+                                        <property name="halign">end</property>
+                                        <property name="label" translatable="yes">Night to Day Transition starts at:</property>
+                                      </object>
+                                      <packing>
+                                        <property name="left-attach">0</property>
+                                        <property name="top-attach">1</property>
+                                      </packing>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                    <child>
+                                      <placeholder/>
+                                    </child>
+                                  </object>
+                                  <packing>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">1</property>
+                                  </packing>
+                                </child>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">2</property>
+                              </packing>
+                            </child>
+                          </object>
+                          <packing>
+                            <property name="expand">False</property>
+                            <property name="fill">True</property>
+                            <property name="position">0</property>
+                          </packing>
+                        </child>
+                        <child>
+                          <object class="GtkBox">
+                            <property name="visible">True</property>
+                            <property name="can-focus">False</property>
+                            <property name="valign">start</property>
+                            <property name="spacing">10</property>
+                            <child>
+                              <object class="GtkLabel">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="tooltip-text" translatable="yes">Theme will be changed every HH hours, MM minutes, SS seconds.</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="margin-start">10</property>
+                                <property name="margin-end">10</property>
+                                <property name="margin-top">10</property>
+                                <property name="margin-bottom">10</property>
+                                <property name="label" translatable="yes">Interval between themes:</property>
+                              </object>
+                              <packing>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
+                              </packing>
+                            </child>
+                            <child>
+                              <object class="GtkBox" id="hr">
+                                <property name="visible">True</property>
+                                <property name="can-focus">False</property>
+                                <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Cursor Icon theme name:</property>
+                                    <property name="label" translatable="yes">Hour</property>
                                   </object>
                                   <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">0</property>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkEntry" id="cursor_theme_name">
+                                  <object class="GtkSpinButton" id="hour">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Enter name of cursor theme to be used.</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter available cursor theme name</property>
+                                    <property name="text" translatable="yes">0</property>
+                                    <property name="caps-lock-warning">False</property>
+                                    <property name="input-purpose">digits</property>
+                                    <property name="adjustment">HH</property>
+                                    <property name="numeric">True</property>
                                   </object>
                                   <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Cursor Colour Variants:</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">1</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="cursor_colour_variants">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter available colour variants for cursors</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">1</property>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
                                   </packing>
                                 </child>
                               </object>
@@ -613,56 +1117,16 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                                 <property name="position">1</property>
                               </packing>
                             </child>
-                          </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Cursor</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkFrame">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="valign">center</property>
-                        <property name="margin-start">5</property>
-                        <property name="margin-end">5</property>
-                        <property name="label-xalign">0.009999999776482582</property>
-                        <property name="shadow-type">out</property>
-                        <child>
-                          <object class="GtkBox">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="margin-start">5</property>
-                            <property name="margin-end">5</property>
-                            <property name="margin-top">5</property>
-                            <property name="margin-bottom">5</property>
-                            <property name="orientation">vertical</property>
-                            <property name="spacing">10</property>
                             <child>
-                              <object class="GtkBox">
+                              <object class="GtkBox" id="min">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="margin-start">5</property>
-                                <property name="margin-end">5</property>
-                                <property name="margin-bottom">5</property>
-                                <property name="spacing">10</property>
+                                <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Change Plank theme:</property>
+                                    <property name="label" translatable="yes">Minute</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
@@ -671,134 +1135,59 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkSwitch" id="plank_switch">
+                                  <object class="GtkSpinButton" id="minute">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
+                                    <property name="text" translatable="yes">0</property>
+                                    <property name="caps-lock-warning">False</property>
+                                    <property name="input-purpose">digits</property>
+                                    <property name="adjustment">MM</property>
+                                    <property name="numeric">True</property>
                                   </object>
                                   <packing>
                                     <property name="expand">False</property>
                                     <property name="fill">True</property>
-                                    <property name="position">1</property>
+                                    <property name="position">2</property>
                                   </packing>
                                 </child>
                               </object>
                               <packing>
                                 <property name="expand">False</property>
                                 <property name="fill">True</property>
-                                <property name="position">0</property>
+                                <property name="position">2</property>
                               </packing>
                             </child>
                             <child>
-                              <!-- n-columns=2 n-rows=4 -->
-                              <object class="GtkGrid" id="plank_settings">
+                              <object class="GtkBox" id="sec">
+                                <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="margin-start">5</property>
-                                <property name="margin-end">5</property>
-                                <property name="margin-bottom">5</property>
-                                <property name="row-spacing">5</property>
-                                <property name="column-spacing">10</property>
+                                <property name="orientation">vertical</property>
                                 <child>
                                   <object class="GtkLabel">
                                     <property name="visible">True</property>
                                     <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Plank theme name:</property>
+                                    <property name="label" translatable="yes">Second</property>
                                   </object>
                                   <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">0</property>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">0</property>
                                   </packing>
                                 </child>
                                 <child>
-                                  <object class="GtkEntry" id="plank_theme_name">
+                                  <object class="GtkSpinButton" id="second">
                                     <property name="visible">True</property>
                                     <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Enter name of plank theme to be used.</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter Plank theme name</property>
+                                    <property name="text" translatable="yes">0</property>
+                                    <property name="caps-lock-warning">False</property>
+                                    <property name="input-purpose">digits</property>
+                                    <property name="adjustment">SS</property>
+                                    <property name="numeric">True</property>
                                   </object>
                                   <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">0</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Plank Colour Variants:</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">1</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="plank_colour_variants">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Enter available colour variants. </property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter available colour variants for plank themes</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">1</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Dark Mode Suffix:</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkEntry" id="plank_dark_mode_name">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">True</property>
-                                    <property name="tooltip-text" translatable="yes">Suffix for dark mode is case sensitive. For example, Yaru uses suffix "-dark" to distinguish from light theme. In contrast, Mint uses "Dark".</property>
-                                    <property name="valign">center</property>
-                                    <property name="hexpand">True</property>
-                                    <property name="placeholder-text" translatable="yes">Enter suffix for dark mode for plank thems</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">2</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkLabel">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                    <property name="halign">end</property>
-                                    <property name="valign">center</property>
-                                    <property name="label" translatable="yes">Plank Theme Name Style:</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">0</property>
-                                    <property name="top-attach">3</property>
-                                  </packing>
-                                </child>
-                                <child>
-                                  <object class="GtkComboBox" id="plank_theme_name_style_combo">
-                                    <property name="visible">True</property>
-                                    <property name="can-focus">False</property>
-                                  </object>
-                                  <packing>
-                                    <property name="left-attach">1</property>
-                                    <property name="top-attach">3</property>
+                                    <property name="expand">False</property>
+                                    <property name="fill">True</property>
+                                    <property name="position">2</property>
                                   </packing>
                                 </child>
                               </object>
@@ -809,167 +1198,36 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                               </packing>
                             </child>
                           </object>
-                        </child>
-                        <child type="label">
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Plank</property>
-                          </object>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
-                      </packing>
-                    </child>
-                  </object>
-                  <packing>
-                    <property name="expand">False</property>
-                    <property name="fill">True</property>
-                    <property name="position">1</property>
-                  </packing>
-                </child>
-              </object>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="system">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="tooltip-text" translatable="yes">Change system themes like desktop or shell themes, and GTK, metacity, icon and cursor themes on linux.</property>
-                <property name="margin-bottom">5</property>
-                <property name="label" translatable="yes">System Theme</property>
-              </object>
-              <packing>
-                <property name="tab-fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox" id="login_theme">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-                <child>
-                  <placeholder/>
-                </child>
-              </object>
-              <packing>
-                <property name="position">1</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel" id="login">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="tooltip-text" translatable="yes">Change login or display manager themes like lightDM, GDM etc.</property>
-                <property name="label" translatable="yes">Login Theme</property>
-              </object>
-              <packing>
-                <property name="position">1</property>
-                <property name="tab-fill">False</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkBox">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="margin-top">5</property>
-                <property name="margin-bottom">5</property>
-                <property name="orientation">vertical</property>
-                <child>
-                  <object class="GtkBox">
-                    <property name="visible">True</property>
-                    <property name="can-focus">False</property>
-                    <property name="orientation">vertical</property>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="margin-start">5</property>
-                        <property name="margin-end">5</property>
-                        <property name="margin-bottom">5</property>
-                        <property name="spacing">10</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="halign">end</property>
-                            <property name="valign">center</property>
-                            <property name="label" translatable="yes">Use system time:</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSwitch" id="system_time_switch">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                          </object>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
                             <property name="position">1</property>
                           </packing>
                         </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
                         <child>
-                          <!-- n-columns=2 n-rows=2 -->
-                          <object class="GtkGrid" id="system_time_grid">
+                          <object class="GtkBox" id="user_interval_box">
                             <property name="visible">True</property>
                             <property name="can-focus">False</property>
-                            <property name="margin-start">5</property>
-                            <property name="margin-end">5</property>
-                            <property name="margin-top">5</property>
-                            <property name="margin-bottom">5</property>
-                            <property name="row-spacing">5</property>
-                            <property name="column-spacing">5</property>
+                            <property name="valign">start</property>
+                            <property name="spacing">10</property>
                             <child>
                               <object class="GtkLabel">
                                 <property name="visible">True</property>
                                 <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="label" translatable="yes">Day starts at:</property>
+                                <property name="tooltip-text" translatable="yes">Theme will be changed every HH hours, MM minutes, SS seconds.</property>
+                                <property name="halign">start</property>
+                                <property name="valign">center</property>
+                                <property name="margin-start">10</property>
+                                <property name="margin-end">10</property>
+                                <property name="margin-top">10</property>
+                                <property name="margin-bottom">10</property>
+                                <property name="label" translatable="yes">Interval between themes:</property>
                               </object>
                               <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">0</property>
+                                <property name="expand">False</property>
+                                <property name="fill">True</property>
+                                <property name="position">0</property>
                               </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="label" translatable="yes">Night starts at:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
                             </child>
                             <child>
                               <placeholder/>
@@ -978,62 +1236,23 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                           <packing>
                             <property name="expand">False</property>
                             <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <!-- n-columns=2 n-rows=2 -->
-                          <object class="GtkGrid" id="system_time_transition_grid">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="margin-start">5</property>
-                            <property name="margin-end">5</property>
-                            <property name="margin-top">5</property>
-                            <property name="margin-bottom">5</property>
-                            <property name="row-spacing">5</property>
-                            <property name="column-spacing">5</property>
-                            <child>
-                              <object class="GtkLabel" id="d2n_start_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="label" translatable="yes">Day to Night Transition starts at:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">0</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <object class="GtkLabel" id="n2d_start_label">
-                                <property name="visible">True</property>
-                                <property name="can-focus">False</property>
-                                <property name="halign">end</property>
-                                <property name="label" translatable="yes">Night to Day Transition starts at:</property>
-                              </object>
-                              <packing>
-                                <property name="left-attach">0</property>
-                                <property name="top-attach">1</property>
-                              </packing>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                            <child>
-                              <placeholder/>
-                            </child>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">1</property>
+                            <property name="position">2</property>
                           </packing>
                         </child>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
                         <property name="position">2</property>
+                      </packing>
+                    </child>
+                    <child type="tab">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Settings</property>
+                      </object>
+                      <packing>
+                        <property name="position">2</property>
+                        <property name="tab-fill">False</property>
                       </packing>
                     </child>
                   </object>
@@ -1044,148 +1263,35 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox">
+                  <object class="GtkButtonBox">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="valign">start</property>
                     <property name="spacing">10</property>
+                    <property name="layout-style">center</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkButton" id="save_button">
+                        <property name="label" translatable="yes">Save</property>
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="tooltip-text" translatable="yes">Theme will be changed every HH hours, MM minutes, SS seconds.</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
-                        <property name="margin-start">10</property>
-                        <property name="margin-end">10</property>
-                        <property name="margin-top">10</property>
-                        <property name="margin-bottom">10</property>
-                        <property name="label" translatable="yes">Interval between themes:</property>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
+                        <property name="expand">True</property>
                         <property name="fill">True</property>
                         <property name="position">0</property>
                       </packing>
                     </child>
                     <child>
-                      <object class="GtkBox" id="hr">
+                      <object class="GtkButton" id="randomize_theme_button">
+                        <property name="label" translatable="yes">Randomize</property>
                         <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Hour</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSpinButton" id="hour">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="text" translatable="yes">0</property>
-                            <property name="caps-lock-warning">False</property>
-                            <property name="input-purpose">digits</property>
-                            <property name="adjustment">HH</property>
-                            <property name="numeric">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
+                        <property name="can-focus">True</property>
+                        <property name="receives-default">True</property>
                       </object>
                       <packing>
-                        <property name="expand">False</property>
+                        <property name="expand">True</property>
                         <property name="fill">True</property>
                         <property name="position">1</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="min">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Minute</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSpinButton" id="minute">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="text" translatable="yes">0</property>
-                            <property name="caps-lock-warning">False</property>
-                            <property name="input-purpose">digits</property>
-                            <property name="adjustment">MM</property>
-                            <property name="numeric">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">2</property>
-                      </packing>
-                    </child>
-                    <child>
-                      <object class="GtkBox" id="sec">
-                        <property name="visible">True</property>
-                        <property name="can-focus">False</property>
-                        <property name="orientation">vertical</property>
-                        <child>
-                          <object class="GtkLabel">
-                            <property name="visible">True</property>
-                            <property name="can-focus">False</property>
-                            <property name="label" translatable="yes">Second</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">0</property>
-                          </packing>
-                        </child>
-                        <child>
-                          <object class="GtkSpinButton" id="second">
-                            <property name="visible">True</property>
-                            <property name="can-focus">True</property>
-                            <property name="text" translatable="yes">0</property>
-                            <property name="caps-lock-warning">False</property>
-                            <property name="input-purpose">digits</property>
-                            <property name="adjustment">SS</property>
-                            <property name="numeric">True</property>
-                          </object>
-                          <packing>
-                            <property name="expand">False</property>
-                            <property name="fill">True</property>
-                            <property name="position">2</property>
-                          </packing>
-                        </child>
-                      </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">3</property>
                       </packing>
                     </child>
                   </object>
@@ -1196,134 +1302,41 @@ Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkBox" id="user_interval_box">
+                  <object class="GtkFrame">
                     <property name="visible">True</property>
                     <property name="can-focus">False</property>
-                    <property name="valign">start</property>
-                    <property name="spacing">10</property>
+                    <property name="label-xalign">0.019999999552965164</property>
+                    <property name="shadow-type">out</property>
                     <child>
-                      <object class="GtkLabel">
+                      <object class="GtkStatusbar" id="status_bar">
                         <property name="visible">True</property>
                         <property name="can-focus">False</property>
-                        <property name="tooltip-text" translatable="yes">Theme will be changed every HH hours, MM minutes, SS seconds.</property>
-                        <property name="halign">start</property>
-                        <property name="valign">center</property>
                         <property name="margin-start">10</property>
                         <property name="margin-end">10</property>
                         <property name="margin-top">10</property>
                         <property name="margin-bottom">10</property>
-                        <property name="label" translatable="yes">Interval between themes:</property>
+                        <property name="orientation">vertical</property>
+                        <property name="spacing">2</property>
                       </object>
-                      <packing>
-                        <property name="expand">False</property>
-                        <property name="fill">True</property>
-                        <property name="position">0</property>
-                      </packing>
                     </child>
-                    <child>
-                      <placeholder/>
+                    <child type="label">
+                      <object class="GtkLabel">
+                        <property name="visible">True</property>
+                        <property name="can-focus">False</property>
+                        <property name="label" translatable="yes">Status Bar</property>
+                      </object>
                     </child>
                   </object>
                   <packing>
                     <property name="expand">False</property>
                     <property name="fill">True</property>
+                    <property name="pack-type">end</property>
                     <property name="position">2</property>
                   </packing>
                 </child>
               </object>
-              <packing>
-                <property name="position">2</property>
-              </packing>
-            </child>
-            <child type="tab">
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Settings</property>
-              </object>
-              <packing>
-                <property name="position">2</property>
-                <property name="tab-fill">False</property>
-              </packing>
             </child>
           </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">0</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkButtonBox">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="spacing">10</property>
-            <property name="layout-style">center</property>
-            <child>
-              <object class="GtkButton" id="save_button">
-                <property name="label" translatable="yes">Save</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">0</property>
-              </packing>
-            </child>
-            <child>
-              <object class="GtkButton" id="randomize_theme_button">
-                <property name="label" translatable="yes">Randomize</property>
-                <property name="visible">True</property>
-                <property name="can-focus">True</property>
-                <property name="receives-default">True</property>
-              </object>
-              <packing>
-                <property name="expand">True</property>
-                <property name="fill">True</property>
-                <property name="position">1</property>
-              </packing>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="position">1</property>
-          </packing>
-        </child>
-        <child>
-          <object class="GtkFrame">
-            <property name="visible">True</property>
-            <property name="can-focus">False</property>
-            <property name="label-xalign">0.019999999552965164</property>
-            <property name="shadow-type">out</property>
-            <child>
-              <object class="GtkStatusbar" id="status_bar">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="margin-start">10</property>
-                <property name="margin-end">10</property>
-                <property name="margin-top">10</property>
-                <property name="margin-bottom">10</property>
-                <property name="orientation">vertical</property>
-                <property name="spacing">2</property>
-              </object>
-            </child>
-            <child type="label">
-              <object class="GtkLabel">
-                <property name="visible">True</property>
-                <property name="can-focus">False</property>
-                <property name="label" translatable="yes">Status Bar</property>
-              </object>
-            </child>
-          </object>
-          <packing>
-            <property name="expand">False</property>
-            <property name="fill">True</property>
-            <property name="pack-type">end</property>
-            <property name="position">2</property>
-          </packing>
         </child>
       </object>
     </child>
