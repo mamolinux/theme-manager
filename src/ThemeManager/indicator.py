@@ -110,10 +110,9 @@ class TMIndicator():
 		loggerwindow = LoggerWindow(widget)
 		loggerwindow.show()
 	
-	def open_about(self, widget):
+	def open_about(self, signal, widget):
 		about_window = AboutWindow(widget)
 		about_window.show()
 	
 	def __quit(self, *args):
 		Gtk.main_quit()
-		
