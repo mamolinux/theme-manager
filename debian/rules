@@ -4,10 +4,11 @@
 # export DH_VERBOSE = 1
 
 export PYBUILD_NAME=theme-manager
-export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
+export PYBUILD_SYSTEM=pyproject
 
 %:
-	dh ${@} --with=python3 --buildsystem=pybuild
+	dh ${@} --with=python3 --buildsystem=meson
+
 
 # If you need to rebuild the Sphinx documentation
 # Add sphinxdoc to the dh --with line
@@ -23,11 +24,5 @@ export PYBUILD_INSTALL_ARGS_python3=--install-scripts=usr/bin
 #	docs/ usr/share/man/man1 # Manpage generator
 
 override_dh_install:
-	dh_install -O--buildsystem=pybuild
-	rm -rf debian/theme-manager/usr/lib/python*/dist-packages/ThemeManager/__pycache__
-	install -D -m 0644 debian/theme-manager.1 debian/theme-manager/usr/share/man/man1/theme-manager.1
+	dh_install -O--buildsystem=meson
 	install -D -m 0644 data/theme-manager-autostart.desktop.in debian/theme-manager/etc/xdg/autostart/theme-manager-autostart.desktop
-	rm -f debian/theme-manager/usr/share/glib-2.0/schemas/gschemas.compiled
-
-override_dh_auto_install:
-	dh_auto_install --destdir=$(CURDIR)/$(DEB_SOURCE) -O--buildsystem=pybuild

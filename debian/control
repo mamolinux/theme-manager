@@ -3,12 +3,14 @@ Section: utils
 Priority: optional
 Maintainer: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 Build-Depends: debhelper-compat (= 13),
+               desktop-file-utils,
                dh-python,
                gettext,
                libglib2.0-bin,
-               python3-all,
-               python3-setuptools,
-               python3-sphinx
+               libgtk-4-bin,
+               meson,
+               pybuild-plugin-pyproject,
+               python3,
 Standards-Version: 4.6.0
 Homepage: https://hsbasu.github.io/theme-manager
 #Vcs-Browser: https://salsa.debian.org/debian/theme-manager
@@ -20,7 +22,6 @@ Package: theme-manager
 Architecture: all
 Depends: gir1.2-gtk-3.0,
          gir1.2-appindicator3-0.1,
-         python3-tldextract,
          redshift,
          ${python3:Depends},
          ${misc:Depends}
