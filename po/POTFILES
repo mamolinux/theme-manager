@@ -1,3 +1,5 @@
+# List of source files containing translatable strings.
+# Please keep this file sorted alphabetically.
 data/org.mamolinux.theme-manager.gschema.xml.in
 data/theme-manager.desktop.in
 data/theme-manager-autostart.desktop.in

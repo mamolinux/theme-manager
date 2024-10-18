@@ -16,6 +16,7 @@ bindir = get_option('bindir')
 datadir = get_option('datadir')
 
 subdir('data')
+subdir('po')
 subdir('src')
 
 gnome.post_install(
