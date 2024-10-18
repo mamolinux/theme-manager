@@ -15,6 +15,7 @@ prefix = get_option('prefix')
 bindir = get_option('bindir')
 datadir = get_option('datadir')
 
+subdir('data')
 subdir('src')
 
 gnome.post_install(
