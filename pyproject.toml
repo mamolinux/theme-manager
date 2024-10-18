@@ -1,3 +1,55 @@
 [build-system]
-requires = ["setuptools>=42"]
-build-backend = "setuptools.build_meta"
+build-backend = 'mesonpy'
+requires = [
+	"meson >= 1.3.0",
+	"meson-python >= 0.14.0",
+  "setuptools>=59"
+]
+
+[project]
+name = "theme-manager"
+authors = [
+	{name = "Himadri Sekhar Basu", email = "hsb10@iitbbs.ac.in"},
+]
+description = "GUI to set different theme colour and mode (dark/light) variants on linux based on time."
+readme = {file = "README.md", content-type = "text/markdown"}
+license = {file = "LICENSE"}
+requires-python = ">=3.6"
+classifiers = [
+  "Development Status :: 5 - Production/Stable",
+  "Environment :: X11 Applications :: GTK",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved",
+  " :: GNU General Public License v3 or later (GPLv3+)",
+  "Operating System :: POSIX",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3 :: Only",
+  "Topic :: Accessories",
+]
+dependencies = [
+	"configobj",
+	"PyGObject",
+	"setproctitle",
+  "tldextract"
+]
+dynamic = ["version"]
+
+[project.urls]
+Homepage = "https://hsbasu.github.io/theme-manager"
+Repository = "https://www.github.com/mamolinux/theme-manager.git"
+Issues = "https://www.github.com/mamolinux/theme-manager/issues"
+
+# [project.scripts]
+# theme-manager = "ThemeManager.main:start_TM"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.setuptools.package-data]
+"*" = ["*VERSION", "*.ui"]
+
+[tool.setuptools.dynamic]
+version = {file = "src/ThemeManager/VERSION"}
+
+# [tool.meson-python.args]
+# setup = ['--default-library=static']
