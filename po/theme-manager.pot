@@ -14,7 +14,7 @@ msgstr ""
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/org.mamolinux.theme-manager.gschema.xml.in:9
@@ -27,7 +27,7 @@ msgstr ""
 
 #: data/theme-manager.desktop.in:3 src/ThemeManager/about_window.py:62
 #: src/ThemeManager/gui.py:90 src/ThemeManager/indicator.py:60
-#: src/ThemeManager/ui/theme-manager.ui:1334
+#: src/ThemeManager/ui/theme-manager.ui:1347
 msgid "Theme Manager"
 msgstr ""
 
@@ -97,21 +97,21 @@ msgid "Select a time"
 msgstr ""
 
 #: src/ThemeManager/time_chooser.py:119
-#: src/ThemeManager/ui/theme-manager.ui:1080
+#: src/ThemeManager/ui/theme-manager.ui:1089
 msgid "Hour"
 msgstr ""
 
 #: src/ThemeManager/time_chooser.py:121
-#: src/ThemeManager/ui/theme-manager.ui:1120
+#: src/ThemeManager/ui/theme-manager.ui:1129
 msgid "Minute"
 msgstr ""
 
 #: src/ThemeManager/time_chooser.py:123
-#: src/ThemeManager/ui/theme-manager.ui:1160
+#: src/ThemeManager/ui/theme-manager.ui:1169
 msgid "Second"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:89
+#: src/ThemeManager/ui/theme-manager.ui:98
 msgid ""
 "Example: Mint-Y theme from Linux Mint has many colour variants like Blue or "
 "Red. These are accessed as Mint-Y-Blue and Mint-Y-Red for light theme, and "
@@ -119,251 +119,251 @@ msgid ""
 "colours separated by comma as \"Red, Blue\" without the Double Quote."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:96
+#: src/ThemeManager/ui/theme-manager.ui:105
 msgid "Colour Variants:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:108
-#: src/ThemeManager/ui/theme-manager.ui:409
-#: src/ThemeManager/ui/theme-manager.ui:599
-#: src/ThemeManager/ui/theme-manager.ui:744
+#: src/ThemeManager/ui/theme-manager.ui:117
+#: src/ThemeManager/ui/theme-manager.ui:418
+#: src/ThemeManager/ui/theme-manager.ui:608
+#: src/ThemeManager/ui/theme-manager.ui:753
 msgid "Enter available colour variants. "
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:111
+#: src/ThemeManager/ui/theme-manager.ui:120
 msgid "Enter available colour variants"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:159
+#: src/ThemeManager/ui/theme-manager.ui:168
 msgid "System theme name:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:170
+#: src/ThemeManager/ui/theme-manager.ui:179
 msgid "Enter name of system theme to be used."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:173
+#: src/ThemeManager/ui/theme-manager.ui:182
 msgid "Enter system theme name"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:186
-#: src/ThemeManager/ui/theme-manager.ui:425
-#: src/ThemeManager/ui/theme-manager.ui:760
+#: src/ThemeManager/ui/theme-manager.ui:195
+#: src/ThemeManager/ui/theme-manager.ui:434
+#: src/ThemeManager/ui/theme-manager.ui:769
 msgid "Dark Mode Suffix:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:197
-#: src/ThemeManager/ui/theme-manager.ui:436
-#: src/ThemeManager/ui/theme-manager.ui:771
+#: src/ThemeManager/ui/theme-manager.ui:206
+#: src/ThemeManager/ui/theme-manager.ui:445
+#: src/ThemeManager/ui/theme-manager.ui:780
 msgid ""
 "Suffix for dark mode is case sensitive. For example, Yaru uses suffix \"-"
 "dark\" to distinguish from light theme. In contrast, Mint uses \"Dark\"."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:199
+#: src/ThemeManager/ui/theme-manager.ui:208
 msgid "Enter suffix for dark mode."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:212
+#: src/ThemeManager/ui/theme-manager.ui:221
 msgid "Darker Mode Available:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:223
+#: src/ThemeManager/ui/theme-manager.ui:232
 msgid ""
 "Mint used to provide a theme mode with a mix of light and dark components "
 "called as \"Darker\". Sucharu provides the same with suffix \"darker\"."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:237
+#: src/ThemeManager/ui/theme-manager.ui:246
 msgid "Darker Mode Suffix:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:247
+#: src/ThemeManager/ui/theme-manager.ui:256
 msgid ""
 "Suffix for darker mode is case sensitive. For example, Mint used to provide "
 "a theme with a mix of light and dark components called as \"Darker\". "
 "Sucharu provides the same with suffix \"darker\"."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:249
+#: src/ThemeManager/ui/theme-manager.ui:258
 msgid "Enter suffix for darker mode."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:262
+#: src/ThemeManager/ui/theme-manager.ui:271
 msgid "Theme Name Style:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:285
-#: src/ThemeManager/ui/theme-manager.ui:842
+#: src/ThemeManager/ui/theme-manager.ui:294
+#: src/ThemeManager/ui/theme-manager.ui:851
 msgid "System Theme"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:328
+#: src/ThemeManager/ui/theme-manager.ui:337
 msgid "Change Icon theme:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:371
+#: src/ThemeManager/ui/theme-manager.ui:380
 msgid "Icon theme name:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:382
+#: src/ThemeManager/ui/theme-manager.ui:391
 msgid "Enter name of Icon theme to be used."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:385
+#: src/ThemeManager/ui/theme-manager.ui:394
 msgid "Enter Icon theme name"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:398
+#: src/ThemeManager/ui/theme-manager.ui:407
 msgid "Icon Colour Variants:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:412
+#: src/ThemeManager/ui/theme-manager.ui:421
 msgid "Enter available colour variants for icons"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:439
+#: src/ThemeManager/ui/theme-manager.ui:448
 msgid "Enter suffix for dark mode for icons"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:452
+#: src/ThemeManager/ui/theme-manager.ui:461
 msgid "Icon Theme Name Style:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:482
+#: src/ThemeManager/ui/theme-manager.ui:491
 msgid "Icon"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:523
+#: src/ThemeManager/ui/theme-manager.ui:532
 msgid "Change Cursor theme:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:561
+#: src/ThemeManager/ui/theme-manager.ui:570
 msgid "Cursor Icon theme name:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:572
+#: src/ThemeManager/ui/theme-manager.ui:581
 msgid "Enter name of cursor theme to be used."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:575
+#: src/ThemeManager/ui/theme-manager.ui:584
 msgid "Enter available cursor theme name"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:588
+#: src/ThemeManager/ui/theme-manager.ui:597
 msgid "Cursor Colour Variants:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:602
+#: src/ThemeManager/ui/theme-manager.ui:611
 msgid "Enter available colour variants for cursors"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:622
+#: src/ThemeManager/ui/theme-manager.ui:631
 msgid "Cursor"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:665
+#: src/ThemeManager/ui/theme-manager.ui:674
 msgid "Change Plank theme:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:706
+#: src/ThemeManager/ui/theme-manager.ui:715
 msgid "Plank theme name:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:717
+#: src/ThemeManager/ui/theme-manager.ui:726
 msgid "Enter name of plank theme to be used."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:720
+#: src/ThemeManager/ui/theme-manager.ui:729
 msgid "Enter Plank theme name"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:733
+#: src/ThemeManager/ui/theme-manager.ui:742
 msgid "Plank Colour Variants:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:747
+#: src/ThemeManager/ui/theme-manager.ui:756
 msgid "Enter available colour variants for plank themes"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:774
+#: src/ThemeManager/ui/theme-manager.ui:783
 msgid "Enter suffix for dark mode for plank thems"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:787
+#: src/ThemeManager/ui/theme-manager.ui:796
 msgid "Plank Theme Name Style:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:817
+#: src/ThemeManager/ui/theme-manager.ui:826
 msgid "Plank"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:840
+#: src/ThemeManager/ui/theme-manager.ui:849
 msgid ""
 "Change system themes like desktop or shell themes, and GTK, metacity, icon "
 "and cursor themes on linux."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:871
+#: src/ThemeManager/ui/theme-manager.ui:880
 msgid "Change login or display manager themes like lightDM, GDM etc."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:872
+#: src/ThemeManager/ui/theme-manager.ui:881
 msgid "Login Theme"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:905
+#: src/ThemeManager/ui/theme-manager.ui:914
 msgid "Use system time:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:952
+#: src/ThemeManager/ui/theme-manager.ui:961
 msgid "Day starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:964
+#: src/ThemeManager/ui/theme-manager.ui:973
 msgid "Night starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1000
+#: src/ThemeManager/ui/theme-manager.ui:1009
 msgid "Day to Night Transition starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1012
+#: src/ThemeManager/ui/theme-manager.ui:1021
 msgid "Night to Day Transition starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1056
-#: src/ThemeManager/ui/theme-manager.ui:1208
+#: src/ThemeManager/ui/theme-manager.ui:1065
+#: src/ThemeManager/ui/theme-manager.ui:1217
 msgid "Theme will be changed every HH hours, MM minutes, SS seconds."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1063
-#: src/ThemeManager/ui/theme-manager.ui:1215
+#: src/ThemeManager/ui/theme-manager.ui:1072
+#: src/ThemeManager/ui/theme-manager.ui:1224
 msgid "Interval between themes:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1092
-#: src/ThemeManager/ui/theme-manager.ui:1132
-#: src/ThemeManager/ui/theme-manager.ui:1172
+#: src/ThemeManager/ui/theme-manager.ui:1101
+#: src/ThemeManager/ui/theme-manager.ui:1141
+#: src/ThemeManager/ui/theme-manager.ui:1181
 msgid "0"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1242
+#: src/ThemeManager/ui/theme-manager.ui:1251
 msgid "Settings"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1264
+#: src/ThemeManager/ui/theme-manager.ui:1273
 msgid "Save"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1277
+#: src/ThemeManager/ui/theme-manager.ui:1286
 msgid "Randomize"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1317
+#: src/ThemeManager/ui/theme-manager.ui:1326
 msgid "Status Bar"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1335
+#: src/ThemeManager/ui/theme-manager.ui:1348
 msgid "Choose themes randomly based on time"
 msgstr ""
