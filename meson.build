@@ -15,6 +15,8 @@ prefix = get_option('prefix')
 bindir = get_option('bindir')
 datadir = get_option('datadir')
 
+subdir('src')
+
 gnome.post_install(
      glib_compile_schemas: true,
     gtk_update_icon_cache: true,
