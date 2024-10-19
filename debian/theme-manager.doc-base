@@ -1,0 +1,13 @@
+Document: theme-manager
+Title: Debian Battery Monitor Manual
+Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+Abstract: This manual describes what
+ Theme Manager is and how it can be used
+ to change themes for different componets
+ automatically with time on linux desktop
+ environments.
+Section: System/Administration
+
+Format: HTML
+Index: /usr/share/doc/theme-manager/html/index.html
+Files: /usr/share/doc/theme-manager/html/*.html
