@@ -29,6 +29,7 @@ import sys
 
 # imports from current package
 from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, __version__
+from ThemeManager.cli_args import command_line_args
 from ThemeManager.indicator import TMIndicator
 from ThemeManager.gui import run_TMwindow
 
@@ -39,17 +40,10 @@ gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
-description = 'A Python3-based GUI application to change different colour variants of GTK, Icon, Cursor and other themes.'
-
 # Parse arguments
-parser = argparse.ArgumentParser(prog=APP, description=description, conflict_handler='resolve')
-
-# parser.add_argument('', action='store_true', dest='start_window', default=True, help=("Start Theme Manager window"))
-parser.add_argument('-i', '--indicator', action='store_true', dest='start_indicator', default=False, help=("Start Theme Manager Indicator"))
-parser.add_argument('-v', '--verbose', action='store_true', dest='show_debug', default=False, help=("Print debug messages to stdout i.e. terminal"))
-parser.add_argument('-V', '--version', action='store_true', dest='show_version', default=False, help=("Show version and exit"))
-
+parser = command_line_args()
 args = parser.parse_args()
+
 args.start_window = True
 
 if args.show_version:
