@@ -1,5 +1,6 @@
 python_sources = [
   'about_window.py',
+  'cli_args.py',
 	'common.py',
 	'DesktopTheme.py',
 	'gui.py',
