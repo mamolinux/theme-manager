@@ -27,3 +27,6 @@ override_dh_auto_build:
 override_dh_install:
 	dh_install -O--buildsystem=meson
 	install -D -m 0644 data/theme-manager-autostart.desktop.in debian/theme-manager/etc/xdg/autostart/theme-manager-autostart.desktop
+
+override_dh_python3:
+	dh_python3 -O--buildsystem=meson --requires debian/requires.txt
