@@ -11,6 +11,7 @@ Build-Depends: debhelper-compat (= 13),
                meson,
                pybuild-plugin-pyproject,
                python3,
+               python3-docutils,
                python3-sphinx,
                python3-sphinx-argparse
 Standards-Version: 4.6.0
