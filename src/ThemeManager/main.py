@@ -21,10 +21,10 @@
 #
 
 # import the necessary modules!
-import argparse
 import gettext
 import locale
 import logging
+import setproctitle
 import sys
 
 # imports from current package
@@ -39,6 +39,8 @@ locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
+
+setproctitle.setproctitle(APP)
 
 # Parse arguments
 parser = command_line_args()
