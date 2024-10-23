@@ -25,11 +25,10 @@ import argparse
 import gettext
 import locale
 
-# imports from current package
-from ThemeManager.common import APP, LOCALE_DIR
-
 
 # i18n
+APP = '@appname@'
+LOCALE_DIR = "@localedir@"
 locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)

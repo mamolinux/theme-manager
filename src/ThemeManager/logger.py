@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -29,7 +29,8 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 # imports from current package
-from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, UI_PATH
+from ThemeManager.cli_args import APP, LOCALE_DIR
+from ThemeManager.common import LOGFILE, UI_PATH
 
 
 # i18n

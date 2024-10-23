@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -29,7 +29,8 @@ gi.require_version('Gtk', '3.0')
 from gi.repository import Gtk
 
 # imports from current package
-from ThemeManager.common import APP, LOCALE_DIR, __version__
+from ThemeManager.cli_args import APP, LOCALE_DIR, description
+from ThemeManager.common import __version__
 
 
 # i18n
@@ -64,7 +65,7 @@ class AboutWindow():
 
 		self.about_dlg.set_website_label(_("Official Website"))
 		self.about_dlg.set_website("https://hsbasu.github.io/theme-manager")
-		self.about_dlg.set_comments(_("A Python3-based GUI application to change different colour variants of GTK, Icon, Cursor and other themes."))
+		self.about_dlg.set_comments(description)
 		self.about_dlg.set_copyright(copyrights)
 
 		self.about_dlg.set_authors(authors)

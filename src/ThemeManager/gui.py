@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -37,7 +37,8 @@ from gi.repository import Gtk, Gio
 # imports from current package
 from ThemeManager.about_window import AboutWindow
 from ThemeManager.logger import LoggerWindow
-from ThemeManager.common import APP, CONFIG_FILE, LOCALE_DIR, UI_PATH, __version__, theme_styles, _async, TMBackend
+from ThemeManager.cli_args import APP, LOCALE_DIR
+from ThemeManager.common import CONFIG_FILE, UI_PATH, __version__, theme_styles, _async, TMBackend
 from ThemeManager.indicator import TMIndicator
 from ThemeManager.DesktopTheme import desktop_theme
 from ThemeManager.time_chooser import TimeChooserButton

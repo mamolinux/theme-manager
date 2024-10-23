@@ -47,11 +47,11 @@ Very simple Python3-based GUI application to set different theme colour and mode
 	- [Runtime Dependencies](#runtime-dependencies)
 	- [Debian/Ubuntu based systems](#debianubuntu-based-distro)
 	- [Other Linux-based systems](#other-linux-based-distro)
-	- [Installation](#installation)
-		- [1. Download and install binary files](#1-download-and-install-binary-files)
-		- [2. Build and Install from source](#2-build-and-install-from-source)
-			- [Debian/Ubuntu based systems](#debianubuntu-based-systems)
-			- [Other Linux-based systems](#other-linux-based-systems)
+- [Installation](#installation)
+	- [1. Download and install binary files](#1-download-and-install-binary-files)
+	- [2. Build and Install from source](#2-build-and-install-from-source)
+		- [Debian/Ubuntu based systems](#debianubuntu-based-systems)
+		- [Other Linux-based systems](#other-linux-based-systems)
 - [User Manual](#user-manual)
 - [Issue Tracking and Contributing](#issue-tracking-and-contributing)
 	- [For Developers](#for-developers)
@@ -167,7 +167,7 @@ cd theme-manager-master
 		meson compile -C builddir --verbose
 		sudo meson install -C builddir
 		```
-		This step requires **Administrative Privilege**. So, be careful before using this. To **remove** the installed files, run:
+		The last step requires **Administrative Privilege**. So, be careful before using this. To **remove** the installed files, run:
 		```
 		sudo ninja uninstall -C builddir
 		```
