@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -26,3 +26,4 @@ import gi
 import locale
 
 # imports from current package
+from ThemeManager.cli_args import APP, LOCALE_DIR

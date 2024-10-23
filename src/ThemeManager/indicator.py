@@ -1,4 +1,4 @@
-# Copyright (C) 2021-2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager.
 #
@@ -35,7 +35,8 @@ from gi.repository import Gtk
 # imports from current package
 from ThemeManager.about_window import AboutWindow
 from ThemeManager.logger import LoggerWindow
-from ThemeManager.common import APP, LOCALE_DIR, theme_styles
+from ThemeManager.cli_args import APP, LOCALE_DIR
+from ThemeManager.common import theme_styles
 from ThemeManager.tm_daemon import TMState_monitor
 from ThemeManager.DesktopTheme import desktop_theme
 

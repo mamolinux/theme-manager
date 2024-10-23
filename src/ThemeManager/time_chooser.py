@@ -1,4 +1,4 @@
-# Copyright (C) 2023 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
+# Copyright (C) 2023-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
 #
 # This file is part of theme-manager and parts of this file is
 # copied from cinnamon's ChooserButtonWidgets.py
@@ -33,7 +33,7 @@ gi.require_version("Gtk", "3.0")
 from gi.repository import Gtk, GLib
 
 # imports from current package
-from ThemeManager.common import APP, LOCALE_DIR
+from ThemeManager.cli_args import APP, LOCALE_DIR
 
 # i18n
 locale.bindtextdomain(APP, LOCALE_DIR)
