@@ -29,8 +29,8 @@
 	<a href="#download-latest-version">
 		<img src="https://img.shields.io/github/downloads/mamolinux/theme-manager/total?label=Downloads" alt="Downloads">
 	</a>
-	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.7/theme-manager_1.1.7_all.deb">
-		<img src="https://img.shields.io/github/downloads/mamolinux/theme-manager/1.1.7/theme-manager_1.1.7_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
+	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.8/theme-manager_1.1.8_all.deb">
+		<img src="https://img.shields.io/github/downloads/mamolinux/theme-manager/1.1.8/theme-manager_1.1.8_all.deb?color=blue&label=Downloads%40Latest%20Binary" alt="GitHub release (latest by date and asset)">
 	</a>
 </p>
 
@@ -75,7 +75,7 @@ Get the debian package archive from GitHub. For installation, check [here](#inst
 <p align="center">
 	<a href="https://github.com/mamolinux/theme-manager/zipball/master">Download Source (.zip)</a></br>
 	<a href="https://github.com/mamolinux/theme-manager/tarball/master">Download Source (.tar.gz)</a></br>
-	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.7/theme-manager_1.1.7_all.deb">Download Binary (.deb)</a>
+	<a href="https://github.com/mamolinux/theme-manager/releases/download/1.1.8/theme-manager_1.1.8_all.deb">Download Binary (.deb)</a>
 </p>
 
 ## Features and Screenshots
