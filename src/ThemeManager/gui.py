@@ -127,10 +127,6 @@ class ThemeManagerWindow():
 		self.systime_transition_grid.attach(self.d2n_start_time, 1, 0, 1, 1)
 		self.systime_transition_grid.attach(self.n2d_start_time, 1, 1, 1, 1)
 		
-		self.user_interval_box = self.builder.get_object("user_interval_box")
-		self.user_interval = TimeChooserButton()
-		self.user_interval_box.pack_start(self.user_interval, False, False, 0)
-		
 		self.user_interval_HH = self.builder.get_object("hour")
 		self.user_interval_MM = self.builder.get_object("minute")
 		self.user_interval_SS = self.builder.get_object("second")
