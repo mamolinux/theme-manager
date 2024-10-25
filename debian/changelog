@@ -1,3 +1,90 @@
+theme-manager (1.1.8) stable; urgency=medium
+
+  * Fix dark/light mode for gtk4 apps (#70)
+    - Gtk4 apps are not always transitioning
+      from dark to light mode or vice-versa.
+      Fixes the same for cinnamon desktop
+  * Add gettext as build dependency (#71)
+  * Update translations (#72)
+    - Add translations for bengali and English UK
+  * Update readme with version 1.1.7 (#73)
+  * Prepare for snap packaging (#74)
+  * Update debian packaging (#75)
+    - Update gschema and desktop files
+    - Update gitignore
+  * Update runner versions in workflows (#76)
+  * Fix about dialog called from indicator (#77)
+  * Add scrollbar for low resolution displays (#78)
+    - On low resolution displays parts of the main
+      window is always outside the display. Added a
+      scrollbar to main window so that all the gui
+      widgets are accessible.
+  * Start porting to meson python build (#79)
+    - Update ci with latest ubuntu release
+      and build dependencies
+  * Install python sources using meson build (#80)
+    - Setup meson to install python sources
+      during python and meson builds
+    - Install executable binary using meson
+      and avoid using python builds for now
+    - Remove unnecessary python packaging files
+  * Include data files in meson build (#81)
+    - Add icons, desktop files and schema files
+      using meson
+    - Update test script
+  * Translate using meson (#82)
+    - Add necessary translation files
+    - Add bengali translation
+    - Add british english translation
+    - Remove update-pot script
+  * Update debian packaging with meson build (#83)
+    - Use meson buildsystem for debian packaging
+    - Add meson build dependencies
+  * Prepare for documentation and manuals (#84)
+    - Separate command line args from main
+    - Add framework to build documentation
+      and manuals using sphinx
+    - Fix MANIFEST file for python build
+  * Build and add docs to deb packaging (#85)
+    - Build unix manual from argparse options
+    - Build html docs from argparse options
+    - Add python3-sphinx and python3-sphinx-argparse
+      as build dependencies
+    - Fix post install and remove scripts
+  * Update readme with new instructions (#86)
+    - Separate build and runtime dependency
+    - Add meson build dependencies
+    - Update manual installation instructions
+    - Update build instructions with meson
+    - Add translation instructions
+    - Update instructions for devs
+  * Override dh_python to include python depends (#87)
+    - Override dh_python3 to read python dependencies
+      from file requires.txt
+    - Add docutils as build dependency
+  * Update meson and pyhton build (#88)
+    - Add cli_args during meson build
+    - Remove setuptools build option
+    - Set process title in main.py
+  * Update document build with correct import (#89)
+    - Import app id, locale dir and description
+      from cli_args file.
+    - pyproject.toml: use meson build
+    - Fix README
+    - Inject app id and locale dir to cli_args using
+      meson.
+    - Update copyright year
+  * Remove unused timer settings from gui (#90)
+    - Update scrolled window
+  * Update release workflow (#91)
+    - Use Ubuntu 24.04
+    - Update build dependencies
+    - Update action version
+    - Mark as latest release
+    - Create announcement
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Sat, 26 Oct 2024 00:30:42 +0530
+
 theme-manager (1.1.7) stable; urgency=medium
 
   * Update readme with version 1.1.6 (#67)
