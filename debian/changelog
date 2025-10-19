@@ -1,3 +1,22 @@
+theme-manager (1.1.9) stable; urgency=medium
+
+  * Update readme with version 1.1.8 (#93)
+  * Search and list all source files separately (#94)
+    - Use find command to search for python and ui
+      source files
+  * Use gtk3 dependencies (#95)
+  * Fix for gnome-shell and optimize daemon (#96)
+    - Fix setting gnome-shell user themes
+    - Add option to set accent in gnome desktops
+    - Optimize the theme manger daemon to
+      change themes more smoothely.
+  * Update workflows (#97)
+    - Use common workflow from mamolinux
+    - Update dependency in ci build workflow
+    - Run CI and CodeQL only in PR
+
+ -- Himadri Sekhar Basu <hsb10@iitbbs.ac.in>  Mon, 20 Oct 2025 00:27:32 +0530
+
 theme-manager (1.1.8) stable; urgency=medium
 
   * Fix dark/light mode for gtk4 apps (#70)
