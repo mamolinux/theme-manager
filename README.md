@@ -94,7 +94,7 @@ The following dependencies are required to build **Theme Manager**.
 gettext
 desktop-file-utils
 libglib2.0-bin
-libgtk-4-bin
+gtk-update-icon-cache
 meson
 python3
 python3-sphinx
@@ -150,37 +150,37 @@ cd theme-manager-master
 
 1. **Option 1:** Manually copying necessary files. For that, follow the steps below:
 	1. Install python package sources using `meson`:
-		```
+		```bash
 		rm -rf builddir
 		meson setup -Dprefix=$HOME/.local builddir
 		meson compile -C builddir --verbose
 		meson install -C builddir
 		```
 		It will install all files under `/home/<yourusername>/.local`. To **remove** the locally (`/home/<yourusername>/.local`) installed files, run:
-		```
+		```bash
 		ninja uninstall -C builddir
 		```
 	2. To manually install for all users:
-		```
+		```bash
 		rm -rf builddir
 		meson setup builddir
 		meson compile -C builddir --verbose
 		sudo meson install -C builddir
 		```
 		The last step requires **Administrative Privilege**. So, be careful before using this. To **remove** the installed files, run:
-		```
+		```bash
 		sudo ninja uninstall -C builddir
 		```
 
 2. **Option 2:** Build a debian package and install it. To build a debian package on your own:
 	1. from the `theme-manager-master` run:
-		```
+		```bash
 		dpkg-buildpackage --no-sign
 		```
 		This will create a `theme-manager_*.deb` package at `../theme-manager-master`.
 	
 	2. Install the debian package using
-		```
+		```bash
 		sudo dpkg -i ../theme-manager_*.deb
 		sudo apt install -f
 		```
@@ -206,7 +206,7 @@ If you are interested to contribute and enrich the code, you are most welcome. Y
 ### For Developers
 I am managing these apps all by myself during my free time. There are times when I can't contribute for months. So a little help is always welcome. If you want to test **Theme Manager**,
 1. Get the source package and unzip it using:
-	```
+	```bash
 	wget https://github.com/mamolinux/theme-manager/archive/refs/heads/master.zip
 	unzip master.zip
 	cd theme-manager-master
@@ -214,7 +214,7 @@ I am managing these apps all by myself during my free time. There are times when
 2. Make desired modifications.
 3. Manually install using [option 2](#2-build-and-install-from-source).
 4. Test it by running in debug mode from terminal:
-	```
+	```bash
 	theme-manager --verbose
 	```
 
