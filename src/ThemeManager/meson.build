@@ -1,17 +1,8 @@
-python_sources = [
-  'about_window.py',
-  'cli_args.py',
-	'common.py',
-	'DesktopTheme.py',
-	'gui.py',
-	'indicator.py',
-	'__init__.py',
-	'logger.py',
-	'LoginTheme.py',
-	'main.py',
-	'time_chooser.py',
-	'tm_daemon.py',
-]
+python_sources = files(
+  run_command(
+    'find', '.', '-name', '*.py', '-not', '-name', 'cli_args*', check: true
+  ).stdout().strip().split('\n')
+)
 
 version_file = configure_file(
   input: 'VERSION.in',
@@ -37,7 +28,11 @@ python.install_sources(
 )
 
 # Install assets like ui and icons
-ui = files('ui/theme-manager.ui', 'ui/logger.ui')
+ui = files(
+  run_command(
+    'find', 'ui', '-name', '*.ui', check: true
+  ).stdout().strip().split('\n')
+)
 
 install_data(
   ui,
