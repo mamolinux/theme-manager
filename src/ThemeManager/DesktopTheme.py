@@ -1,191 +1,223 @@
-# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
-# This file is part of theme-manager.
-#
-# theme-manager is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# theme-manager is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with theme-manager. If not, see <http://www.gnu.org/licenses/>
-# or write to the Free Software Foundation, Inc., 51 Franklin Street,
-# Fifth Floor, Boston, MA 02110-1301, USA..
-#
-# Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+#  Theme Manager – Desktop Theme Handler
+#  Copyright (C) 2021–2025 Himadri Sekhar Basu
+#  Licensed under GPLv3 or later
+# -----------------------------------------------------------------------------
 
-# import the necessary modules!
 import gettext
 import locale
 import logging
-import os
 import subprocess
+from pathlib import Path
+from typing import Dict
+import gi
 
-# imports from current package
+gi.require_version('Gio', '2.0')
+from gi.repository import Gio
+
 from ThemeManager.cli_args import APP, LOCALE_DIR
-from ThemeManager.common import TMBackend
+from ThemeManager.common import TMBackend, _async
 
-
-# i18n
+# ------------------------- i18n Setup -------------------------
 locale.bindtextdomain(APP, LOCALE_DIR)
 gettext.bindtextdomain(APP, LOCALE_DIR)
 gettext.textdomain(APP)
 _ = gettext.gettext
 
+# ------------------------- Logger -----------------------------
+logger = logging.getLogger("ThemeManager.DesktopTheme")
 
-# logger
-module_logger = logging.getLogger('ThemeManager.DesktopTheme')
 
-class desktop_theme():
-	
-	def __init__(self):
-		self.manager = TMBackend()
-		pass
-	
-	def set_desktop_theme(self, state, nexttheme):
-		module_logger.info("Desktop session: %s", state['DE'])
-		thisDE = state['DE'].lower()
-		if thisDE == "x-cinnamon":
-			# When the DE is cinnamon set
-			# Desktop theme
-			os.system("gsettings set org.cinnamon.theme name %s" % nexttheme[3])
-			# Gtk theme
-			os.system("gsettings set org.cinnamon.desktop.interface gtk-theme %s" % nexttheme[4])
-			# Window border/Metacity
-			os.system("gsettings set org.cinnamon.desktop.wm.preferences theme %s" % nexttheme[5])
-			# Color pref for gtk4 apps
-			os.system("gsettings set org.x.apps.portal color-scheme %s" % nexttheme[6])
-			# Icon theme
-			if self.manager.icon_theme:
-				os.system("gsettings set org.cinnamon.desktop.interface icon-theme %s" % nexttheme[7])
-			# Cursor theme
-			if self.manager.cursor_theme:
-				os.system("gsettings set org.cinnamon.desktop.interface cursor-theme %s" % nexttheme[8])
-		
-		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
-			# When the DE is gnome set
-			# Shell theme
-			os.system("gsettings set org.gnome.shell.extensions.user-theme name %s" % nexttheme[3])
-			# Gtk theme
-			os.system("gsettings set org.gnome.desktop.interface gtk-theme %s" % nexttheme[4])
-			# Window border/Metacity
-			os.system("gsettings set org.gnome.desktop.wm.preferences theme %s" % nexttheme[5])
-			# Color pref for gtk4 apps
-			os.system("gsettings set org.gnome.desktop.interface color-scheme %s" % nexttheme[6])
-			# Icon theme
-			if self.manager.icon_theme:
-				os.system("gsettings set org.gnome.desktop.interface icon-theme %s" % nexttheme[7])
-			# Cursor theme
-			if self.manager.cursor_theme:
-				os.system("gsettings set org.gnome.desktop.interface cursor-theme %s" % nexttheme[8])
-		
-		elif (thisDE == "mate"):
-			# When the DE is mate set
-			# Gtk theme
-			os.system("gsettings set org.mate.interface gtk-theme %s" % nexttheme[4])
-			# Window border/Metacity
-			os.system("gsettings set org.mate.Marco.general theme %s" % nexttheme[5])
-			# Color pref for gtk4 apps
-			os.system("gsettings set org.gnome.desktop.interface color-scheme %s" % nexttheme[6])
-			# Icon theme
-			if self.manager.icon_theme:
-				os.system("gsettings set org.mate.interface icon-theme %s" % nexttheme[7])
-			# Cursor theme
-			if self.manager.cursor_theme:
-				os.system("gsettings set org.mate.peripherals-mouse cursor-theme %s" % nexttheme[8])
-		
-		# Plank theme
-		if self.manager.plank_theme:
-			try:
-				os.system("gsettings set net.launchpad.plank.dock.settings theme %s" % nexttheme[9])
-			except subprocess.CalledProcessError:
-				os.system("gsettings set net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme %s" % nexttheme[9])
-			except:
-				module_logger.error("Either 'plank' is not installed or the plank theme %s is not present." % nexttheme[9])
-		
-		themes = {}
-		themes["System"] = nexttheme[4]
-		themes["DE Theme"] = nexttheme[3]
-		themes["Decoration"] = nexttheme[5]
-		themes["Icon"] = nexttheme[7]
-		themes["Cursor"] = nexttheme[8]
-		themes["Plank"] = nexttheme[9]
-		module_logger.info("Updated with Colour Variant: %s, Themes: %s" % (nexttheme[1], themes))
-	
-	def get_desktop_theme(self, state, systheme, colvariants):
-		module_logger.info("Desktop session: %s", state['DE'])
-		thisDE = state['DE'].lower()
-		currenttheme = {"Variant": '', "Last Updated": '', "Themes": ''}
-		themes = {}
-		if thisDE == "x-cinnamon":
-			# When the DE is cinnamon get
-			# Gtk theme
-			themes["System"] = self.run_command("gsettings get org.cinnamon.desktop.interface gtk-theme")
-			# Window border/Metacity
-			themes["Decoration"] = self.run_command("gsettings get org.cinnamon.desktop.wm.preferences theme")
-			# Desktop/shell theme
-			themes["DE Theme"] = self.run_command("gsettings get org.cinnamon.theme name")
-			# Icon theme
-			themes["Icon"] = self.run_command("gsettings get org.cinnamon.desktop.interface icon-theme")
-			# Cursor theme
-			themes["Cursor"] = self.run_command("gsettings get org.cinnamon.desktop.interface cursor-theme")
-		
-		elif (thisDE == "gnome" or thisDE == "ubuntu:gnome" or thisDE == "unity"):
-			# When the DE is gnome/unity get
-			# Gtk theme
-			themes["System"] = self.run_command("gsettings get org.gnome.desktop.interface gtk-theme")
-			# Desktop/shell theme
-			themes["DE Theme"] = self.run_command("gsettings get org.gnome.desktop.wm.preferences theme")
-			# Icon theme
-			themes["Icon"] = self.run_command("gsettings get org.gnome.desktop.interface icon-theme")
-			# Cursor theme
-			themes["Cursor"] = self.run_command("gsettings get org.gnome.desktop.interface cursor-theme")
-		
-		elif (thisDE == "mate"):
-			# When the DE is mate get
-			# Gtk theme
-			currenttheme.append(self.run_command("gsettings get org.mate.interface gtk-theme"))
-			# Window border/Metacity
-			currenttheme.append(self.run_command("gsettings get org.mate.Marco.general theme"))
-			# Icon theme
-			currenttheme.append(self.run_command("gsettings get org.mate.interface icon-theme"))
-			# Cursor theme
-			currenttheme.append(self.run_command("gsettings get org.mate.peripherals-mouse cursor-theme"))
-		
-		# Plank theme
-		if self.manager.plank_theme:
-			try:
-				# backward compatibility for ubuntu <23.04
-				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings theme")
-			except subprocess.CalledProcessError:
-				# For Ubuntu >=23.04
-				themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme")
-			except:
-				module_logger.error("'plank' is not installed.")
-		
-		currenttheme["Themes"] = themes
-		
-		# get current colour variant from key: System
-		for i in range(len(colvariants)):
-			if len(colvariants[i]) != 0:
-				if colvariants[i].lower() in themes["System"].lower():
-					currenttheme["Variant"] = colvariants[i]
-					break
-			else:
-				# if string length of colour variant is zero
-				# that means we are using default theme
-				currenttheme["Variant"] = "Default"
-		
-		module_logger.info("Current Colour Variant: %s, Current Themes: %s" % (currenttheme["Variant"], currenttheme["Themes"]))
-		
-		return currenttheme
-	
-	def run_command(self, command):
-		output = subprocess.check_output(command, stderr = subprocess.PIPE, shell = True)
-		return output.decode('utf-8', "strict").strip('\n').strip('\'')
+class DesktopTheme:
+    """Handles reading and setting of desktop environment themes."""
+
+    def __init__(self):
+        self.manager = TMBackend()
+
+    # ------------------------- Utility Helpers -------------------------
+
+    def run_command(self, command: str) -> str:
+        """Run a shell command and return stripped output."""
+        try:
+            result = subprocess.check_output(command, stderr=subprocess.PIPE, shell=True)
+            return result.decode('utf-8', "strict").strip().strip("'")
+        except subprocess.CalledProcessError as e:
+            logger.error(_("Command failed: %s"), command)
+            logger.debug(_("Error details: %s"), e)
+            return ""
+
+    def set_gsetting(self, schema: str, key: str, value: str):
+        """Safe wrapper for gsettings set."""
+        cmd = f"gsettings set {schema} {key} {value}"
+        logger.debug(_("Applying setting: %s"), cmd)
+        try:
+            subprocess.run(cmd, shell=True, check=True)
+        except subprocess.CalledProcessError:
+            logger.warning(_("Failed to set gsetting: %s %s"), schema, key)
+
+    def write_schema_to_xml(self, schema_id: str, output_file: Path):
+        """Generate missing schema XML if user-theme is absent."""
+        content = f"""<schemalist gettext-domain="gnome-shell-extensions">
+<schema id="{schema_id}" path="/org/gnome/shell/extensions/user-theme/">
+    <key name="name" type="s">
+        <default>''</default>
+        <summary>Theme name</summary>
+        <description>The name of the theme, to be loaded from ~/.themes/name/gnome-shell</description>
+    </key>
+</schema>
+</schemalist>"""
+        output_file.parent.mkdir(parents=True, exist_ok=True)
+        output_file.write_text(content, encoding="utf-8")
+        logger.info(_("Wrote schema file: %s"), output_file)
+
+    # ----------------------- Core Functionality -----------------------
+
+    @_async
+    def set_desktop_theme(self, state: Dict, nexttheme: list):
+        """Apply the selected theme asynchronously across DEs."""
+        de = state['DE'].lower()
+        logger.info(_("Applying desktop theme for DE: %s"), de)
+
+        try:
+            if de == "x-cinnamon":
+                mapping = {
+                    "org.cinnamon.theme": ("name", nexttheme[3]),
+                    "org.cinnamon.desktop.interface": [
+                        ("gtk-theme", nexttheme[4]),
+                        ("icon-theme", nexttheme[7]),
+                        ("cursor-theme", nexttheme[8]),
+                    ],
+                    "org.cinnamon.desktop.wm.preferences": ("theme", nexttheme[5]),
+                    "org.x.apps.portal": ("color-scheme", nexttheme[6]),
+                }
+                self.apply_theme_map(mapping)
+
+            elif de in ["gnome", "ubuntu:gnome", "unity"]:
+                self.apply_gnome_theme(nexttheme)
+
+            elif de == "mate":
+                mapping = {
+                    "org.mate.interface": [
+                        ("gtk-theme", nexttheme[4]),
+                        ("icon-theme", nexttheme[7])
+                    ],
+                    "org.mate.Marco.general": ("theme", nexttheme[5]),
+                    "org.gnome.desktop.interface": ("color-scheme", nexttheme[6]),
+                    "org.mate.peripherals-mouse": ("cursor-theme", nexttheme[8]),
+                }
+                self.apply_theme_map(mapping)
+
+            # Plank theme (dock)
+            if self.manager.plank_theme:
+                try:
+                    self.set_gsetting("net.launchpad.plank.dock.settings", "theme", nexttheme[9])
+                except subprocess.CalledProcessError:
+                    self.set_gsetting(
+                        "net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/",
+                        "theme", nexttheme[9]
+                    )
+
+            logger.info(_("Theme applied successfully. Variant: %s"), nexttheme[1])
+            logger.debug(_("Themes used: %s"), {
+                "System": nexttheme[4],
+                "DE Theme": nexttheme[3],
+                "Decoration": nexttheme[5],
+                "Icon": nexttheme[7],
+                "Cursor": nexttheme[8],
+                "Plank": nexttheme[9],
+            })
+
+        except Exception as e:
+            logger.error(_("Error applying theme: %s"), e)
+
+    def apply_gnome_theme(self, nexttheme: list):
+        """Handle GNOME/Unity-specific theme schema setup."""
+        schema_id = 'org.gnome.shell.extensions.user-theme'
+        schema_source = Gio.SettingsSchemaSource.get_default()
+        schema_exists = schema_source.lookup(schema_id, True)
+
+        if not schema_exists:
+            schema_dir = Path.home() / ".local/share/glib-2.0/schemas"
+            output_file = schema_dir / f"{schema_id}.gschema.xml"
+            self.write_schema_to_xml(schema_id, output_file)
+            subprocess.run(f"glib-compile-schemas {schema_dir}", shell=True, check=False)
+            logger.info(_("Compiled new GSettings schema at %s"), schema_dir)
+
+        mapping = {
+            schema_id: ("name", nexttheme[3]),
+            "org.gnome.desktop.interface": [
+                ("gtk-theme", nexttheme[4]),
+                ("icon-theme", nexttheme[7]),
+                ("cursor-theme", nexttheme[8]),
+                ("color-scheme", nexttheme[6]),
+                ("accent-color", nexttheme[1]),
+            ],
+            "org.gnome.desktop.wm.preferences": ("theme", nexttheme[5])
+        }
+        self.apply_theme_map(mapping)
+
+    def apply_theme_map(self, mapping: Dict[str, list]):
+        """Iterate through mapping and apply all theme settings."""
+        for schema, entries in mapping.items():
+            if isinstance(entries, tuple):
+                self.set_gsetting(schema, entries[0], entries[1])
+            elif isinstance(entries, list):
+                for key, value in entries:
+                    self.set_gsetting(schema, key, value)
+
+    def get_desktop_theme(self, state: Dict, systheme: str, colvariants: list) -> Dict:
+        """Retrieve current theme configuration from the system."""
+        de = state['DE'].lower()
+        logger.info(_("Reading desktop theme for DE: %s"), de)
+        themes = {}
+
+        schema_map = {
+            "x-cinnamon": {
+                "Applications": "org.cinnamon.desktop.interface gtk-theme",
+                "Decoration": "org.cinnamon.desktop.wm.preferences theme",
+                "DE Theme": "org.cinnamon.theme name",
+                "Icon": "org.cinnamon.desktop.interface icon-theme",
+                "Cursor": "org.cinnamon.desktop.interface cursor-theme",
+            },
+            "gnome": {
+                "Applications": "org.gnome.desktop.interface gtk-theme",
+                "Decoration": "org.gnome.desktop.wm.preferences theme",
+                "DE Theme": "org.gnome.shell.extensions.user-theme name",
+                "Icon": "org.gnome.desktop.interface icon-theme",
+                "Cursor": "org.gnome.desktop.interface cursor-theme",
+            },
+            "mate": {
+                "Applications": "org.mate.interface gtk-theme",
+                "Decoration": "org.mate.Marco.general theme",
+                "Icon": "org.mate.interface icon-theme",
+                "Cursor": "org.mate.peripherals-mouse cursor-theme",
+            },
+        }
+
+        try:
+            if de in schema_map:
+                for k, cmd in schema_map[de].items():
+                    themes[k] = self.run_command(f"gsettings get {cmd}")
+
+            if self.manager.plank_theme:
+                try:
+                    themes["Plank"] = self.run_command("gsettings get net.launchpad.plank.dock.settings theme")
+                except subprocess.CalledProcessError:
+                    themes["Plank"] = self.run_command(
+                        "gsettings get net.launchpad.plank.dock.settings:/net/launchpad/plank/docks/dock1/ theme"
+                    )
+
+            # Detect variant
+            variant = "Default"
+            for v in colvariants:
+                if v and v.lower() in themes.get("System", "").lower():
+                    variant = v
+                    break
+
+            logger.info(_("Detected theme variant: %s"), variant)
+            return {"Variant": variant, "Themes": themes}
+
+        except Exception as e:
+            logger.error(_("Error retrieving desktop theme: %s"), e)
+            return {"Variant": "Unknown", "Themes": {}}

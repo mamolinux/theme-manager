@@ -1,24 +1,10 @@
-# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
-# This file is part of theme-manager.
-#
-# theme-manager is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# theme-manager is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with theme-manager. If not, see <http://www.gnu.org/licenses/>
-# or write to the Free Software Foundation, Inc., 51 Franklin Street,
-# Fifth Floor, Boston, MA 02110-1301, USA..
-#
-# Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+#  Theme Manager – Desktop Theme Handler
+#  Copyright (C) 2021–2025 Himadri Sekhar Basu
+#  Licensed under GPLv3 or later
+# -----------------------------------------------------------------------------
+
 
 # import the necessary modules!
 import configparser
@@ -371,7 +357,11 @@ class TMBackend():
 		
 		nxt_theme = [timestamp, currentcolor, stateflag, shelltheme, gtktheme, wmtheme, color_pref, icontheme, cursrtheme, planktheme]
 		themes = {}
-		themes["System"] = gtktheme
+		if currentcolor:
+			themes["accent"] = currentcolor
+		else:
+			themes["accent"] = "green"
+		themes["Applications"] = gtktheme
 		themes["DE Theme"] = shelltheme
 		themes["Decoration"] = wmtheme
 		themes["Icon"] = icontheme
