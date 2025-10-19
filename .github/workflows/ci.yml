@@ -5,8 +5,6 @@ name: CI
 # Controls when the action will run. 
 on:
   # Triggers the workflow on push or pull request events but only for all branches
-  push:
-    branches: [ '**' ]
   pull_request:
     branches: [ '**' ]
 
@@ -15,7 +13,7 @@ jobs:
   # This workflow contains a single job called "build"
   build:
     # The type of runner that the job will run on
-    runs-on: ubuntu-24.04
+    runs-on: ubuntu-latest
     strategy:
       matrix:
         language: [ 'python' ]
@@ -35,8 +33,9 @@ jobs:
       - name: install-deps
         run: |
           sudo apt install desktop-file-utils gettext gir1.2-appindicator3-0.1 \
-          gir1.2-gtk-3.0 libglib2.0-bin libgtk-4-bin meson python3 python3-configobj \
-          python3-gi python3-setproctitle python3-tldextract redshift
+          gir1.2-gtk-3.0 libglib2.0-bin gtk-update-icon-cache meson python3 \
+          python3-configobj python3-gi python3-setproctitle python3-tldextract \
+          redshift
         
       - name: make
         run: ./test/test -qq
