@@ -1,24 +1,10 @@
-# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
-# This file is part of theme-manager.
-#
-# theme-manager is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# theme-manager is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with theme-manager. If not, see <http://www.gnu.org/licenses/>
-# or write to the Free Software Foundation, Inc., 51 Franklin Street,
-# Fifth Floor, Boston, MA 02110-1301, USA..
-#
-# Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+#  Theme Manager – Desktop Theme Handler
+#  Copyright (C) 2021–2025 Himadri Sekhar Basu
+#  Licensed under GPLv3 or later
+# -----------------------------------------------------------------------------
+
 
 # import the necessary modules!
 import gettext
@@ -39,8 +25,8 @@ from ThemeManager.about_window import AboutWindow
 from ThemeManager.logger import LoggerWindow
 from ThemeManager.cli_args import APP, LOCALE_DIR
 from ThemeManager.common import CONFIG_FILE, UI_PATH, __version__, theme_styles, _async, TMBackend
-from ThemeManager.indicator import TMIndicator
-from ThemeManager.DesktopTheme import desktop_theme
+from ThemeManager.indicator import ThemeIndicator
+from ThemeManager.DesktopTheme import DesktopTheme
 from ThemeManager.time_chooser import TimeChooserButton
 # from ThemeManager.LoginTheme import login_theme
 
@@ -80,7 +66,7 @@ class ThemeManagerWindow():
 		self.application = application
 		self.settings = Gio.Settings(schema_id="org.mamolinux.theme-manager")
 		self.manager = TMBackend()
-		self.destop_manager = desktop_theme()
+		self.destop_manager = DesktopTheme()
 		self.icon_theme = Gtk.IconTheme.get_default()
 		
 		# Set the Glade file
@@ -352,14 +338,15 @@ class ThemeManagerWindow():
 		'''
 		Show current theme info in status bar.
 		'''
-		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme["Variant"], self.currenttheme["Last Updated"], self.currenttheme["Themes"])
+		module_logger.debug(("%s", self.currenttheme))
+		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme["Variant"], "", self.currenttheme["Themes"])
 		
 		context_id = self.statusbar.get_context_id("status")
 		self.statusbar.push(context_id, status)
 	
 	def start_indicator(self, widget):
 		module_logger.info("Initiaing Theme Manager Indicator from main window.")
-		_async(TMIndicator())
+		_async(ThemeIndicator())
 		
 
 def run_TMwindow():

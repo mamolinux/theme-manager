@@ -1,24 +1,10 @@
-# Copyright (C) 2021-2024 Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
-# This file is part of theme-manager.
-#
-# theme-manager is free software: you can redistribute it and/or modify
-# it under the terms of the GNU General Public License as published by
-# the Free Software Foundation, either version 3 of the License, or
-# (at your option) any later version.
-#
-# theme-manager is distributed in the hope that it will be useful,
-# but WITHOUT ANY WARRANTY; without even the implied warranty of
-# MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-# GNU General Public License for more details.
-#
-# You should have received a copy of the GNU General Public License
-# along with theme-manager. If not, see <http://www.gnu.org/licenses/>
-# or write to the Free Software Foundation, Inc., 51 Franklin Street,
-# Fifth Floor, Boston, MA 02110-1301, USA..
-#
-# Author: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>
-#
+# -*- coding: utf-8 -*-
+# -----------------------------------------------------------------------------
+#  Theme Manager – Desktop Theme Handler
+#  Copyright (C) 2021–2025 Himadri Sekhar Basu
+#  Licensed under GPLv3 or later
+# -----------------------------------------------------------------------------
+
 
 # import the necessary modules!
 import gettext
@@ -30,7 +16,7 @@ import sys
 # imports from current package
 from ThemeManager.common import APP, LOCALE_DIR, LOGFILE, __version__
 from ThemeManager.cli_args import command_line_args
-from ThemeManager.indicator import TMIndicator
+from ThemeManager.indicator import ThemeIndicator
 from ThemeManager.gui import run_TMwindow
 
 
@@ -91,7 +77,10 @@ def start_TM ():
 		args.start_window = False
 		# initiaing app indicator
 		module_logger.debug("Initiaing Theme Manager Indicator.")
-		TMIndicator()
+		try:
+			ThemeIndicator()
+		except KeyboardInterrupt:
+			logger.info(_("Theme Manager Indicator exited cleanly."))
 	
 	if args.start_window:
 		# initiaing app window
