@@ -1,20 +1,20 @@
-# Theme Manager.
-# Copyright (C) 2021-2024
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
 # This file is distributed under the same license as the theme-manager package.
-# Himadri Sekhar Basu <hsb10@iitbbs.ac.in>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 #
 #, fuzzy
 msgid ""
 msgstr ""
-"Project-Id-Version: 1.1.7\n"
+"Project-Id-Version: theme-manager\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2023-10-29 01:39+0530\n"
+"POT-Creation-Date: 2026-02-01 23:33+0530\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
-"Last-Translator: Himadri Sekhar Basu <hsb10@iitbbs.ac.in>\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "Language: \n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
 #: data/org.mamolinux.theme-manager.gschema.xml.in:9
@@ -25,70 +25,155 @@ msgstr ""
 msgid "Last time when the theme was updated."
 msgstr ""
 
-#: data/theme-manager.desktop.in:3 src/ThemeManager/about_window.py:62
-#: src/ThemeManager/gui.py:90 src/ThemeManager/indicator.py:60
-#: src/ThemeManager/ui/theme-manager.ui:1347
+#: data/theme-manager.desktop.in:2 src/ThemeManager/about_window.py:63
+#: src/ThemeManager/gui.py:77 src/ThemeManager/indicator.py:45
+#: src/ThemeManager/ui/theme-manager.ui:1313
 msgid "Theme Manager"
 msgstr ""
 
-#: data/theme-manager.desktop.in:4
+#: data/theme-manager.desktop.in:3
 msgid ""
 "Very simple Python3-based GUI application to randomly choose and set "
 "different theme variants on linux."
 msgstr ""
 
-#: data/theme-manager.desktop.in:5
+#: data/theme-manager.desktop.in:4
 msgid "Change theme automatically."
 msgstr ""
 
-#: data/theme-manager-autostart.desktop.in:3
+#: data/theme-manager-autostart.desktop.in:2
 msgid "Theme Manager Indicator"
 msgstr ""
 
-#: data/theme-manager-autostart.desktop.in:4
+#: data/theme-manager-autostart.desktop.in:3
 msgid "Start indicator for Theme Manager."
 msgstr ""
 
-#: data/theme-manager-autostart.desktop.in:5
+#: data/theme-manager-autostart.desktop.in:4
 msgid "Indicator to change theme automatically."
 msgstr ""
 
-#: src/ThemeManager/about_window.py:59 src/ThemeManager/gui.py:202
-#: src/ThemeManager/indicator.py:88
+#: src/ThemeManager/about_window.py:60 src/ThemeManager/gui.py:185
+#: src/ThemeManager/indicator.py:69
 msgid "About"
 msgstr ""
 
-#: src/ThemeManager/about_window.py:65
+#: src/ThemeManager/about_window.py:66
 msgid "Official Website"
 msgstr ""
 
-#: src/ThemeManager/about_window.py:67
-msgid ""
-"A Python3-based GUI application to change different colour variants of GTK, "
-"Icon, Cursor and other themes."
-msgstr ""
-
-#: src/ThemeManager/about_window.py:72
+#: src/ThemeManager/about_window.py:73
 msgid "Maintainer"
 msgstr ""
 
-#: src/ThemeManager/gui.py:186
+#: src/ThemeManager/DesktopTheme.py:46
+#, python-format
+msgid "Command failed: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:47
+#, python-format
+msgid "Error details: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:53
+#, python-format
+msgid "Applying setting: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:57
+#, python-brace-format
+msgid "Failed to set gsetting: {schema} {key}"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:72
+#, python-format
+msgid "Wrote schema file: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:80
+#, python-format
+msgid "Applying desktop theme for DE: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:140
+#, python-format
+msgid "Theme applied successfully. Variant: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:141
+#, python-format
+msgid "Themes used: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:152
+#, python-format
+msgid "Error applying theme: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:165
+#, python-format
+msgid "Compiled new GSettings schema at %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:192
+#, python-format
+msgid "Reading desktop theme for DE: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:244
+#, python-format
+msgid "Detected theme variant: %s"
+msgstr ""
+
+#: src/ThemeManager/DesktopTheme.py:248
+#, python-format
+msgid "Error retrieving desktop theme: %s"
+msgstr ""
+
+#: src/ThemeManager/gui.py:169
 msgid "Start Indicator"
 msgstr ""
 
-#: src/ThemeManager/gui.py:194 src/ThemeManager/indicator.py:82
+#: src/ThemeManager/gui.py:177 src/ThemeManager/indicator.py:68
 msgid "Show Logs"
 msgstr ""
 
-#: src/ThemeManager/gui.py:208 src/ThemeManager/indicator.py:94
+#. Add "Quit" option in drop-down menu
+#: src/ThemeManager/gui.py:191 src/ThemeManager/indicator.py:70
 msgid "Quit"
 msgstr ""
 
-#: src/ThemeManager/indicator.py:76
+#: src/ThemeManager/gui.py:344
+#, python-format
+msgid "Current Themes: %s"
+msgstr ""
+
+#: src/ThemeManager/indicator.py:57
+msgid "Theme Manager Indicator initialized successfully."
+msgstr ""
+
+#: src/ThemeManager/indicator.py:67
 msgid "Next Theme"
 msgstr ""
 
-#: src/ThemeManager/logger.py:64
+#: src/ThemeManager/indicator.py:104
+msgid "Opening Logger Window..."
+msgstr ""
+
+#: src/ThemeManager/indicator.py:110
+msgid "Opening About Window..."
+msgstr ""
+
+#: src/ThemeManager/indicator.py:116
+msgid "Exiting Theme Manager Indicator..."
+msgstr ""
+
+#: src/ThemeManager/indicator.py:127 src/ThemeManager/main.py:83
+msgid "Theme Manager Indicator exited cleanly."
+msgstr ""
+
+#: src/ThemeManager/logger.py:65
 msgid "Theme Manager Logs"
 msgstr ""
 
@@ -97,18 +182,62 @@ msgid "Select a time"
 msgstr ""
 
 #: src/ThemeManager/time_chooser.py:119
-#: src/ThemeManager/ui/theme-manager.ui:1089
+#: src/ThemeManager/ui/theme-manager.ui:1095
 msgid "Hour"
 msgstr ""
 
 #: src/ThemeManager/time_chooser.py:121
-#: src/ThemeManager/ui/theme-manager.ui:1129
+#: src/ThemeManager/ui/theme-manager.ui:1135
 msgid "Minute"
 msgstr ""
 
 #: src/ThemeManager/time_chooser.py:123
-#: src/ThemeManager/ui/theme-manager.ui:1169
+#: src/ThemeManager/ui/theme-manager.ui:1175
 msgid "Second"
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:32
+msgid "Initializing Theme Manager Daemon."
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:43
+msgid "Starting Theme Manager Daemon threads..."
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:50
+msgid "Stopping Theme Manager Daemon..."
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:74
+msgid "State-change daemon started."
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:79
+#, python-brace-format
+msgid "Current state: {cs}, Last: {ls}"
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:82
+#, python-brace-format
+msgid "State changed: {ls} → {cs}"
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:87
+#, python-format
+msgid "Error in state monitor: %s"
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:93
+msgid "Auto-change daemon started."
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:98
+#, python-format
+msgid "Error in auto-change daemon: %s"
+msgstr ""
+
+#: src/ThemeManager/tm_daemon.py:113
+msgid "Theme Manager Daemon exited cleanly."
 msgstr ""
 
 #: src/ThemeManager/ui/theme-manager.ui:98
@@ -194,7 +323,7 @@ msgid "Theme Name Style:"
 msgstr ""
 
 #: src/ThemeManager/ui/theme-manager.ui:294
-#: src/ThemeManager/ui/theme-manager.ui:851
+#: src/ThemeManager/ui/theme-manager.ui:855
 msgid "System Theme"
 msgstr ""
 
@@ -298,72 +427,70 @@ msgstr ""
 msgid "Plank"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:849
+#: src/ThemeManager/ui/theme-manager.ui:853
 msgid ""
 "Change system themes like desktop or shell themes, and GTK, metacity, icon "
 "and cursor themes on linux."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:880
+#: src/ThemeManager/ui/theme-manager.ui:885
 msgid "Change login or display manager themes like lightDM, GDM etc."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:881
+#: src/ThemeManager/ui/theme-manager.ui:886
 msgid "Login Theme"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:914
+#: src/ThemeManager/ui/theme-manager.ui:920
 msgid "Use system time:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:961
+#: src/ThemeManager/ui/theme-manager.ui:967
 msgid "Day starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:973
+#: src/ThemeManager/ui/theme-manager.ui:979
 msgid "Night starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1009
+#: src/ThemeManager/ui/theme-manager.ui:1015
 msgid "Day to Night Transition starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1021
+#: src/ThemeManager/ui/theme-manager.ui:1027
 msgid "Night to Day Transition starts at:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1065
-#: src/ThemeManager/ui/theme-manager.ui:1217
+#: src/ThemeManager/ui/theme-manager.ui:1071
 msgid "Theme will be changed every HH hours, MM minutes, SS seconds."
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1072
-#: src/ThemeManager/ui/theme-manager.ui:1224
+#: src/ThemeManager/ui/theme-manager.ui:1078
 msgid "Interval between themes:"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1101
-#: src/ThemeManager/ui/theme-manager.ui:1141
-#: src/ThemeManager/ui/theme-manager.ui:1181
+#: src/ThemeManager/ui/theme-manager.ui:1107
+#: src/ThemeManager/ui/theme-manager.ui:1147
+#: src/ThemeManager/ui/theme-manager.ui:1187
 msgid "0"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1251
+#: src/ThemeManager/ui/theme-manager.ui:1222
 msgid "Settings"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1273
+#: src/ThemeManager/ui/theme-manager.ui:1244
 msgid "Save"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1286
+#: src/ThemeManager/ui/theme-manager.ui:1257
 msgid "Randomize"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1326
+#: src/ThemeManager/ui/theme-manager.ui:1297
 msgid "Status Bar"
 msgstr ""
 
-#: src/ThemeManager/ui/theme-manager.ui:1348
+#: src/ThemeManager/ui/theme-manager.ui:1314
 msgid "Choose themes randomly based on time"
 msgstr ""

@@ -1,16 +1,16 @@
-# English (United Kingdom) translation for mamolinux
-# Copyright (c) 2024 Rosetta Contributors and Canonical Ltd 2024
+# Lao translation for mamolinux
+# Copyright (c) 2025 Rosetta Contributors and Canonical Ltd 2025
 # This file is distributed under the same license as the mamolinux package.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2025.
 #
 msgid ""
 msgstr ""
 "Project-Id-Version: mamolinux\n"
 "Report-Msgid-Bugs-To: FULL NAME <EMAIL@ADDRESS>\n"
 "POT-Creation-Date: 2023-10-29 01:39+0530\n"
-"PO-Revision-Date: 2024-02-05 18:01+0000\n"
-"Last-Translator: Himadri Sekhar Basu <Unknown>\n"
-"Language-Team: English (United Kingdom) <en_GB@li.org>\n"
+"PO-Revision-Date: 2025-11-03 23:39+0000\n"
+"Last-Translator: boneni <Unknown>\n"
+"Language-Team: Lao <lo@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
@@ -19,101 +19,101 @@ msgstr ""
 
 #: data/org.mamolinux.theme-manager.gschema.xml.in:9
 msgid "Theme update time"
-msgstr "Theme update time"
+msgstr "ເວລາອັບເດດທີມ"
 
 #: data/org.mamolinux.theme-manager.gschema.xml.in:10
 msgid "Last time when the theme was updated."
-msgstr "Last time when the theme was updated."
+msgstr "ເວລາສຸດທ້າຍທີ່ທີມຖືກອັບເດດ."
 
 #: data/theme-manager.desktop.in:3 src/ThemeManager/about_window.py:62
 #: src/ThemeManager/gui.py:90 src/ThemeManager/indicator.py:60
 #: src/ThemeManager/ui/theme-manager.ui:1334
 msgid "Theme Manager"
-msgstr "Theme Manager"
+msgstr "ຕົວຈັດການທີມ"
 
 #: data/theme-manager.desktop.in:4
 msgid ""
 "Very simple Python3-based GUI application to randomly choose and set "
 "different theme variants on linux."
 msgstr ""
-"Very simple Python3-based GUI application to randomly choose and set "
-"different theme variants on linux."
+"ແອັບພລິເຄຊັນ GUI ທີ່ໃຊ້ Python3 ແບບງ່າຍດາຍເພື່ອສຸ່ມເລືອກ ແລະ "
+"ຕັ້ງຄ່າທີມຮູບແບບຕ່າງໆໃນລີນຸກ."
 
 #: data/theme-manager.desktop.in:5
 msgid "Change theme automatically."
-msgstr "Change theme automatically."
+msgstr "ປ່ຽນທີມໂດຍອັດຕະໂນມັດ."
 
 #: data/theme-manager-autostart.desktop.in:3
 msgid "Theme Manager Indicator"
-msgstr "Theme Manager Indicator"
+msgstr "ຕົວຊີ້ບອກຕົວຈັດການທີມ"
 
 #: data/theme-manager-autostart.desktop.in:4
 msgid "Start indicator for Theme Manager."
-msgstr "Start indicator for Theme Manager."
+msgstr "ເລີ່ມຕົວຊີ້ບອກສຳລັບຕົວຈັດການທີມ."
 
 #: data/theme-manager-autostart.desktop.in:5
 msgid "Indicator to change theme automatically."
-msgstr "Indicator to change theme automatically."
+msgstr "ຕົວຊີ້ບອກເພື່ອປ່ຽນທີມໂດຍອັດຕະໂນມັດ."
 
 #: src/ThemeManager/about_window.py:59 src/ThemeManager/gui.py:202
 #: src/ThemeManager/indicator.py:88
 msgid "About"
-msgstr "About"
+msgstr "ກ່ຽວກັບ"
 
 #: src/ThemeManager/about_window.py:65
 msgid "Official Website"
-msgstr "Official Website"
+msgstr "ເວັບໄຊທ໌ທາງການ"
 
 #: src/ThemeManager/about_window.py:67
 msgid ""
 "A Python3-based GUI application to change different colour variants of GTK, "
 "Icon, Cursor and other themes."
 msgstr ""
-"A Python3-based GUI application to change different colour variants of GTK, "
-"Icon, Cursor and other themes."
+"ແອັບພລິເຄຊັນ GUI ທີ່ໃຊ້ Python3 ເພື່ອປ່ຽນຮູບແບບສີຕ່າງໆຂອງ GTK, ໄອຄອນ, ເຄີເຊີ "
+"ແລະ ທີມອື່ນໆ."
 
 #: src/ThemeManager/about_window.py:72
 msgid "Maintainer"
-msgstr "Maintainer"
+msgstr "ຜູ້ດູແລ"
 
 #: src/ThemeManager/gui.py:186
 msgid "Start Indicator"
-msgstr "Start Indicator"
+msgstr "ເລີ່ມຕົວຊີ້ບອກ"
 
 #: src/ThemeManager/gui.py:194 src/ThemeManager/indicator.py:82
 msgid "Show Logs"
-msgstr "Show Logs"
+msgstr "ສະແດງບັນທຶກ"
 
 #: src/ThemeManager/gui.py:208 src/ThemeManager/indicator.py:94
 msgid "Quit"
-msgstr "Quit"
+msgstr "ອອກ"
 
 #: src/ThemeManager/indicator.py:76
 msgid "Next Theme"
-msgstr "Next Theme"
+msgstr "ທີມຕໍ່ໄປ"
 
 #: src/ThemeManager/logger.py:64
 msgid "Theme Manager Logs"
-msgstr "Theme Manager Logs"
+msgstr "ບັນທຶກຕົວຈັດການທີມ"
 
 #: src/ThemeManager/time_chooser.py:104
 msgid "Select a time"
-msgstr "Select a time"
+msgstr "ເລືອກເວລາ"
 
 #: src/ThemeManager/time_chooser.py:119
 #: src/ThemeManager/ui/theme-manager.ui:1080
 msgid "Hour"
-msgstr "Hour"
+msgstr "ຊົ່ວໂມງ"
 
 #: src/ThemeManager/time_chooser.py:121
 #: src/ThemeManager/ui/theme-manager.ui:1120
 msgid "Minute"
-msgstr "Minute"
+msgstr "ນາທີ"
 
 #: src/ThemeManager/time_chooser.py:123
 #: src/ThemeManager/ui/theme-manager.ui:1160
 msgid "Second"
-msgstr "Second"
+msgstr "ວິນາທີ"
 
 #: src/ThemeManager/ui/theme-manager.ui:89
 msgid ""
@@ -122,43 +122,43 @@ msgid ""
 "Mint-Y-Dark-Blue and Mint-Y-Dark-Red for dark theme. Enter the keywords for "
 "colours separated by comma as \"Red, Blue\" without the Double Quote."
 msgstr ""
-"Example: Mint-Y theme from Linux Mint has many colour variants like Blue or "
-"Red. These are accessed as Mint-Y-Blue and Mint-Y-Red for light theme, and "
-"Mint-Y-Dark-Blue and Mint-Y-Dark-Red for dark theme. Enter the keywords for "
-"colours separated by comma as \"Red, Blue\" without the Double Quote."
+"ຕົວຢ່າງ: ທີມ Mint-Y ຈາກ Linux Mint ມີຮູບແບບສີຫຼາຍຢ່າງ ເຊັ່ນ ສີຟ້າ ຫຼື ສີແດງ. "
+"ສາມາດເຂົ້າເຖິງໄດ້ໃນຊື່ Mint-Y-Blue ແລະ Mint-Y-Red ສຳລັບທີມສີສະຫວ່າງ, ແລະ "
+"Mint-Y-Dark-Blue ແລະ Mint-Y-Dark-Red ສຳລັບທີມສີມືດ. ປ້ອນຄຳສຳຄັນສຳລັບສີຕ່າງໆ "
+"ໂດຍຂັ້ນດ້ວຍເຄື່ອງໝາຍຈຸດ ເຊັ່ນ \"ແດງ, ຟ້າ\" ໂດຍບໍ່ຕ້ອງໃສ່ວົງຢືມ."
 
 #: src/ThemeManager/ui/theme-manager.ui:96
 msgid "Colour Variants:"
-msgstr "Colour Variants:"
+msgstr "ຮູບແບບສີ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:108
 #: src/ThemeManager/ui/theme-manager.ui:409
 #: src/ThemeManager/ui/theme-manager.ui:599
 #: src/ThemeManager/ui/theme-manager.ui:744
 msgid "Enter available colour variants. "
-msgstr "Enter available colour variants. "
+msgstr "ປ້ອນຮູບແບບສີທີ່ມີຢູ່. "
 
 #: src/ThemeManager/ui/theme-manager.ui:111
 msgid "Enter available colour variants"
-msgstr "Enter available colour variants"
+msgstr "ປ້ອນຮູບແບບສີທີ່ມີຢູ່"
 
 #: src/ThemeManager/ui/theme-manager.ui:159
 msgid "System theme name:"
-msgstr ""
+msgstr "ຊື່ທີມລະບົບ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:170
 msgid "Enter name of system theme to be used."
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມລະບົບທີ່ຈະໃຊ້."
 
 #: src/ThemeManager/ui/theme-manager.ui:173
 msgid "Enter system theme name"
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມລະບົບ"
 
 #: src/ThemeManager/ui/theme-manager.ui:186
 #: src/ThemeManager/ui/theme-manager.ui:425
 #: src/ThemeManager/ui/theme-manager.ui:760
 msgid "Dark Mode Suffix:"
-msgstr ""
+msgstr "ຄຳຕໍ່ທ້າຍໂໝດມືດ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:197
 #: src/ThemeManager/ui/theme-manager.ui:436
@@ -167,24 +167,28 @@ msgid ""
 "Suffix for dark mode is case sensitive. For example, Yaru uses suffix \"-"
 "dark\" to distinguish from light theme. In contrast, Mint uses \"Dark\"."
 msgstr ""
+"ຄຳຕໍ່ທ້າຍສຳລັບໂໝດມືດມີຜົນຕໍ່ຕົວພິມໃຫຍ່-ນ້ອຍ. ຕົວຢ່າງ, Yaru ໃຊ້ຄຳຕໍ່ທ້າຍ \"-"
+"dark\" ເພື່ອຈຳແນກຈາກທີມສີສະຫວ່າງ. ໃນທາງກົງກັນຂ້າມ, Mint ໃຊ້ \"Dark\"."
 
 #: src/ThemeManager/ui/theme-manager.ui:199
 msgid "Enter suffix for dark mode."
-msgstr ""
+msgstr "ປ້ອນຄຳຕໍ່ທ້າຍສຳລັບໂໝດມືດ."
 
 #: src/ThemeManager/ui/theme-manager.ui:212
 msgid "Darker Mode Available:"
-msgstr ""
+msgstr "ມີໂໝດມືດກວ່າ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:223
 msgid ""
 "Mint used to provide a theme mode with a mix of light and dark components "
 "called as \"Darker\". Sucharu provides the same with suffix \"darker\"."
 msgstr ""
+"Mint ເຄີຍໃຫ້ບໍລິການທີມທີ່ມີການປະສົມລະຫວ່າງອົງປະກອບສີສະຫວ່າງ ແລະ ສີມືດ "
+"ທີ່ເອີ້ນວ່າ \"Darker\". Sucharu ກໍມີຄືກັນ ໂດຍໃຊ້ຄຳຕໍ່ທ້າຍ \"darker\"."
 
 #: src/ThemeManager/ui/theme-manager.ui:237
 msgid "Darker Mode Suffix:"
-msgstr ""
+msgstr "ຄຳຕໍ່ທ້າຍໂໝດມືດກວ່າ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:247
 msgid ""
@@ -192,186 +196,193 @@ msgid ""
 "a theme with a mix of light and dark components called as \"Darker\". "
 "Sucharu provides the same with suffix \"darker\"."
 msgstr ""
+"ຄຳຕໍ່ທ້າຍສຳລັບໂໝດມືດກວ່າມີຜົນຕໍ່ຕົວພິມໃຫຍ່-ນ້ອຍ. ຕົວຢ່າງ, Mint "
+"ເຄີຍໃຫ້ບໍລິການທີມທີ່ມີການປະສົມລະຫວ່າງອົງປະກອບສີສະຫວ່າງ ແລະ ສີມືດ ທີ່ເອີ້ນວ່າ "
+"\"Darker\". Sucharu ກໍມີຄືກັນ ໂດຍໃຊ້ຄຳຕໍ່ທ້າຍ \"darker\"."
 
 #: src/ThemeManager/ui/theme-manager.ui:249
 msgid "Enter suffix for darker mode."
-msgstr ""
+msgstr "ປ້ອນຄຳຕໍ່ທ້າຍສຳລັບໂໝດມືດກວ່າ."
 
 #: src/ThemeManager/ui/theme-manager.ui:262
 msgid "Theme Name Style:"
-msgstr ""
+msgstr "ຮູບແບບຊື່ທີມ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:285
 #: src/ThemeManager/ui/theme-manager.ui:842
 msgid "System Theme"
-msgstr ""
+msgstr "ທີມລະບົບ"
 
 #: src/ThemeManager/ui/theme-manager.ui:328
 msgid "Change Icon theme:"
-msgstr ""
+msgstr "ປ່ຽນທີມໄອຄອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:371
 msgid "Icon theme name:"
-msgstr ""
+msgstr "ຊື່ທີມໄອຄອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:382
 msgid "Enter name of Icon theme to be used."
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມໄອຄອນທີ່ຈະໃຊ້."
 
 #: src/ThemeManager/ui/theme-manager.ui:385
 msgid "Enter Icon theme name"
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມໄອຄອນ"
 
 #: src/ThemeManager/ui/theme-manager.ui:398
 msgid "Icon Colour Variants:"
-msgstr ""
+msgstr "ຮູບແບບສີໄອຄອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:412
 msgid "Enter available colour variants for icons"
-msgstr ""
+msgstr "ປ້ອນຮູບແບບສີທີ່ມີຢູ່ສຳລັບໄອຄອນ"
 
 #: src/ThemeManager/ui/theme-manager.ui:439
 msgid "Enter suffix for dark mode for icons"
-msgstr ""
+msgstr "ປ້ອນຄຳຕໍ່ທ້າຍສຳລັບໂໝດມືດຂອງໄອຄອນ"
 
 #: src/ThemeManager/ui/theme-manager.ui:452
 msgid "Icon Theme Name Style:"
-msgstr ""
+msgstr "ຮູບແບບຊື່ທີມໄອຄອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:482
 msgid "Icon"
-msgstr ""
+msgstr "ໄອຄອນ"
 
 #: src/ThemeManager/ui/theme-manager.ui:523
 msgid "Change Cursor theme:"
-msgstr ""
+msgstr "ປ່ຽນທີມເຄີເຊີ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:561
 msgid "Cursor Icon theme name:"
-msgstr ""
+msgstr "ຊື່ທີມໄອຄອນເຄີເຊີ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:572
 msgid "Enter name of cursor theme to be used."
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມເຄີເຊີທີ່ຈະໃຊ້."
 
 #: src/ThemeManager/ui/theme-manager.ui:575
 msgid "Enter available cursor theme name"
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມເຄີເຊີທີ່ມີຢູ່"
 
 #: src/ThemeManager/ui/theme-manager.ui:588
 msgid "Cursor Colour Variants:"
-msgstr ""
+msgstr "ຮູບແບບສີເຄີເຊີ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:602
 msgid "Enter available colour variants for cursors"
-msgstr ""
+msgstr "ປ້ອນຮູບແບບສີທີ່ມີຢູ່ສຳລັບເຄີເຊີ"
 
 #: src/ThemeManager/ui/theme-manager.ui:622
 msgid "Cursor"
-msgstr ""
+msgstr "ເຄີເຊີ"
 
 #: src/ThemeManager/ui/theme-manager.ui:665
 msgid "Change Plank theme:"
-msgstr ""
+msgstr "ປ່ຽນທີມ Plank:"
 
 #: src/ThemeManager/ui/theme-manager.ui:706
 msgid "Plank theme name:"
-msgstr ""
+msgstr "ຊື່ທີມ Plank:"
 
 #: src/ThemeManager/ui/theme-manager.ui:717
 msgid "Enter name of plank theme to be used."
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມ Plank ທີ່ຈະໃຊ້."
 
 #: src/ThemeManager/ui/theme-manager.ui:720
 msgid "Enter Plank theme name"
-msgstr ""
+msgstr "ປ້ອນຊື່ທີມ Plank"
 
 #: src/ThemeManager/ui/theme-manager.ui:733
 msgid "Plank Colour Variants:"
-msgstr ""
+msgstr "ຮູບແບບສີ Plank:"
 
 #: src/ThemeManager/ui/theme-manager.ui:747
 msgid "Enter available colour variants for plank themes"
-msgstr ""
+msgstr "ປ້ອນຮູບແບບສີທີ່ມີຢູ່ສຳລັບທີມ Plank"
 
 #: src/ThemeManager/ui/theme-manager.ui:774
 msgid "Enter suffix for dark mode for plank thems"
-msgstr ""
+msgstr "ປ້ອນຄຳຕໍ່ທ້າຍສຳລັບໂໝດມືດຂອງທີມ Plank"
 
 #: src/ThemeManager/ui/theme-manager.ui:787
 msgid "Plank Theme Name Style:"
-msgstr ""
+msgstr "ຮູບແບບຊື່ທີມ Plank:"
 
 #: src/ThemeManager/ui/theme-manager.ui:817
 msgid "Plank"
-msgstr ""
+msgstr "Plank"
 
 #: src/ThemeManager/ui/theme-manager.ui:840
 msgid ""
 "Change system themes like desktop or shell themes, and GTK, metacity, icon "
 "and cursor themes on linux."
 msgstr ""
+"ປ່ຽນທີມລະບົບ ເຊັ່ນ ທີມເດສທັອບ ຫຼື ເຊລ, ແລະ ທີມ GTK, ເມຕາຊິຕີ້, ໄອຄອນ ແລະ "
+"ເຄີເຊີ ໃນລີນຸກ."
 
 #: src/ThemeManager/ui/theme-manager.ui:871
 msgid "Change login or display manager themes like lightDM, GDM etc."
 msgstr ""
+"ປ່ຽນທີມໜ້າເຂົ້າສູ່ລະບົບ ຫຼື ຕົວຈັດການການສະແດງຜົນ ເຊັ່ນ lightDM, GDM ແລະ "
+"ອື່ນໆ."
 
 #: src/ThemeManager/ui/theme-manager.ui:872
 msgid "Login Theme"
-msgstr ""
+msgstr "ທີມເຂົ້າສູ່ລະບົບ"
 
 #: src/ThemeManager/ui/theme-manager.ui:905
 msgid "Use system time:"
-msgstr ""
+msgstr "ໃຊ້ເວລາລະບົບ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:952
 msgid "Day starts at:"
-msgstr ""
+msgstr "ກາງເວັນເລີ່ມຕອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:964
 msgid "Night starts at:"
-msgstr ""
+msgstr "ກາງຄືນເລີ່ມຕອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:1000
 msgid "Day to Night Transition starts at:"
-msgstr ""
+msgstr "ປ່ຽນຈາກກາງເວັນເປັນກາງຄືນເລີ່ມຕອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:1012
 msgid "Night to Day Transition starts at:"
-msgstr ""
+msgstr "ປ່ຽນຈາກກາງຄືນເປັນກາງເວັນເລີ່ມຕອນ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:1056
 #: src/ThemeManager/ui/theme-manager.ui:1208
 msgid "Theme will be changed every HH hours, MM minutes, SS seconds."
-msgstr ""
+msgstr "ທີມຈະຖືກປ່ຽນທຸກໆ HH ຊົ່ວໂມງ, MM ນາທີ, SS ວິນາທີ."
 
 #: src/ThemeManager/ui/theme-manager.ui:1063
 #: src/ThemeManager/ui/theme-manager.ui:1215
 msgid "Interval between themes:"
-msgstr ""
+msgstr "ໄລຍະຫ່າງລະຫວ່າງທີມ:"
 
 #: src/ThemeManager/ui/theme-manager.ui:1092
 #: src/ThemeManager/ui/theme-manager.ui:1132
 #: src/ThemeManager/ui/theme-manager.ui:1172
 msgid "0"
-msgstr ""
+msgstr "0"
 
 #: src/ThemeManager/ui/theme-manager.ui:1242
 msgid "Settings"
-msgstr ""
+msgstr "ການຕັ້ງຄ່າ"
 
 #: src/ThemeManager/ui/theme-manager.ui:1264
 msgid "Save"
-msgstr ""
+msgstr "ບັນທຶກ"
 
 #: src/ThemeManager/ui/theme-manager.ui:1277
 msgid "Randomize"
-msgstr ""
+msgstr "ສຸ່ມ"
 
 #: src/ThemeManager/ui/theme-manager.ui:1317
 msgid "Status Bar"
-msgstr ""
+msgstr "ແຖບສະຖານະ"
 
 #: src/ThemeManager/ui/theme-manager.ui:1335
 msgid "Choose themes randomly based on time"
-msgstr ""
+msgstr "ສຸ່ມເລືອກທີມຕາມເວລາ"
