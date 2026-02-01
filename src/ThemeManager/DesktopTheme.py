@@ -93,6 +93,25 @@ class DesktopTheme:
                 }
                 self.apply_theme_map(mapping)
 
+            elif de in ["budgie", "budgie:gnome"]:
+                mapping = {
+                    "com.solus-project.gsettings-daemon.plugins.polkit": ("theme", nexttheme[4]),
+                    "org.gnome.desktop.interface": [
+                        ("gtk-theme", nexttheme[4]),
+                        ("icon-theme", nexttheme[7]),
+                        ("cursor-theme", nexttheme[8]),
+                        ("color-scheme", nexttheme[6]),
+                    ],
+                    "org.gnome.desktop.wm.preferences": ("theme", nexttheme[5])
+                }
+                # Optional: Budgie-specific 'Desktop' theme (the panel look)
+                try:
+                    self.set_gsetting("com.solus-project.budgie-panel", "theme", nexttheme[3])
+                except Exception:
+                    pass 
+                
+                self.apply_theme_map(mapping)
+
             elif de in ["gnome", "ubuntu:gnome", "unity"]:
                 self.apply_gnome_theme(nexttheme)
 
@@ -126,6 +145,7 @@ class DesktopTheme:
                 "Icon": nexttheme[7],
                 "Cursor": nexttheme[8],
                 "Plank": nexttheme[9],
+                "Color scheme": nexttheme[6],
             })
 
         except Exception as e:
@@ -173,6 +193,12 @@ class DesktopTheme:
         themes = {}
 
         schema_map = {
+            "budgie": {
+                "Applications": "org.gnome.desktop.interface gtk-theme",
+                "Decoration": "org.gnome.desktop.wm.preferences theme",
+                "Icon": "org.gnome.desktop.interface icon-theme",
+                "Cursor": "org.gnome.desktop.interface cursor-theme",
+            },
             "x-cinnamon": {
                 "Applications": "org.cinnamon.desktop.interface gtk-theme",
                 "Decoration": "org.cinnamon.desktop.wm.preferences theme",
@@ -211,7 +237,7 @@ class DesktopTheme:
             # Detect variant
             variant = "Default"
             for v in colvariants:
-                if v and v.lower() in themes.get("System", "").lower():
+                if v and v.lower() in themes.get("Applications", "").lower():
                     variant = v
                     break
 

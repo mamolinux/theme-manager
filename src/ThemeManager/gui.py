@@ -285,6 +285,9 @@ class ThemeManagerWindow():
 		self.state = self.manager.get_state_info()
 		self.nexttheme = self.manager.prep_theme_variants(self.state, self.theme_styles)
 		self.destop_manager.set_desktop_theme(self.state, self.nexttheme)
+		# Wait 1 sec before updating current theme in GUI
+		import time
+		time.sleep(1)
 		self.currenttheme = self.destop_manager.get_desktop_theme(self.state, self.manager.systemthemename, self.manager.colvariants)
 		self.current_status()
 	
@@ -338,7 +341,7 @@ class ThemeManagerWindow():
 		'''
 		Show current theme info in status bar.
 		'''
-		module_logger.debug(("%s", self.currenttheme))
+		module_logger.debug(_("Current Themes: %s" % self.currenttheme))
 		status = "DE: %s, \tState: %s, \tVariant: %s, \tLast Updated: %s, \tThemes: %s" % (self.state['DE'], self.state['State'], self.currenttheme["Variant"], "", self.currenttheme["Themes"])
 		
 		context_id = self.statusbar.get_context_id("status")
