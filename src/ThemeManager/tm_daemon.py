@@ -76,10 +76,10 @@ class TMStateMonitor:
             try:
                 state = self.manager.get_state_info()
                 current_state = state.get("State", "unknown").lower()
-                logger.debug(_("Current state: %s, Last: %s"), current_state, self.last_state)
+                logger.debug(_("Current state: {cs}, Last: {ls}").format(cs=current_state, ls=self.last_state))
 
                 if current_state != self.last_state:
-                    logger.info(_("State changed: %s → %s"), self.last_state, current_state)
+                    logger.info(_("State changed: {ls} → {cs}").format(ls=self.last_state, cs=current_state))
                     self.last_state = current_state
                     self._update_theme()
 

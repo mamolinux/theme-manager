@@ -43,7 +43,7 @@ logger = logging.getLogger('ThemeManager')
 # Set logging level
 logger.setLevel(logging.DEBUG)
 # create log formatter
-log_format = logging.Formatter('%(asctime)s %(name)s - %(levelname)s: %(message)s')
+log_format = logging.Formatter('%(asctime)s %(name)s:%(lineno)d - %(levelname)s: %(message)s')
 
 # create file handler which logs only info messages
 fHandler = logging.FileHandler(LOGFILE)

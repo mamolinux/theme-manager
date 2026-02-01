@@ -54,7 +54,7 @@ class DesktopTheme:
         try:
             subprocess.run(cmd, shell=True, check=True)
         except subprocess.CalledProcessError:
-            logger.warning(_("Failed to set gsetting: %s %s"), schema, key)
+            logger.warning(_("Failed to set gsetting: {schema} {key}").format(schema=schema, key=key))
 
     def write_schema_to_xml(self, schema_id: str, output_file: Path):
         """Generate missing schema XML if user-theme is absent."""
